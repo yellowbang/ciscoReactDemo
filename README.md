@@ -1,5 +1,12 @@
 ### Setup
 
+clone the repository:
+
+```bash
+git clone https://github.com/yellowbang/ciscoReactDemo.git
+cd ciscoReactDemo
+```
+
 Install dependencies:
 
 ```bash
