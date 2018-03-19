@@ -1,0 +1,9 @@
+{
+  "generator-aci-app": {
+    "promptValues": {
+      "appTitle": "ciscoReactDemo",
+      "sideBarNav": false,
+      "startApp": true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.empty-results-text {
+    font-size: $empty-results-font-size;
+    font-weight: $empty-results-font-weight;
+    color: $empty-results-color;
+
+    @include text-stamped;
+}
