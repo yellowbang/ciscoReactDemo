@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {appActions} from './state/actions/app';
 
-import {Sidebar, Icon, IconButton} from 'cisco-ui-components';
+import {Input, Sidebar, Icon, IconButton} from 'cisco-ui-components';
 
 
 import './App.scss';
@@ -22,10 +22,17 @@ class App extends React.Component {
         }
 
         return (
-            <div>
+            <div className="app-container">
                 <h1>
                     hello world
                 </h1>
+                <h3>
+                    input text is: {this.props.text}
+                </h3>
+                <Input
+                    name={'inputField'}
+                    value={''}
+                    onChange={this.props.onInputFieldChange.bind(this)}/>
             </div>
         );
     }
@@ -37,6 +44,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
+    text: state.app.text,
     showSidebar: state.app.showSidebar
 });
 
