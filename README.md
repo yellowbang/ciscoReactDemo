@@ -17,6 +17,10 @@ Start from init:
 ```bash
 git checkout initDemo
 ```
+Start from input field is added:
+```bash
+git checkout input
+```
 
 ### see the diff
 Too see how to add search field:
