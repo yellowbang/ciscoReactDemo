@@ -12,7 +12,13 @@ Start project in dev mode:
 npm start
 ```
 
+### Want to do it yourself? Checkout these commits:
+Start from init:
+```bash
+git checkout initDemo
+```
 
+### see the diff
 Too see how to add search field:
 
 ```bash
