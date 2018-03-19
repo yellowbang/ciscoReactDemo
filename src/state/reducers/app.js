@@ -1,5 +1,6 @@
 import {
     TOGGLE_SIDEBAR,
+    ON_CLICK_REFRESH,
     ON_INPUT_FIELD_CHANGE
 } from '../actions/app';
 
@@ -26,6 +27,10 @@ export default function (state = initialState, action = {}) {
         case ON_INPUT_FIELD_CHANGE:
             return Object.assign({}, state, {
                 text: action.payload.value
+            });
+        case ON_CLICK_REFRESH:
+            return Object.assign({}, state, {
+                imageUrl: state.text
             });
         default:
             return state;

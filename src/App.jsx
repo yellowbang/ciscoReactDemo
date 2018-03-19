@@ -35,6 +35,12 @@ class App extends React.Component {
                 <img className="image-class"
                      src={this.props.imageUrl}
                 />
+                <Button
+                    type={Button.TYPE.DEFAULT}
+                    size={Button.SIZE.SMALL_WIDE}
+                    onClick={this.props.onClickRefresh.bind(this)}>
+                    {'Refresh Image'}
+                </Button>
             </div>
         );
     }
