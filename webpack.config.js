@@ -132,7 +132,7 @@ rules.push({
 const devServer = {
     contentBase: path.resolve(OUTPUT_FOLDER, ACI_UI_ASSETS),
     publicPath: '/',
-    port: 8080,
+    port: 8042,
     hot: true,
     open: true,
     openPage: ACI_APP_START,

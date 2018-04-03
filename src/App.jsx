@@ -16,11 +16,6 @@ class App extends React.Component {
     }
 
     render() {
-        let rootClasses = 'app-container';
-        if (!this.props.showSidebar) {
-            rootClasses += ' '.concat('app-sidebar--hidden');
-        }
-
         return (
             <div>
                 <h1>
