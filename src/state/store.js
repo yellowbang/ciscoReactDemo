@@ -1,7 +1,5 @@
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducers';
-//import createHistory from 'history/createBrowserHistory';
-//import {routerMiddleware} from 'react-router-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 
 // Create a history of your choosing (we're using a browser history in this case)

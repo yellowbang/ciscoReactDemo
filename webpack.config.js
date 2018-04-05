@@ -114,7 +114,7 @@ rules.push({
 
 // Loader for all external files (e.g. font or image files)
 rules.push({
-    test: /\.(woff|woff2|eot|ttf|jpg|svg)$/,
+    test: /\.(woff|woff2|eot|ttf|jpg|svg|png)$/,
     use: [
         {
             loader: 'file-loader',

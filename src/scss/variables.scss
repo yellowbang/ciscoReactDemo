@@ -43,6 +43,8 @@ $strong-highlight:                  rgba(255,255,255,.6);
 $strongest-highlight:               rgba(255,255,255,.8);
 $link-container-highlight:          rgba(33, 183, 239, 1);
 
+$grey-text:          rgba(158, 158, 162, 1);
+$dark-blue-text:          rgba(0, 80, 114, 1);
 
 /// APIC App
 
@@ -55,3 +57,8 @@ $empty-results-background:      rgba(254, 254, 254, .7);
 $empty-results-color:           rgba(31, 31, 32, .7);
 $empty-results-font-size:       12px;
 $empty-results-font-weight:     $font-weight-extra-solid;
+
+// Component styling
+// Tile
+$tile-height: 80px;
+$tile-image-size: 20px;

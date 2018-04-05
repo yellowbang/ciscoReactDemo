@@ -8,3 +8,101 @@
 
     @include text-stamped;
 }
+
+.flex-half {
+    flex: 0.5 !important;
+}
+
+.flex-2 {
+    flex: 2 !important;
+}
+
+.align-start {
+    align-items: start !important;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.gery-text {
+    color: $grey-text;
+}
+
+.blue-background {
+    background-color: #D2EBF6 !important;
+}
+
+.tile-container {
+
+    height: $tile-height;
+    width: 100%;
+    position: relative;
+    background-color: white;
+
+    .tile-content-container {
+
+        height: $tile-height;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border: solid 1px $shadow;
+
+        > .tile-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > .tile-image {
+                width: $tile-image-size;
+            }
+        }
+
+        > .tile-info-column-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            > .tile-end-point-number {
+                color: $dark-blue-text;
+                font-size: 28px;
+            }
+
+            > .tile-end-points-text {
+                font-size: 14px;
+            }
+
+            > .tile-toggle-icon-container {
+                height: 16px;
+                width: 16px;
+                border: solid 1px $grey-text;
+                border-radius: 1px;
+                box-shadow: 0 0 1px $grey-text;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: $link-container-highlight;
+            }
+        }
+    }
+
+    > .tile-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        border: solid 1px $link-container-highlight;
+        border-left-width: 4px;
+        width: 100%;
+        height: $tile-height;
+        background-color: $lightest-shadow;
+    }
+
+}

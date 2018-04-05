@@ -1,6 +1,7 @@
 import {TOGGLE_SIDEBAR} from '../actions/app';
 
 const initialState = {
+    canTalk: false,
     showSidebar: true
 };
 
