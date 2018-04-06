@@ -1,8 +1,16 @@
-import {TOGGLE_SIDEBAR} from '../actions/app';
+import constants from '../../constants';
+
+import {
+    TOGGLE_SIDEBAR,
+    CAN_WE_TALK,
+    ON_TILE_CLICK
+} from '../actions/app';
 
 const initialState = {
-    canTalk: false,
-    showSidebar: true
+    canTalkStatus: 'hidden',
+    showSidebar: true,
+    selectedTiles: [],
+    tiles: constants.FAKE_TILE_DATA
 };
 
 /**
@@ -13,10 +21,28 @@ const initialState = {
  * @returns {*}
  */
 export default function(state = initialState, action = {}) {
+    let index, selectedTiles;
+
     switch (action.type) {
         case TOGGLE_SIDEBAR:
             return Object.assign({}, state, {
                 showSidebar: !state.showSidebar
+            });
+        case ON_TILE_CLICK:
+            selectedTiles = state.selectedTiles.slice(0);
+            index = selectedTiles.indexOf(action.payload.tileData);
+            if (index === -1) {
+                selectedTiles.push(action.payload.tileData);
+            } else {
+                selectedTiles.splice(index, 1);
+            }
+            return Object.assign({}, state, {
+                canTalkStatus: 'hidden',
+                selectedTiles: selectedTiles
+            });
+        case CAN_WE_TALK:
+            return Object.assign({}, state, {
+                canTalkStatus: action.payload.canTalkStatus
             });
         default:
             return state;

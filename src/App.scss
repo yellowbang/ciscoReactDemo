@@ -52,6 +52,7 @@ $query-result-container-min-height: 300px;
 
             > .communication-container {
                 min-width: 270px;
+                max-width: 270px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -68,8 +69,13 @@ $query-result-container-min-height: 300px;
                     align-items: center;
                     padding: $padding-large;
 
-                    > .talk-image {
-                        width: 150px;
+                    > .talk-status-diagram {
+                        display: flex;
+                        align-items: center;
+
+                        > .talk-image {
+                            width: 150px;
+                        }
                     }
                 }
             }

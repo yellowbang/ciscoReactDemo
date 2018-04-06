@@ -17,21 +17,14 @@ class Tile extends React.Component {
 
     onClick () {
         this.setState({isChecked: !this.state.isChecked}, () => {
-            if (this.props.onChange instanceof Function) {
-                this.props.onChange(this.props.data);
+            if (this.props.onTileClicked instanceof Function) {
+                this.props.onTileClicked(this.props.data);
             }
         });
     }
 
     componentWillReceiveProps (nextProps) {
-        let newState = {};
-        if (nextProps.isChecked !== this.state.isChecked) {
-            newState.isChecked = nextProps.isChecked;
-        }
 
-        if (newState !== {}) {
-            this.setState(newState);
-        }
     }
 
     shouldComponentUpdate (nextProps, nextState) {
@@ -96,7 +89,7 @@ class Tile extends React.Component {
 Tile.propTypes = {
     isChecked: PropTypes.bool,
     data: PropTypes.object,
-    onChange: PropTypes.func
+    onTileClicked: PropTypes.func
 };
 
 Tile.defaultProps = {
