@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {appActions} from './state/actions/app';
 
 import Main from './pages/Main.jsx';
+import Talk from './pages/Talk.jsx';
 
 import './App.scss';
 
@@ -25,16 +26,24 @@ class App extends React.Component {
     }
 
     render () {
+
         return (
             <div className="app-container">
-                <Main
-                    onTileClicked={this.props.onTileClicked}
-                    canWeTalk={this.props.canWeTalk}
-                    whoCanTalk={this.props.whoCanTalk}
-                    tiles={this.props.tiles}
-                    selectedTiles={this.props.selectedTiles}
-                    canTalkStatus={this.props.canTalkStatus}
-                />
+                {this.props.showTalkPage ?
+                    <Talk
+                        selectedTiles={this.props.selectedTiles}
+                        closeTalkPage={this.props.closeTalkPage}
+                    />
+                    :
+                    <Main
+                        onTileClicked={this.props.onTileClicked}
+                        canWeTalk={this.props.canWeTalk}
+                        openTalkPage={this.props.openTalkPage}
+                        tiles={this.props.tiles}
+                        selectedTiles={this.props.selectedTiles}
+                        canTalkStatus={this.props.canTalkStatus}
+                    />
+                }
             </div>
         );
     }
@@ -42,9 +51,11 @@ class App extends React.Component {
 
 App.propTypes = {
     toggleSidebar: PropTypes.func,
+    showTalkPage: PropTypes.bool,
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
-    whoCanTalk: PropTypes.func,
+    openTalkPage: PropTypes.func,
+    closeTalkPage: PropTypes.func,
     tiles: PropTypes.tiles,
     selectedTiles: PropTypes.array,
     canTalkStatus: PropTypes.string,
@@ -52,6 +63,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
+    showTalkPage: state.app.showTalkPage,
     tiles: state.app.tiles,
     selectedTiles: state.app.selectedTiles,
     canTalkStatus: state.app.canTalkStatus,

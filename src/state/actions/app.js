@@ -1,7 +1,8 @@
 const TOGGLE_SIDEBAR = 'toggleSidebar';
 const ON_TILE_CLICK = 'onTileClicked';
 const CAN_WE_TALK = 'canWeTalk';
-const WHO_CAN_TALK = 'whoCanTalk';
+const OPEN_TALK_PAGE = 'openTalkPage';
+const CLOSE_TALK_PAGE = 'closeTalkPage';
 
 let appActions = function(dispatch) {
 
@@ -25,8 +26,11 @@ let appActions = function(dispatch) {
                 payload: {canTalkStatus: fakeCheckCanTalk(selectedTiles)}
             });
         },
-        whoCanTalk: () => {
-            dispatch({type: WHO_CAN_TALK});
+        openTalkPage: () => {
+            dispatch({type: OPEN_TALK_PAGE});
+        },
+        closeTalkPage: () => {
+            dispatch({type: CLOSE_TALK_PAGE});
         }
     };
 };
@@ -35,6 +39,7 @@ export {
     appActions,
     ON_TILE_CLICK,
     CAN_WE_TALK,
-    WHO_CAN_TALK,
+    OPEN_TALK_PAGE,
+    CLOSE_TALK_PAGE,
     TOGGLE_SIDEBAR
 };

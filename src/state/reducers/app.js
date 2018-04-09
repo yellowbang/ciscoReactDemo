@@ -3,10 +3,13 @@ import constants from '../../constants';
 import {
     TOGGLE_SIDEBAR,
     CAN_WE_TALK,
-    ON_TILE_CLICK
+    ON_TILE_CLICK,
+    OPEN_TALK_PAGE,
+    CLOSE_TALK_PAGE
 } from '../actions/app';
 
 const initialState = {
+    showTalkPage: false,
     canTalkStatus: 'hidden',
     showSidebar: true,
     selectedTiles: [],
@@ -43,6 +46,16 @@ export default function(state = initialState, action = {}) {
         case CAN_WE_TALK:
             return Object.assign({}, state, {
                 canTalkStatus: action.payload.canTalkStatus
+            });
+        case OPEN_TALK_PAGE:
+            return Object.assign({}, state, {
+                showTalkPage: true
+            });
+        case CLOSE_TALK_PAGE:
+            return Object.assign({}, state, {
+                selectedTiles: [],
+                canTalkStatus: 'hidden',
+                showTalkPage: false
             });
         default:
             return state;

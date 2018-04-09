@@ -134,7 +134,7 @@ class Main extends React.Component {
                                 this.props.canTalkStatus === 'yes' ?
                                     <Button
                                         type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
-                                        onClick={this.props.whoCanTalk}>
+                                        onClick={this.props.openTalkPage}>
                                         Who can talk?
                                     </Button>
                                     :
@@ -151,7 +151,7 @@ class Main extends React.Component {
 Main.propTypes = {
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
-    whoCanTalk: PropTypes.func,
+    openTalkPage: PropTypes.func,
     selectedTiles: PropTypes.array,
     canTalkStatus: PropTypes.string,
     showSidebar: PropTypes.bool

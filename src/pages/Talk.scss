@@ -1,0 +1,46 @@
+@import "../scss/app.scss";
+
+$query-result-container-min-height: 300px;
+
+.talk-page-container {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .talk-page-header {
+        min-height: 60px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: $content-header-color;
+        background: $content-header-bg;
+        padding-left: 40px;
+        padding-right: 40px;
+
+        > .close-button {
+            display: flex;
+            flex-direction: row-reverse;
+            font-size: 30px;
+            padding-left: 0;
+            padding-right: 0;
+            width: 65px;
+            min-width: 65px;
+            height: 65px;
+            color: white;
+            background-color: transparent;
+        }
+    }
+
+    > .talk-page-content-container {
+
+    }
+}
+
+
+
