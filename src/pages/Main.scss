@@ -1,0 +1,88 @@
+@import "../scss/app.scss";
+
+$query-result-container-min-height: 300px;
+
+.main-page-container {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .main-page-header {
+        min-height: 60px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: $content-header-color;
+        background: $content-header-bg;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    > .main-page-content-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        max-width: 900px;
+
+        > .search-function-container {
+            min-height: 285px;
+            background-color: #8fcafe;
+        }
+
+        > .query-result-container {
+            flex: 1;
+            min-height: $query-result-container-min-height;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+
+            > .list-container {
+                flex: 1;
+                position: relative;
+                margin-left: $padding-large;
+                margin-right: $padding-large;
+            }
+
+            > .communication-container {
+                min-width: 270px;
+                max-width: 270px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: white;
+                margin-right: $padding-large;
+                border: solid 1px $shadow;
+
+                > .selected-tile {
+                    padding: $padding-large;
+                }
+
+                > .talk-container {
+                    display: flex;
+                    align-items: center;
+                    padding: $padding-large;
+
+                    > .talk-status-diagram {
+                        display: flex;
+                        align-items: center;
+
+                        > .talk-image {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+
