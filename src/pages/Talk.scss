@@ -38,9 +38,81 @@ $query-result-container-min-height: 300px;
     }
 
     > .talk-page-content-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
+        > .gauges-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            > .gauge-container {
+                display: flex;
+                flex-direction: row;
+
+                > .legends-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                    padding: $padding-base;
+                    padding-top: 60px;
+                    height: 100%;
+
+                    > .legend-container {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        > .endpoints-value {
+                            font-size: 15px;
+                            padding: $padding-small;
+                        }
+
+                        > .endpoints-status {
+                            font-size: 12px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
+.gauge-value-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
+    > .gauge-value-major {
+        font-size: 20px;
+        font-weight: bold;
+    }
 
+    > .gauge-value-major-unit {
+        font-size: 15px;
+        color: $grey-text;
+    }
+
+    > .gauge-value-minor {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    > .gauge-value-minor-unit {
+        font-size: 12px;
+        color: $grey-text;
+    }
+
+}
+
+.gauge__title {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+}

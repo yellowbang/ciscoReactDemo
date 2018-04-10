@@ -9,34 +9,6 @@
     @include text-stamped;
 }
 
-.display-none {
-    display: none !important;
-}
-
-.flex-half {
-    flex: 0.5 !important;
-}
-
-.flex-2 {
-    flex: 2 !important;
-}
-
-.align-start {
-    align-items: start !important;
-}
-
-.text-bold {
-    font-weight: bold;
-}
-
-.gery-text {
-    color: $grey-text;
-}
-
-.blue-background {
-    background-color: #D2EBF6 !important;
-}
-
 .tile-container {
 
     height: $tile-height;

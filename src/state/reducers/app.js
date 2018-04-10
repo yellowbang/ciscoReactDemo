@@ -9,10 +9,11 @@ import {
 } from '../actions/app';
 
 const initialState = {
-    showTalkPage: false,
+    showTalkPage: true,
     canTalkStatus: 'hidden',
     showSidebar: true,
-    selectedTiles: [],
+    // selectedTiles: [],
+    selectedTiles: constants.FAKE_SELECTED_TILES,
     tiles: constants.FAKE_TILE_DATA
 };
 
