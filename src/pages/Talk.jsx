@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {IconButton, Gauge} from 'cisco-ui-components';
 import CustomGauge from '../components/CustomGauge';
+import PointToPoint from '../components/PointToPoint';
 // import constants from '../constants';
 
 import './Talk.scss';
@@ -14,7 +15,7 @@ class Talk extends React.Component {
         this.state = {};
     }
 
-    setGaugeCenter (majorValue, majorValueUnit, minorValue, minorValueUnit) {
+    generateGaugeCenterContent (majorValue, majorValueUnit, minorValue, minorValueUnit) {
         return (
             <div className="gauge-value-container">
                 <div className="gauge-value-major">{majorValue}</div>
@@ -46,7 +47,7 @@ class Talk extends React.Component {
         let totalEndpoints1 = '100';
         let totalEndpoints2 = '100';
 
-        let gaugeValue = this.setGaugeCenter(totalEndpoints1, 'End Points', '1', 'EPGs');
+        let gaugeValue = this.generateGaugeCenterContent(totalEndpoints1, 'End Points', '1', 'EPGs');
 
         return (
             <div className="talk-page-container">
@@ -105,6 +106,7 @@ class Talk extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <PointToPoint points={this.props.selectedTiles}/>
                 </div>
             </div>
         );

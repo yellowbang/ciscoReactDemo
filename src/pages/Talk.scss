@@ -41,11 +41,14 @@ $query-result-container-min-height: 300px;
         display: flex;
         flex-direction: column;
         width: 100%;
+        align-items: center;
 
         > .gauges-container {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+            width: 100%;
+            padding-bottom: 150px;
 
             > .gauge-container {
                 display: flex;
@@ -77,6 +80,10 @@ $query-result-container-min-height: 300px;
                     }
                 }
             }
+        }
+
+        > .point-to-point-container {
+            width: 37%;
         }
     }
 }

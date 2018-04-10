@@ -47,6 +47,7 @@ $strongest-highlight:               rgba(255,255,255,.8);
 $link-container-highlight:          rgba(33, 183, 239, 1);
 
 $grey-text:          rgba(158, 158, 162, 1);
+$darker-grey-text:          rgba(127, 127, 133, 1);
 $dark-blue-text:          rgba(0, 80, 114, 1);
 
 /// APIC App
@@ -65,3 +66,9 @@ $empty-results-font-weight:     $font-weight-extra-solid;
 // Tile
 $tile-height: 80px;
 $tile-image-size: 20px;
+
+// PointToPoint
+$big-point-size: 48px;
+$big-point-radius: 24px;
+$small-point-size: 24px;
+$small-point-radius: 12px;
