@@ -27,7 +27,8 @@ class Main extends React.Component {
     render () {
         let me = this;
         let tiles = [];
-        constants.FAKE_TILE_DATA.forEach(function(data, i) {
+
+        this.props.tiles.forEach(function(data, i) {
             tiles.push(<ListViewItem height={90} key={i}>
                 <Tile data={data} onTileClicked={me.props.onTileClicked}/>
             </ListViewItem>);
@@ -152,6 +153,7 @@ Main.propTypes = {
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
     openTalkPage: PropTypes.func,
+    tiles: PropTypes.array,
     selectedTiles: PropTypes.array,
     canTalkStatus: PropTypes.string,
     showSidebar: PropTypes.bool

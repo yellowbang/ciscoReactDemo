@@ -2,19 +2,23 @@ import constants from '../../constants';
 
 import {
     TOGGLE_SIDEBAR,
+    POPULATE_TILES,
     CAN_WE_TALK,
     ON_TILE_CLICK,
     OPEN_TALK_PAGE,
-    CLOSE_TALK_PAGE
+    CLOSE_TALK_PAGE,
+    OPEN_HOW_THEY_TALK_PAGE,
+    CLOSE_HOW_THEY_TALK_PAGE
 } from '../actions/app';
 
 const initialState = {
     showTalkPage: true,
+    howTheyTalkData: undefined,
     canTalkStatus: 'hidden',
     showSidebar: true,
     // selectedTiles: [],
     selectedTiles: constants.FAKE_SELECTED_TILES,
-    tiles: constants.FAKE_TILE_DATA
+    tiles: []
 };
 
 /**
@@ -31,6 +35,10 @@ export default function(state = initialState, action = {}) {
         case TOGGLE_SIDEBAR:
             return Object.assign({}, state, {
                 showSidebar: !state.showSidebar
+            });
+        case POPULATE_TILES:
+            return Object.assign({}, state, {
+                tiles: action.payload.tiles
             });
         case ON_TILE_CLICK:
             selectedTiles = state.selectedTiles.slice(0);
@@ -57,6 +65,14 @@ export default function(state = initialState, action = {}) {
                 selectedTiles: [],
                 canTalkStatus: 'hidden',
                 showTalkPage: false
+            });
+        case OPEN_HOW_THEY_TALK_PAGE:
+            return Object.assign({}, state, {
+                howTheyTalkData: action.payload.data
+            });
+        case CLOSE_HOW_THEY_TALK_PAGE:
+            return Object.assign({}, state, {
+                howTheyTalkData: undefined
             });
         default:
             return state;

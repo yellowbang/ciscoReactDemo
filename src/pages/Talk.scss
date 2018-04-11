@@ -48,6 +48,7 @@ $query-result-container-min-height: 300px;
             flex-direction: row;
             justify-content: space-around;
             width: 100%;
+            min-height: 320px;
             padding-bottom: 150px;
 
             > .gauge-container {
@@ -82,10 +83,87 @@ $query-result-container-min-height: 300px;
             }
         }
 
-        > .point-to-point-container {
+        > .how-they-talk-container {
             width: 37%;
+            position: relative;
+
+            > .point-to-point-container {
+                width: 100%;
+            }
+
+            > .how-they-talk-button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 2;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
+
+    > .how-they-talk-page {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(146, 146, 146, .5);
+
+        > .how-they-talk-page-container {
+            width: 80%;
+            height: 80%;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: $white;
+
+            > .how-they-talk-page-header {
+                width: 100%;
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                background-color: $light-grey;
+                padding-left: $padding-xlarge;
+                padding-right: $padding-xlarge;
+
+                > .how-they-talk-page-header-left {
+
+                }
+
+                > .close-button {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    font-size: 30px;
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: 65px;
+                    min-width: 65px;
+                    height: 65px;
+                    color: $darker-grey-text;
+                    background-color: transparent;
+                }
+            }
+
+            > .how-they-talk-page-content {
+                padding: $padding-xxxlarge;
+
+                > .table-container {
+                    padding-top: 100px;
+
+                    > .table-title {
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 .gauge-value-container {

@@ -17,6 +17,10 @@ class App extends React.Component {
         this.canWeTalk = this.canWeTalk.bind(this);
     }
 
+    componentDidMount () {
+        this.props.getData();
+    }
+
     canWeTalk () {
         this.props.canWeTalk(this.props.selectedTiles);
     }
@@ -33,6 +37,9 @@ class App extends React.Component {
                     <Talk
                         selectedTiles={this.props.selectedTiles}
                         closeTalkPage={this.props.closeTalkPage}
+                        closeHowTheyTalkPage={this.props.closeHowTheyTalkPage}
+                        howTheyTalk={this.props.howTheyTalk}
+                        howTheyTalkData={this.props.howTheyTalkData}
                     />
                     :
                     <Main
@@ -56,9 +63,12 @@ App.propTypes = {
     canWeTalk: PropTypes.func,
     openTalkPage: PropTypes.func,
     closeTalkPage: PropTypes.func,
-    tiles: PropTypes.tiles,
+    closeHowTheyTalkPage: PropTypes.func,
+    howTheyTalk: PropTypes.func,
+    tiles: PropTypes.array,
     selectedTiles: PropTypes.array,
     canTalkStatus: PropTypes.string,
+    howTheyTalkData: PropTypes.object,
     showSidebar: PropTypes.bool
 };
 
@@ -67,6 +77,7 @@ const mapStateToProps = (state, ownProps) => ({
     tiles: state.app.tiles,
     selectedTiles: state.app.selectedTiles,
     canTalkStatus: state.app.canTalkStatus,
+    howTheyTalkData: state.app.howTheyTalkData,
     showSidebar: state.app.showSidebar
 });
 

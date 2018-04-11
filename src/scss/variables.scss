@@ -16,7 +16,9 @@ $font-weight-heavy:                 700;
 $padding-base:                  10px;
 $padding-small:                 5px;
 $padding-large:                 15px;
-$padding-xlarge:                30px;
+$padding-xlarge:                20px;
+$padding-xxlarge:                30px;
+$padding-xxxlarge:                40px;
 $padding-xsmall:                 3px;
 
 
@@ -46,6 +48,7 @@ $strong-highlight:                  rgba(255,255,255,.6);
 $strongest-highlight:               rgba(255,255,255,.8);
 $link-container-highlight:          rgba(33, 183, 239, 1);
 
+$light-grey:          rgba(242, 242, 242, 1);
 $grey-text:          rgba(158, 158, 162, 1);
 $darker-grey-text:          rgba(127, 127, 133, 1);
 $dark-blue-text:          rgba(0, 80, 114, 1);

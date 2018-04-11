@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {IconButton, Gauge} from 'cisco-ui-components';
+import {IconButton, Gauge, Button} from 'cisco-ui-components';
 import CustomGauge from '../components/CustomGauge';
 import PointToPoint from '../components/PointToPoint';
 // import constants from '../constants';
@@ -12,7 +12,11 @@ class Talk extends React.Component {
 
     constructor (props, context) {
         super(props, context);
-        this.state = {};
+        this.onClickHowDoTheyTalk = this.onClickHowDoTheyTalk.bind(this);
+    }
+
+    onClickHowDoTheyTalk () {
+        this.props.howTheyTalk();
     }
 
     generateGaugeCenterContent (majorValue, majorValueUnit, minorValue, minorValueUnit) {
@@ -26,8 +30,9 @@ class Talk extends React.Component {
         );
     }
 
-    shouldComponentUpdate (nextProps) {
-        return nextProps.selectedTiles !== this.props.selectedTiles;
+    shouldComponentUpdate (nextProps, nextState) {
+        return nextProps.selectedTiles !== this.props.selectedTiles ||
+            nextProps.howTheyTalkData !== this.props.howTheyTalkData ;
     }
 
     render () {
@@ -41,11 +46,14 @@ class Talk extends React.Component {
             selectedTile2Name = selectedTile2.name;
         }
 
-        let nonReachableEndpoints1 = '56';
-        let nonReachableEndpoints2 = '56';
+        let nonReachableEndpoints1 = '1';
+        let nonReachableEndpoints2 = '1';
 
-        let totalEndpoints1 = '100';
-        let totalEndpoints2 = '100';
+        let totalEndpoints1 = selectedTile1.endPoints;
+        let totalEndpoints2 = selectedTile2.endPoints;
+
+        let reachableEnpoints1 = '1';
+        let reachableEnpoints2 = '1';
 
         let gaugeValue = this.generateGaugeCenterContent(totalEndpoints1, 'End Points', '1', 'EPGs');
 
@@ -67,7 +75,7 @@ class Talk extends React.Component {
                             <div className="legends-container flex-align-items-end">
                                 <div className="legend-container">
                                     <span className="circle-dot color-green"/>
-                                    <span className="endpoints-value">{selectedTile1.reachable}</span>
+                                    <span className="endpoints-value">{reachableEnpoints1}</span>
                                     <span className="endpoints-status">{'Reachable Endpoints'}</span>
                                 </div>
                                 <div className="legend-container">
@@ -81,7 +89,7 @@ class Talk extends React.Component {
                                 type={Gauge.TYPE.INFO}
                                 title={selectedTile1Name}
                                 center={gaugeValue}
-                                value={this.props.selectedTiles[0].reachable}
+                                value={reachableEnpoints1}
                                 max={totalEndpoints1}/>
                         </div>
                         <div className="gauge-container">
@@ -90,12 +98,12 @@ class Talk extends React.Component {
                                 type={Gauge.TYPE.INFO}
                                 title={selectedTile2Name}
                                 center={gaugeValue}
-                                value={this.props.selectedTiles[1].reachable}
+                                value={reachableEnpoints2}
                                 max={totalEndpoints2}/>
                             <div className="legends-container">
                                 <div className="legend-container">
                                     <span className="circle-dot color-green"/>
-                                    <span className="endpoints-value">{selectedTile2.reachable}</span>
+                                    <span className="endpoints-value">{reachableEnpoints2}</span>
                                     <span className="endpoints-status">{'Reachable Endpoints'}</span>
                                 </div>
                                 <div className="legend-container">
@@ -106,8 +114,43 @@ class Talk extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <PointToPoint points={this.props.selectedTiles}/>
+                    <div className="how-they-talk-container">
+                        <PointToPoint points={this.props.selectedTiles}/>
+                        <div className="how-they-talk-button flex-row">
+                            <Button
+                                type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                                onClick={this.onClickHowDoTheyTalk}>
+                                How do they talk?
+                            </Button>
+                        </div>
+                    </div>
                 </div>
+                {this.props.howTheyTalkData ?
+                    <div className="how-they-talk-page">
+                        <div className="how-they-talk-page-container">
+                            <div className="how-they-talk-page-header">
+                                <div className="how-they-talk-page-header-left">
+                                    <h4>How they talk</h4>
+                                </div>
+                                <IconButton
+                                    size={IconButton.SIZE.LARGE}
+                                    icon={IconButton.ICON.CLOSE}
+                                    type={'close-button'}
+                                    onClick={this.props.closeHowTheyTalkPage}/>
+                            </div>
+                            <div className="how-they-talk-page-content">
+                                <PointToPoint
+                                    points={this.props.selectedTiles}
+                                />
+                                <div className="table-container">
+                                    <h5 className="table-title">Filters and rules between </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    :
+                    null
+                }
             </div>
         );
     }
@@ -115,10 +158,14 @@ class Talk extends React.Component {
 
 Talk.propTypes = {
     closeTalkPage: PropTypes.func,
+    closeHowTheyTalkPage: PropTypes.func,
+    howTheyTalk: PropTypes.func,
+    howTheyTalkData: PropTypes.object,
     selectedTiles: PropTypes.array
 };
 
 Talk.defaultProps = {
+    howTheyTalkData: undefined,
     selectedTiles: []
 };
 
