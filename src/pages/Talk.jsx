@@ -7,16 +7,30 @@ import PointToPoint from '../components/PointToPoint';
 // import constants from '../constants';
 
 import './Talk.scss';
+import util from '../common/util';
 
 class Talk extends React.Component {
-
     constructor (props, context) {
         super(props, context);
+        this.state = {
+            tableData: [],
+            points: [],
+            lineData: {},
+            selectedLine: -2
+        };
         this.onClickHowDoTheyTalk = this.onClickHowDoTheyTalk.bind(this);
+        this.lineOnClicked = this.lineOnClicked.bind(this);
     }
 
     onClickHowDoTheyTalk () {
         this.props.howTheyTalk();
+    }
+
+    lineOnClicked (index) {
+        this.setState({
+            selectedLine: index,
+            tableData: this.state.lineData[index]
+        });
     }
 
     generateGaugeCenterContent (majorValue, majorValueUnit, minorValue, minorValueUnit) {
@@ -30,9 +44,33 @@ class Talk extends React.Component {
         );
     }
 
+    componentWillReceiveProps (nextProps) {
+        let points = [];
+        if (nextProps.howTheyTalkData && nextProps.howTheyTalkData.path) {
+            nextProps.howTheyTalkData.path.forEach(function(dn) {
+                points.push({
+                    name: util.getNameByDn(dn),
+                    tenant: util.getNameByDn(dn, 2)
+                });
+            });
+        }
+
+        let lineData = {};
+        if (nextProps.howTheyTalkData && nextProps.howTheyTalkData.flows) {
+            let flowsKeys = Object.keys(nextProps.howTheyTalkData.flows);
+            flowsKeys.forEach(function(key, index) {
+                lineData[index] = {key, data: nextProps.howTheyTalkData.flows[key].data};
+            });
+        }
+
+        this.setState({points, lineData});
+    }
+
     shouldComponentUpdate (nextProps, nextState) {
         return nextProps.selectedTiles !== this.props.selectedTiles ||
-            nextProps.howTheyTalkData !== this.props.howTheyTalkData ;
+            nextProps.howTheyTalkData !== this.props.howTheyTalkData ||
+            nextState.selectedLine !== this.state.selectedLine ||
+            nextState.tableData !== this.state.tableData;
     }
 
     render () {
@@ -140,7 +178,9 @@ class Talk extends React.Component {
                             </div>
                             <div className="how-they-talk-page-content">
                                 <PointToPoint
-                                    points={this.props.selectedTiles}
+                                    onLineClicked={this.lineOnClicked}
+                                    points={this.state.points}
+                                    selectedLine={this.state.selectedLine}
                                 />
                                 <div className="table-container">
                                     <h5 className="table-title">Filters and rules between </h5>

@@ -7,14 +7,31 @@ import {Icon} from 'cisco-ui-components';
 class Line extends React.Component {
     constructor () {
         super();
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick () {
+        this.props.onLineClicked(this.props.value);
     }
 
     render () {
+        let lineClassName = 'line';
+        if (this.props.isSelected) {
+            lineClassName = lineClassName + ' selected';
+        }
         return (
-            <div className="line"/>
+            <div className="line-container" onClick={this.onClick}>
+                <div className={lineClassName}/>
+            </div>
         );
     }
 }
+
+Line.propTypes = {
+    onLineClicked: PropTypes.func,
+    isSelected: PropTypes.bool,
+    value: PropTypes.number
+};
 
 class Point extends React.Component {
     constructor () {
@@ -28,9 +45,15 @@ class BigPoint extends Point {
     }
 
     render () {
+        let circleClassName = 'big-circle';
+        if (this.props.isSelected) {
+            circleClassName = circleClassName + ' selected';
+        }
         return (
             <div className="big-point-container">
-                <div className="big-circle">E</div>
+                <div className={circleClassName}>
+                    <div>E</div>
+                </div>
                 <div className="foot-note-container">
                     <div className="major-foot-note">{this.props.data.name}</div>
                     <div className="minor-foot-note">{this.props.data.tenant}</div>
@@ -46,9 +69,13 @@ class SmallPoint extends Point {
     }
 
     render () {
+        let circleClassName = 'small-circle';
+        if (this.props.isSelected) {
+            circleClassName = circleClassName + ' selected';
+        }
         return (
             <div className="small-point-container">
-                <div className="small-circle"/>
+                <div className={circleClassName}/>
                 <div className="small-point-foot-note">{this.props.data.name}</div>
             </div>
         );
@@ -70,12 +97,29 @@ class PointToPoint extends React.Component {
         let points = [];
         me.props.points.forEach(function(point, index) {
             if (index !== 0) {
-                points.push(<Line key={'line' + index}/>);
+                points.push(<Line
+                    key={'line' + index}
+                    onLineClicked={me.props.onLineClicked}
+                    value={index - 1}
+                    isSelected={me.props.selectedLine === index - 1}
+                />);
             }
+            let pointIsSelected = me.props.selectedLine === index - 1 || me.props.selectedLine === index;
             if (index === 0 || index === me.props.points.length - 1) {
-                points.push(<BigPoint key={point.name} data={point}/>);
+                points.push(
+                    <BigPoint
+                        key={index + 'key' + point.name}
+                        data={point}
+                        isSelected={pointIsSelected}
+                    />
+                );
             } else {
-                points.push(<SmallPoint key={point.name} data={point}/>);
+                points.push(
+                    <SmallPoint
+                        key={index + 'key' + point.name}
+                        data={point}
+                        isSelected={pointIsSelected}
+                    />);
             }
         });
 
@@ -90,10 +134,13 @@ class PointToPoint extends React.Component {
 PointToPoint.propTypes = {
     containerNameClass: PropTypes.string,
     points: PropTypes.array,
+    selectedLine: PropTypes.number,
+    onLineClicked: PropTypes.func,
     onTileClicked: PropTypes.func
 };
 
 PointToPoint.defaultProps = {
+    selectedLine: -2,
     points: [],
     data: {}
 };

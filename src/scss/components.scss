@@ -88,14 +88,30 @@
     align-items: center;
     justify-content: space-around;
 
-    > .line {
-        height: 1px;
+    > .line-container {
+        height: 10px;
         flex: 1;
-        background-color: $darker-grey-text;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        > .line {
+            height: 1px;
+            flex: 1;
+            background-color: $darker-grey-text;
+        }
+
+        > .line.selected {
+            background-color: $orange;
+        }
     }
 
-    > .line:hover {
-        height: 2px;
+    > .line-container:hover {
+        cursor: pointer;
+
+        > .line {
+            height: 2px;
+        }
     }
 
     > .big-point-container {
@@ -112,6 +128,10 @@
             text-align: center;
             vertical-align: center;
             line-height: $big-point-size;
+        }
+        > .big-circle.selected{
+            border: solid 4px $link-container-highlight;
+            line-height: $big-point-size - 2 * 4px;
         }
 
         > .foot-note-container {
@@ -150,6 +170,9 @@
             text-align: center;
             vertical-align: center;
             line-height: $small-point-size;
+        }
+        > .small-circle.selected{
+            border: solid 2px $link-container-highlight;
         }
 
         > .small-point-foot-note {
