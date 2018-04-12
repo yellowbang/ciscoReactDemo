@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../scss/components.scss';
-import {Icon} from 'cisco-ui-components';
 
 class Line extends React.Component {
     constructor () {
@@ -11,7 +10,7 @@ class Line extends React.Component {
     }
 
     onClick () {
-        this.props.onLineClicked(this.props.value);
+        this.props.onLineClicked(this.props.lineIndex);
     }
 
     render () {
@@ -30,7 +29,7 @@ class Line extends React.Component {
 Line.propTypes = {
     onLineClicked: PropTypes.func,
     isSelected: PropTypes.bool,
-    value: PropTypes.number
+    lineIndex: PropTypes.number
 };
 
 class Point extends React.Component {
@@ -94,6 +93,20 @@ class SmallPoint extends Point {
 class PointToPoint extends React.Component {
     constructor () {
         super();
+        this.state = {
+            selectedLine: -2
+        };
+        this.onLineClicked = this.onLineClicked.bind(this);
+    }
+
+    onLineClicked (lineIndex) {
+        this.setState({selectedLine: lineIndex});
+        this.props.onLineClicked(lineIndex);
+    }
+
+    shouldComponentUpdate (nextProps, nextState) {
+        return nextProps.points !== this.props.points ||
+            nextState.selectedLine !== this.state.selectedLine;
     }
 
     render () {
@@ -108,12 +121,12 @@ class PointToPoint extends React.Component {
             if (index !== 0) {
                 points.push(<Line
                     key={'line' + index}
-                    onLineClicked={me.props.onLineClicked}
-                    value={index - 1}
-                    isSelected={me.props.selectedLine === index - 1}
+                    onLineClicked={me.onLineClicked}
+                    lineIndex={index - 1}
+                    isSelected={me.state.selectedLine === index - 1}
                 />);
             }
-            let pointIsSelected = me.props.selectedLine === index - 1 || me.props.selectedLine === index;
+            let pointIsSelected = me.state.selectedLine === index - 1 || me.state.selectedLine === index;
             if (index === 0 || index === me.props.points.length - 1) {
                 points.push(
                     <BigPoint
@@ -143,13 +156,11 @@ class PointToPoint extends React.Component {
 PointToPoint.propTypes = {
     containerNameClass: PropTypes.string,
     points: PropTypes.array,
-    selectedLine: PropTypes.number,
     onLineClicked: PropTypes.func,
     onTileClicked: PropTypes.func
 };
 
 PointToPoint.defaultProps = {
-    selectedLine: -2,
     points: [],
     data: {}
 };

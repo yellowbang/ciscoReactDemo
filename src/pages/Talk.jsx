@@ -196,7 +196,6 @@ class Talk extends React.Component {
                                 <PointToPoint
                                     onLineClicked={this.lineOnClicked}
                                     points={this.state.points}
-                                    selectedLine={this.state.selectedLine}
                                 />
                                 <div className="table-container">
                                     <h5 className="table-title">Filters and rules between </h5>
