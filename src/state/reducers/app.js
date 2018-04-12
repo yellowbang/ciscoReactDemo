@@ -4,7 +4,8 @@ import {
     TOGGLE_SIDEBAR,
     POPULATE_TILES,
     CAN_WE_TALK,
-    ON_TILE_CLICK,
+    ON_TILE_CLICKED,
+    ON_TILE_NUMBER_CLICKED,
     OPEN_TALK_PAGE,
     CLOSE_TALK_PAGE,
     OPEN_HOW_THEY_TALK_PAGE,
@@ -16,6 +17,7 @@ const initialState = {
     howTheyTalkData: undefined,
     canTalkStatus: 'hidden',
     showSidebar: true,
+    popupTableData: [],
     selectedTiles: [],
     // selectedTiles: constants.FAKE_SELECTED_TILES,
     tiles: []
@@ -40,7 +42,11 @@ export default function(state = initialState, action = {}) {
             return Object.assign({}, state, {
                 tiles: action.payload.tiles
             });
-        case ON_TILE_CLICK:
+        case ON_TILE_NUMBER_CLICKED:
+            return Object.assign({}, state, {
+                popupTableData: action.payload.data
+            });
+        case ON_TILE_CLICKED:
             selectedTiles = state.selectedTiles.slice(0);
             index = selectedTiles.indexOf(action.payload.tileData);
             if (index === -1) {

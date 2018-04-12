@@ -13,8 +13,13 @@
 
     height: $tile-height;
     width: 100%;
-    position: relative;
     background-color: white;
+
+    .tile-content-container.selected {
+        border: solid 1px $link-container-highlight;
+        border-left-width: 4px;
+        padding-left: 0;
+    }
 
     .tile-content-container {
 
@@ -24,6 +29,7 @@
         justify-content: space-around;
         align-items: center;
         border: solid 1px $shadow;
+        padding-left: 3px;
 
         > .tile-image-container {
             flex: 1;
@@ -65,20 +71,6 @@
                 color: $link-container-highlight;
             }
         }
-    }
-
-    > .tile-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 2;
-        border: solid 1px $link-container-highlight;
-        border-left-width: 4px;
-        width: 100%;
-        height: $tile-height;
-        background-color: $lightest-shadow;
     }
 }
 

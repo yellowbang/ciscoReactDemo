@@ -8,33 +8,9 @@ import {
 
 const COLUMNS = [
     {
-        id: 'action',
-        Header: 'Action',
-        accessor: 'action'
-    }, {
-        id: 's_ctx',
-        Header: 'Source Vrf',
-        accessor: 's_ctx'
-    }, {
-        id: 'd_ctx',
-        Header: 'Destination Vrf',
-        accessor: 'd_ctx'
-    }, {
-        id: 'sp',
-        Header: 'Source Port',
-        accessor: 'sp'
-    }, {
-        id: 'dp',
-        Header: 'Destination Port',
-        accessor: 'dp'
-    }, {
-        id: 'fw',
-        Header: 'Firewall',
-        accessor: 'fw'
-    }, {
-        id: 'prot',
-        Header: 'Protocol',
-        accessor: 'prot'
+        id: 'dn',
+        Header: 'Dn',
+        accessor: 'dn'
     }
 ];
 
@@ -160,14 +136,14 @@ class TableController extends AbstractTableController {
     }
 }
 
-class TableResult extends React.Component {
+class TablePopup extends React.Component {
     constructor (props) {
         super(props);
 
         this.state = {
-            allData: [],
+            allData: props.allData || [],
             data: [],
-            orderBy: 'action',
+            orderBy: 'dn',
             direction: 'asc',
             total: 0,
             page: 0,
@@ -185,6 +161,7 @@ class TableResult extends React.Component {
         if (this.props.initialPageSize) {
             this.tableController.onPageSizeChange(this.props.initialPageSize);
         }
+        this.tableController.loadData(this.props.allData);
     }
 
     componentWillReceiveProps (nextProps) {
@@ -212,17 +189,17 @@ class TableResult extends React.Component {
         return (
             <div>
                 <BasicTable
-                    pageSizeOptions={[5, 10, 15, 25, 50]}
+                    pageSizeOptions={[5, 10, 15]}
                     controller={this.tableController}/>
             </div>
         );
     }
 }
 
-TableResult.propTypes = {
+TablePopup.propTypes = {
     initialPageSize: PropTypes.number,
     allData: PropTypes.array,
     onRowClick: PropTypes.func
 };
 
-export default TableResult;
+export default TablePopup;

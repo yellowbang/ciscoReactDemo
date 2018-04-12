@@ -113,7 +113,7 @@ $query-result-container-min-height: 300px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgba(146, 146, 146, .5);
+        background-color: $transparent-background;
 
         > .how-they-talk-page-container {
             overflow: auto;

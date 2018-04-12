@@ -30,7 +30,7 @@ class Main extends React.Component {
 
         this.props.tiles.forEach(function(data, i) {
             tiles.push(<ListViewItem height={90} key={i}>
-                <Tile data={data} onTileClicked={me.props.onTileClicked}/>
+                <Tile data={data} onTileClicked={me.props.onTileClicked} onTileNumberClicked={me.props.onTileNumberClicked}/>
             </ListViewItem>);
         });
 
@@ -150,6 +150,7 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
+    onTileNumberClicked: PropTypes.func,
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
     openTalkPage: PropTypes.func,

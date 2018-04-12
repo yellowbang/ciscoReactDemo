@@ -4,5 +4,6 @@ let getNameByDn = function(dn, order = 0) {
 };
 
 export default {
+    emptyFn: function(){},
     getNameByDn: getNameByDn
 };

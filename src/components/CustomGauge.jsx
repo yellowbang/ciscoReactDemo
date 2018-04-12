@@ -62,8 +62,7 @@ class CustomGauge extends Gauge {
 
 CustomGauge.propTypes = {
     isChecked: PropTypes.bool,
-    data: PropTypes.object,
-    onTileClicked: PropTypes.func
+    data: PropTypes.object
 };
 
 CustomGauge.defaultProps = {

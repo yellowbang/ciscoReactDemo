@@ -2,7 +2,8 @@ import api from '../../common/api';
 import util from '../../common/util';
 
 const TOGGLE_SIDEBAR = 'toggleSidebar';
-const ON_TILE_CLICK = 'onTileClicked';
+const ON_TILE_CLICKED = 'onTileClicked';
+const ON_TILE_NUMBER_CLICKED = 'onTileNumberClicked';
 const CAN_WE_TALK = 'canWeTalk';
 const OPEN_TALK_PAGE = 'openTalkPage';
 const CLOSE_TALK_PAGE = 'closeTalkPage';
@@ -37,8 +38,18 @@ let appActions = function(dispatch) {
         },
         onTileClicked: (tileData) => {
             dispatch({
-                type: ON_TILE_CLICK,
+                type: ON_TILE_CLICKED,
                 payload: {tileData}
+            });
+        },
+        onTileNumberClicked: (data) => {
+            let dns = [];
+            data.forEach(function(dn) {
+                dns.push({dn});
+            });
+            dispatch({
+                type: ON_TILE_NUMBER_CLICKED,
+                payload: {data: dns}
             });
         },
         canWeTalk: (selectedTiles) => {
@@ -104,7 +115,8 @@ let appActions = function(dispatch) {
 export {
     appActions,
     POPULATE_TILES,
-    ON_TILE_CLICK,
+    ON_TILE_CLICKED,
+    ON_TILE_NUMBER_CLICKED,
     CAN_WE_TALK,
     OPEN_TALK_PAGE,
     CLOSE_TALK_PAGE,

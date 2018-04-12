@@ -200,6 +200,7 @@ class Talk extends React.Component {
                                 <div className="table-container">
                                     <h5 className="table-title">Filters and rules between </h5>
                                     <TableResult
+                                        initialPageSize={5}
                                         onRowClick={this.onTableRowClicked}
                                         allData={this.state.tableData.data}/>
                                 </div>

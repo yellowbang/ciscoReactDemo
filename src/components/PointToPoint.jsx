@@ -156,8 +156,7 @@ class PointToPoint extends React.Component {
 PointToPoint.propTypes = {
     containerNameClass: PropTypes.string,
     points: PropTypes.array,
-    onLineClicked: PropTypes.func,
-    onTileClicked: PropTypes.func
+    onLineClicked: PropTypes.func
 };
 
 PointToPoint.defaultProps = {
