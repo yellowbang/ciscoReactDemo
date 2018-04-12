@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {IconButton, Gauge, Button} from 'cisco-ui-components';
 import CustomGauge from '../components/CustomGauge';
 import PointToPoint from '../components/PointToPoint';
+import TableResult from '../components/TableResult';
 // import constants from '../constants';
 
 import './Talk.scss';
@@ -19,11 +20,22 @@ class Talk extends React.Component {
             selectedLine: -2
         };
         this.onClickHowDoTheyTalk = this.onClickHowDoTheyTalk.bind(this);
+        this.onCloseHowTheyTalk = this.onCloseHowTheyTalk.bind(this);
+        this.onTableRowClicked = this.onTableRowClicked.bind(this);
         this.lineOnClicked = this.lineOnClicked.bind(this);
     }
 
     onClickHowDoTheyTalk () {
         this.props.howTheyTalk();
+    }
+
+    onCloseHowTheyTalk () {
+        this.setState({
+            tableData: [],
+            lineData: {},
+            selectedLine: -2
+        });
+        this.props.closeHowTheyTalkPage();
     }
 
     lineOnClicked (index) {
@@ -42,6 +54,10 @@ class Talk extends React.Component {
                 <div className="gauge-value-minor-unit">{minorValueUnit}</div>
             </div>
         );
+    }
+
+    onTableRowClicked () {
+
     }
 
     componentWillReceiveProps (nextProps) {
@@ -174,7 +190,7 @@ class Talk extends React.Component {
                                     size={IconButton.SIZE.LARGE}
                                     icon={IconButton.ICON.CLOSE}
                                     type={'close-button'}
-                                    onClick={this.props.closeHowTheyTalkPage}/>
+                                    onClick={this.onCloseHowTheyTalk}/>
                             </div>
                             <div className="how-they-talk-page-content">
                                 <PointToPoint
@@ -184,6 +200,9 @@ class Talk extends React.Component {
                                 />
                                 <div className="table-container">
                                     <h5 className="table-title">Filters and rules between </h5>
+                                    <TableResult
+                                        onRowClick={this.onTableRowClicked}
+                                        allData={this.state.tableData.data}/>
                                 </div>
                             </div>
                         </div>

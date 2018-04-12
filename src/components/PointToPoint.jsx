@@ -37,7 +37,16 @@ class Point extends React.Component {
     constructor () {
         super();
     }
+
+    shouldComponentUpdate (nextProps) {
+        return nextProps.data !== this.props.data ||
+            nextProps.isSelected !== this.props.isSelected;
+    }
 }
+Point.propTypes = {
+    data: PropTypes.object,
+    isSelected: PropTypes.bool
+};
 
 class BigPoint extends Point {
     constructor () {

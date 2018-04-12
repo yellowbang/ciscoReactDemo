@@ -1236,6 +1236,15 @@ export default {
                     'data': [
                         {
                             'action': 'permit',
+                            'd_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'dp': 'any',
+                            'fw': 'nfw',
+                            'prot': 'tcp',
+                            's_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'sp': 'any'
+                        },
+                        {
+                            'action': 'permit',
                             'd_ctx': 'uni/tn-internal/ctx-internal',
                             'dp': 'any',
                             'fw': 'nfw',
@@ -1250,6 +1259,24 @@ export default {
                     'data': [
                         {
                             'action': 'permit',
+                            'd_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'dp': 'any',
+                            'fw': 'nfw',
+                            'prot': 'tcp',
+                            's_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'sp': 'any'
+                        },
+                        {
+                            'action': 'permit',
+                            'd_ctx': 'uni/tn-internal/ctx-internal',
+                            'dp': 'any',
+                            'fw': 'nfw',
+                            'prot': 'tcp',
+                            's_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'sp': 'any'
+                        },
+                        {
+                            'action': 'permit',
                             'd_ctx': 'uni/tn-internal/ctx-internal',
                             'dp': 'any',
                             'fw': 'nfw',
@@ -1262,6 +1289,33 @@ export default {
                 'hop3': {
                     'count': 1,
                     'data': [
+                        {
+                            'action': 'permit',
+                            'd_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'dp': 'any',
+                            'fw': 'nfw',
+                            'prot': 'tcp',
+                            's_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'sp': 'any'
+                        },
+                        {
+                            'action': 'permit',
+                            'd_ctx': 'uni/tn-internal/ctx-internal',
+                            'dp': 'any',
+                            'fw': 'nfw',
+                            'prot': 'tcp',
+                            's_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'sp': 'any'
+                        },
+                        {
+                            'action': 'permit',
+                            'd_ctx': 'uni/tn-internal/ctx-internal',
+                            'dp': 'any',
+                            'fw': 'nfw',
+                            'prot': 'tcp',
+                            's_ctx': 'uni/tn-dmz/ctx-dmz',
+                            'sp': 'any'
+                        },
                         {
                             'action': 'permit',
                             'd_ctx': 'uni/tn-secured/ctx-secured',
