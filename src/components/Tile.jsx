@@ -32,6 +32,7 @@ class Tile extends React.Component {
     }
 
     render () {
+        const me = this;
         let tileClass = 'tile-container';
         if (this.state.isChecked) {
             tileClass = tileClass + ' blue-background';
@@ -39,29 +40,31 @@ class Tile extends React.Component {
         let name = this.props.data.name;
         let endPoints = this.props.data.endPoints;
 
+        let columns = [];
+        let keys = Object.keys(this.props.data.allData);
+        keys.forEach(function(key) {
+            if (key.indexOf('N_') === 0 && key !== 'N_EP') {
+                columns.push(
+                    <div className="tile-info-column-container">
+                        <div>{me.props.data.allData[key].count}</div>
+                        <div>{key.split('N_')[1]}</div>
+                    </div>
+                );
+            }
+        });
+
         return (
             <div className={tileClass} onClick={this.onClick}>
                 <div className="tile-content-container">
                     <div className="tile-image-container flex-half">
                         <img className="tile-image" src={epgSvg}/>
                     </div>
-                    <div className="tile-info-column-container align-start">
+                    <div className="tile-info-column-container">
                         <div>{name}</div>
                         <div className="tile-image">{name}</div>
                         <div className="tile-image">{name}</div>
                     </div>
-                    <div className="tile-info-column-container">
-                        <div>{'1'}</div>
-                        <div>{'---'}</div>
-                    </div>
-                    <div className="tile-info-column-container">
-                        <div>{'##'}</div>
-                        <div>{'---'}</div>
-                    </div>
-                    <div className="tile-info-column-container">
-                        <div>{'##'}</div>
-                        <div>{'---'}</div>
-                    </div>
+                    {columns}
                     <div className="tile-info-column-container">
                         <div className="tile-end-point-number">{endPoints}</div>
                         <div className="tile-end-points-text gery-text ">{'End Points'}</div>

@@ -12,12 +12,12 @@ import {
 } from '../actions/app';
 
 const initialState = {
-    showTalkPage: true,
+    showTalkPage: false,
     howTheyTalkData: undefined,
     canTalkStatus: 'hidden',
     showSidebar: true,
-    // selectedTiles: [],
-    selectedTiles: constants.FAKE_SELECTED_TILES,
+    selectedTiles: [],
+    // selectedTiles: constants.FAKE_SELECTED_TILES,
     tiles: []
 };
 

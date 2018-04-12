@@ -19,13 +19,14 @@ let appActions = function(dispatch) {
 
     function processData (data) {
         let tilesData = [];
-        let arr, name, tenant, endPoints;
+        let arr, allData, name, tenant, endPoints;
         let dns = Object.keys(data);
         dns.forEach(function(dn) {
             name = util.getNameByDn(dn);
             tenant = util.getNameByDn(dn, 2);
             endPoints = data[dn].N_EP.count;
-            tilesData.push({name, tenant, endPoints});
+            allData = data[dn];
+            tilesData.push({name, tenant, endPoints, allData});
         });
         return tilesData;
     }
