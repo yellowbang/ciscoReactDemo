@@ -34,7 +34,10 @@ $query-result-container-min-height: 300px;
 
         > .search-function-container {
             min-height: 285px;
-            background-color: #8fcafe;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
         }
 
         > .query-result-container {

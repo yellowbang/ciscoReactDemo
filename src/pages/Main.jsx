@@ -112,6 +112,7 @@ class Main extends React.Component {
                 <div className="main-page-content-container">
 
                     <div className="search-function-container">
+                        <img className="time-image" src={require('../assets/images/timeImage.png')}/>
                     </div>
                     <div className="query-result-container">
                         <div className="list-container">

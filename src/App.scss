@@ -135,3 +135,11 @@ $query-result-container-min-height: 300px;
     position: relative;
 }
 
+.basic-table .pagination-bottom .-pagination .-previous {
+    min-width: 270px;
+}
+
+.basic-table .pagination-bottom .-pagination .-next {
+    min-width: 210px;
+}
+

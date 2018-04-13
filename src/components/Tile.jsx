@@ -78,8 +78,6 @@ class Tile extends React.Component {
                     </div>
                     <div className="tile-info-column-container">
                         <div>{name}</div>
-                        <div className="tile-image">{name}</div>
-                        <div className="tile-image">{name}</div>
                     </div>
                     {columns}
                     <div className="tile-info-column-container">
