@@ -20,6 +20,7 @@ const initialState = {
     popupTableData: [],
     selectedTiles: [],
     // selectedTiles: constants.FAKE_SELECTED_TILES,
+    chordData: [],
     tiles: []
 };
 
@@ -60,6 +61,7 @@ export default function(state = initialState, action = {}) {
             });
         case CAN_WE_TALK:
             return Object.assign({}, state, {
+                chordData: action.payload.data,
                 canTalkStatus: action.payload.canTalkStatus
             });
         case OPEN_TALK_PAGE:

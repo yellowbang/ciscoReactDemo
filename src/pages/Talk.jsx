@@ -4,11 +4,17 @@ import PropTypes from 'prop-types';
 import {IconButton, Gauge, Button} from 'cisco-ui-components';
 import CustomGauge from '../components/CustomGauge';
 import PointToPoint from '../components/PointToPoint';
+import Chord from '../components/Chord';
 import TableResult from '../components/TableResult';
 // import constants from '../constants';
 
 import './Talk.scss';
 import util from '../common/util';
+const CHORD_SIZE = 400;
+const CHORD_CONATINER_STYLE = {
+    width: CHORD_SIZE + 50,
+    minHeight: CHORD_SIZE + 50
+}
 
 class Talk extends React.Component {
     constructor (props, context) {
@@ -85,6 +91,7 @@ class Talk extends React.Component {
     shouldComponentUpdate (nextProps, nextState) {
         return nextProps.selectedTiles !== this.props.selectedTiles ||
             nextProps.howTheyTalkData !== this.props.howTheyTalkData ||
+            nextProps.chordData !== this.props.chordData ||
             nextState.selectedLine !== this.state.selectedLine ||
             nextState.tableData !== this.state.tableData;
     }
@@ -110,6 +117,8 @@ class Talk extends React.Component {
         let reachableEnpoints2 = '1';
 
         let gaugeValue = this.generateGaugeCenterContent(totalEndpoints1, 'End Points', '1', 'EPGs');
+
+        let chordData = this.props.chordData;
 
         return (
             <div className="talk-page-container">
@@ -168,15 +177,15 @@ class Talk extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="how-they-talk-container">
-                        <PointToPoint points={this.props.selectedTiles}/>
-                        <div className="how-they-talk-button flex-row">
-                            <Button
-                                type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
-                                onClick={this.onClickHowDoTheyTalk}>
-                                How do they talk?
-                            </Button>
-                        </div>
+                    <div className="chord-container" style={CHORD_CONATINER_STYLE}>
+                        <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE}/>
+                    </div>
+                    <div className="how-they-talk-button flex-row">
+                        <Button
+                            type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                            onClick={this.onClickHowDoTheyTalk}>
+                            How do they talk?
+                        </Button>
                     </div>
                 </div>
                 {this.props.howTheyTalkData ?
@@ -220,11 +229,13 @@ Talk.propTypes = {
     closeHowTheyTalkPage: PropTypes.func,
     howTheyTalk: PropTypes.func,
     howTheyTalkData: PropTypes.object,
+    chordData: PropTypes.array,
     selectedTiles: PropTypes.array
 };
 
 Talk.defaultProps = {
     howTheyTalkData: undefined,
+    chordData: [],
     selectedTiles: []
 };
 

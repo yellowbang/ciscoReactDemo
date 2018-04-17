@@ -14,8 +14,53 @@ import constants from '../../constants';
 
 let appActions = function(dispatch) {
 
-    function fakeCheckCanTalk (selectedTiles) {
-        return (selectedTiles[0].name !== selectedTiles[1].name) ? 'yes' : 'no';
+    function processCanWeTalk (response) {
+
+        let chordData = [];
+        let toEpgIndexes = {};
+        let fromEpgIndexes = {};
+        let fromEpgMap = {};
+        let toEpgMap = {};
+        let totalTo = response.step1.reachability.to_connected.length;
+        console.log(response);
+        response.step1.reachability.to_connected.forEach(function(dn, index) {
+            toEpgMap[dn] = [];
+            toEpgIndexes[dn] = index;
+        });
+        response.step1.reachability.from_connected.forEach(function(dn, index) {
+            fromEpgMap[dn] = [];
+            fromEpgIndexes[dn] = index + response.step1.reachability.to_connected.length;
+            response.step1.reachability[dn].to.forEach(function(toEpg) {
+                toEpgMap[toEpg].push(fromEpgIndexes[dn].toString());
+                fromEpgMap[dn].push(toEpgIndexes[toEpg].toString());
+            });
+        });
+        response.step1.reachability.to_connected.forEach(function(dn) {
+            let index = toEpgIndexes[dn].toString();
+            let label = util.getNameByDn(dn);
+            chordData.push({
+                color: 'blue',
+                label: label,
+                from: index,
+                to: toEpgMap[dn]
+            });
+            toEpgIndexes[label] = index.toString();
+        });
+        response.step1.reachability.from_connected.forEach(function(dn) {
+            let index = fromEpgIndexes[dn].toString();
+            let label = util.getNameByDn(dn);
+            chordData.push({
+                color: 'orange',
+                label: label,
+                from: index,
+                to: fromEpgMap[dn]
+            });
+        });
+
+        return {
+            canTalkStatus: (response.step1.reachability.reachable) ? 'yes' : 'no',
+            data: chordData
+        };
     }
 
     function processData (data) {
@@ -53,10 +98,26 @@ let appActions = function(dispatch) {
             });
         },
         canWeTalk: (selectedTiles) => {
-            dispatch({
-                type: CAN_WE_TALK,
-                payload: {canTalkStatus: fakeCheckCanTalk(selectedTiles)}
-            });
+            fetch('http://172.31.219.91:5000/which?model=demo&from=dmz&to=uni/tn-secured&pivot=&filter=&through', {
+                method: 'GET',
+                mode: 'cors',
+                header: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+                .then((response) => {
+                    dispatch({
+                        type: CAN_WE_TALK,
+                        payload: processCanWeTalk(response)
+                    });
+                })
+                .catch(() => {
+                    let response = constants.MOCK_CHORD_DATA.response;
+                    dispatch({
+                        type: CAN_WE_TALK,
+                        payload: processCanWeTalk(response)
+                    });
+                });
         },
         howTheyTalk: (item1, item2) => {
             fetch('http://172.31.219.91:5000/how?model=demo&from=epg51&to=epg61&pivot=&filter=&through=dp_from:161%20dp_to:161', {
@@ -87,7 +148,7 @@ let appActions = function(dispatch) {
         closeTalkPage: () => {
             dispatch({type: CLOSE_TALK_PAGE});
         },
-        getData: () => {
+        getTileData: () => {
             fetch('http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_EPG', {
                 method: 'GET',
                 mode: 'cors',

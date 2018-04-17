@@ -48,8 +48,8 @@ $query-result-container-min-height: 300px;
             flex-direction: row;
             justify-content: space-around;
             width: 100%;
-            min-height: 320px;
-            padding-bottom: 150px;
+            min-height: $padding-xxlarge + 170px;
+            padding-bottom: $padding-xxlarge;
 
             > .gauge-container {
                 display: flex;
@@ -83,24 +83,16 @@ $query-result-container-min-height: 300px;
             }
         }
 
-        > .how-they-talk-container {
-            width: 37%;
+        > .chord-container {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-            > .point-to-point-container {
-                width: 100%;
-            }
-
-            > .how-they-talk-button {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 2;
-                justify-content: center;
-                align-items: center;
-            }
+        > .how-they-talk-button {
+            justify-content: center;
+            align-items: center;
         }
     }
 

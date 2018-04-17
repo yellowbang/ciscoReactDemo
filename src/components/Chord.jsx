@@ -1,13 +1,17 @@
 import * as d3 from 'd3';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Chord extends React.Component {
+class Chord extends React.Component {
     constructor(...args) {
         super(...args);
         const {width, height} = this.props;
 
-        const outerRadius = Math.min(width, height) * 0.5 - 40;
-        const innerRadius = outerRadius - 20;
+        this.outerRadius = Math.min(width, height) * 0.5 - 40;
+        this.innerRadius = this.outerRadius - 20;
+        this.chord = d3.chord()
+            .padAngle(0.05)
+            .sortSubgroups(d3.descending);
 
         this.state = {
             selections: [],
@@ -43,7 +47,9 @@ export default class Chord extends React.Component {
 
         return (
             <div className="chord-wrap" style={styles}>
-                <svg ref={node => this.svg = d3.select(node)}/>
+                <svg ref={(node) => {
+                    this.svg = d3.select(node);
+                }}/>
                 {this.chord(this.state.matrix).groups.map(this.renderLabel, this)}
             </div>
         );
@@ -149,19 +155,18 @@ export default class Chord extends React.Component {
             });
         });
     }
-
-    get chord() {
-        return d3.chord()
-            .padAngle(0.05)
-            .sortSubgroups(d3.descending);
-    }
-
-    get outerRadius() {
-        const {width, height} = this.props;
-        return Math.min(width, height) * 0.5 - 40;
-    }
-
-    get innerRadius() {
-        return this.outerRadius - 20;
-    }
 }
+
+Chord.propTypes = {
+    data: PropTypes.array,
+    width: PropTypes.number,
+    height: PropTypes.number
+};
+
+Chord.defaultProps = {
+    data: [],
+    width: 600,
+    height: 600
+};
+
+export default Chord;

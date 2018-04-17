@@ -20,7 +20,7 @@ class App extends React.Component {
     }
 
     componentDidMount () {
-        this.props.getData();
+        this.props.getTileData();
     }
 
     canWeTalk () {
@@ -42,6 +42,7 @@ class App extends React.Component {
                         closeHowTheyTalkPage={this.props.closeHowTheyTalkPage}
                         howTheyTalk={this.props.howTheyTalk}
                         howTheyTalkData={this.props.howTheyTalkData}
+                        chordData={this.props.chordData}
                     />
                     :
                     <Main
@@ -95,6 +96,7 @@ App.propTypes = {
     tiles: PropTypes.array,
     popupTableData: PropTypes.array,
     selectedTiles: PropTypes.array,
+    chordData: PropTypes.array,
     canTalkStatus: PropTypes.string,
     howTheyTalkData: PropTypes.object,
     showSidebar: PropTypes.bool
@@ -107,6 +109,7 @@ const mapStateToProps = (state, ownProps) => ({
     selectedTiles: state.app.selectedTiles,
     canTalkStatus: state.app.canTalkStatus,
     howTheyTalkData: state.app.howTheyTalkData,
+    chordData: state.app.chordData,
     showSidebar: state.app.showSidebar
 });
 

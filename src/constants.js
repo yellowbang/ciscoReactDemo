@@ -1513,5 +1513,141 @@ export default {
         'to_str': 'epg61',
         'total_time': '0:00:00.049594',
         'type': 'QT_HOW'
+    },
+    MOCK_CHORD_DATA: {
+        'filter_name_set': [],
+        'filter_str': '',
+        'from_name_set': [
+            'uni/tn-dmz/ap-1hop/epg-epg3',
+            'uni/tn-dmz/ap-1hop/epg-epg2',
+            'uni/tn-dmz/ap-1hop/epg-epg1',
+            'uni/tn-dmz/ap-multi_hop/epg-epg53',
+            'uni/tn-dmz/ap-multi_hop/epg-epg52',
+            'uni/tn-dmz/ap-multi_hop/epg-epg51',
+            'uni/tn-dmz/out-multi_hop_l3out/instP-multi_hop_out-extNet',
+            'uni/tn-dmz/out-1hop_l3out/instP-1hop_out-extNet'
+        ],
+        'from_str': 'dmz',
+        'model': 'demo',
+        'pivot_name_set': [],
+        'pivot_str': '',
+        'response': {
+            'step1': {
+                'from': [
+                    'uni/tn-dmz/ap-1hop/epg-epg3',
+                    'uni/tn-dmz/ap-1hop/epg-epg2',
+                    'uni/tn-dmz/ap-1hop/epg-epg1',
+                    'uni/tn-dmz/ap-multi_hop/epg-epg53',
+                    'uni/tn-dmz/ap-multi_hop/epg-epg52',
+                    'uni/tn-dmz/ap-multi_hop/epg-epg51',
+                    'uni/tn-dmz/out-multi_hop_l3out/instP-multi_hop_out-extNet',
+                    'uni/tn-dmz/out-1hop_l3out/instP-1hop_out-extNet'
+                ],
+                'from_cnt': 8,
+                'reachability': {
+                    'from_connected': [
+                        'uni/tn-dmz/out-multi_hop_l3out/instP-multi_hop_out-extNet',
+                        'uni/tn-dmz/ap-multi_hop/epg-epg53',
+                        'uni/tn-dmz/ap-multi_hop/epg-epg52',
+                        'uni/tn-dmz/ap-multi_hop/epg-epg51'
+                    ],
+                    'from_connected_cnt': 4,
+                    'reachable': true,
+                    'to_connected': [
+                        'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                        'uni/tn-secured/ap-multi_hop/epg-epg62',
+                        'uni/tn-secured/ap-multi_hop/epg-epg60',
+                        'uni/tn-secured/ap-multi_hop/epg-epg61'
+                    ],
+                    'to_connected_cnt': 4,
+                    'uni/tn-dmz/ap-1hop/epg-epg1': {
+                        'from': 'uni/tn-dmz/ap-1hop/epg-epg1',
+                        'to': []
+                    },
+                    'uni/tn-dmz/ap-1hop/epg-epg2': {
+                        'from': 'uni/tn-dmz/ap-1hop/epg-epg2',
+                        'to': []
+                    },
+                    'uni/tn-dmz/ap-1hop/epg-epg3': {
+                        'from': 'uni/tn-dmz/ap-1hop/epg-epg3',
+                        'to': []
+                    },
+                    'uni/tn-dmz/ap-multi_hop/epg-epg51': {
+                        'from': 'uni/tn-dmz/ap-multi_hop/epg-epg51',
+                        'to': [
+                            'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                            'uni/tn-secured/ap-multi_hop/epg-epg62',
+                            'uni/tn-secured/ap-multi_hop/epg-epg60',
+                            'uni/tn-secured/ap-multi_hop/epg-epg61'
+                        ]
+                    },
+                    'uni/tn-dmz/ap-multi_hop/epg-epg52': {
+                        'from': 'uni/tn-dmz/ap-multi_hop/epg-epg52',
+                        'to': [
+                            'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                            'uni/tn-secured/ap-multi_hop/epg-epg62',
+                            'uni/tn-secured/ap-multi_hop/epg-epg60',
+                            'uni/tn-secured/ap-multi_hop/epg-epg61'
+                        ]
+                    },
+                    'uni/tn-dmz/ap-multi_hop/epg-epg53': {
+                        'from': 'uni/tn-dmz/ap-multi_hop/epg-epg53',
+                        'to': [
+                            'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                            'uni/tn-secured/ap-multi_hop/epg-epg62',
+                            'uni/tn-secured/ap-multi_hop/epg-epg60',
+                            'uni/tn-secured/ap-multi_hop/epg-epg61'
+                        ]
+                    },
+                    'uni/tn-dmz/out-1hop_l3out/instP-1hop_out-extNet': {
+                        'from': 'uni/tn-dmz/out-1hop_l3out/instP-1hop_out-extNet',
+                        'to': []
+                    },
+                    'uni/tn-dmz/out-multi_hop_l3out/instP-multi_hop_out-extNet': {
+                        'from': 'uni/tn-dmz/out-multi_hop_l3out/instP-multi_hop_out-extNet',
+                        'to': [
+                            'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                            'uni/tn-secured/ap-multi_hop/epg-epg62',
+                            'uni/tn-secured/ap-multi_hop/epg-epg60',
+                            'uni/tn-secured/ap-multi_hop/epg-epg61'
+                        ]
+                    }
+                },
+                'to': [
+                    'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                    'uni/tn-secured/ap-1hop/epg-epg12',
+                    'uni/tn-secured/ap-1hop/epg-epg11',
+                    'uni/tn-secured/ap-1hop/epg-epg10',
+                    'uni/tn-secured/out-1hop_l3out/instP-1hop_in-extNet',
+                    'uni/tn-secured/ap-multi_hop/epg-epg62',
+                    'uni/tn-secured/ap-multi_hop/epg-epg60',
+                    'uni/tn-secured/ap-multi_hop/epg-epg61'
+                ],
+                'to_cnt': 8
+            }
+        },
+        'start_time': '2018-04-16 11:41:39.237972',
+        'status': 'QS_OK',
+        'through_condition_map': {
+            'dp_from': 65535,
+            'dp_to': 0,
+            'prot': 'tcp',
+            'sp_from': 65535,
+            'sp_to': 0
+        },
+        'through_str': '',
+        'to_name_set': [
+            'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+            'uni/tn-secured/ap-1hop/epg-epg12',
+            'uni/tn-secured/ap-1hop/epg-epg11',
+            'uni/tn-secured/ap-1hop/epg-epg10',
+            'uni/tn-secured/out-1hop_l3out/instP-1hop_in-extNet',
+            'uni/tn-secured/ap-multi_hop/epg-epg62',
+            'uni/tn-secured/ap-multi_hop/epg-epg60',
+            'uni/tn-secured/ap-multi_hop/epg-epg61'
+        ],
+        'to_str': 'uni/tn-secured',
+        'total_time': '0:00:00.050829',
+        'type': 'QT_WHICH'
     }
 };
