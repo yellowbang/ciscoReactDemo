@@ -27,8 +27,8 @@ let appActions = function(dispatch) {
         let getGaugeData = function(dn, allEpgs, reachableEpgs) {
             let name = util.getNameByDn(dn);
             let nonReachableEpgs = [];
-            reachableEpgs.forEach(function(epg) {
-                if (allEpgs.indexOf(epg) === -1) {
+            allEpgs.forEach(function(epg) {
+                if (reachableEpgs.indexOf(epg) === -1) {
                     nonReachableEpgs.push(epg);
                 }
             });
@@ -200,7 +200,7 @@ let appActions = function(dispatch) {
         },
         getTileData: () => {
             $.ajax({
-                url: 'http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_VRF',
+                url: 'http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_LEAF',
                 dataType: 'json',
                 cache: false,
                 success: function(response) {

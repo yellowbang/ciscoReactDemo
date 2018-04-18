@@ -50,21 +50,21 @@ class Main extends React.Component {
         }
 
         let helpText = (
-            <div className="selected-tile">
+            <div className="selected-tile-status-text">
                 <span className="text-grey">{selectedTile1Name}</span>
                 {'Select two items to see if they can talk and if so who can talk'}
             </div>
         );
 
         let oneTileSelectStatus = (
-            <div className="selected-tile">
+            <div className="selected-tile-status-text">
                 <span className="text-bold">{selectedTile1Name}</span>
                 {' is selected'}
             </div>
         );
 
         let twoTilesSelectStatus = (
-            <div className="selected-tile">
+            <div className="selected-tile-status-text">
                 <span className="text-bold">{selectedTile1Name}</span>
                 {' and '}
                 <span className="text-bold">{selectedTile2Name}</span>

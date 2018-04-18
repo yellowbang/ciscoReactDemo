@@ -42,6 +42,7 @@ class Point extends React.Component {
             nextProps.isSelected !== this.props.isSelected;
     }
 }
+
 Point.propTypes = {
     data: PropTypes.object,
     isSelected: PropTypes.bool
@@ -64,7 +65,11 @@ class BigPoint extends Point {
                 </div>
                 <div className="foot-note-container">
                     <div className="major-foot-note">{this.props.data.name}</div>
-                    <div className="minor-foot-note">{this.props.data.tenant}</div>
+                    {this.props.data.tenant ?
+                        <div className="minor-foot-note">{this.props.data.tenant}</div>
+                        :
+                        null
+                    }
                 </div>
             </div>
         );

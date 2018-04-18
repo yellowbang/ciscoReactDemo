@@ -63,9 +63,9 @@ $query-result-container-min-height: 300px;
                 margin-right: $padding-large;
                 border: solid 1px $shadow;
 
-                > .selected-tile {
+                > .selected-tile-status-text {
                     padding: $padding-large;
-                    max-width: 270px;
+                    max-width: 268px;
                 }
 
                 > .talk-container {
