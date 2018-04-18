@@ -1,37 +1,7 @@
 const appId = 'p42Id';
 export default {
     APP_ID: appId,
-    FAKE_TILE_DATA: [
-        {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1fawfawfwfwfwfw'},
-        {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1 faf fawfa fw'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        // {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'},
-        {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1'}
-    ],
-    FAKE_SELECTED_TILES: [
-        {name: 'bon', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1fawfawfwfwfwfw'},
-        {name: 'jojo', endPoints: '44', reachable: '10', epgs: '2', tenant: 'tenant1 fwaf fwae fw'}
-    ],
-    MOCK_DATA: {
+    MOCK_DATA_EPG: {
         'associated_to_str': '',
         'eps': [
             '173.36.1.102/32',
@@ -101,116 +71,6 @@ export default {
                         'N_BD': {
                             'count': 1,
                             'data': [
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
-                                'uni/tn-dmz/BD-dmz',
                                 'uni/tn-dmz/BD-dmz'
                             ]
                         },
@@ -251,7 +111,7 @@ export default {
                                 'uni/tn-dmz/ctx-dmz'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-dmz/ap-1hop/epg-epg2': {
                         'N_BD': {
@@ -297,7 +157,7 @@ export default {
                                 'uni/tn-dmz/ctx-dmz'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-dmz/ap-1hop/epg-epg3': {
                         'N_BD': {
@@ -343,7 +203,7 @@ export default {
                                 'uni/tn-dmz/ctx-dmz'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-dmz/ap-multi_hop/epg-epg51': {
                         'N_BD': {
@@ -389,7 +249,7 @@ export default {
                                 'uni/tn-dmz/ctx-dmz'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-dmz/ap-multi_hop/epg-epg52': {
                         'N_BD': {
@@ -435,7 +295,7 @@ export default {
                                 'uni/tn-dmz/ctx-dmz'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-dmz/ap-multi_hop/epg-epg53': {
                         'N_BD': {
@@ -481,7 +341,7 @@ export default {
                                 'uni/tn-dmz/ctx-dmz'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-1hop/epg-epg4': {
                         'N_BD': {
@@ -527,7 +387,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-1hop/epg-epg5': {
                         'N_BD': {
@@ -573,7 +433,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-1hop/epg-epg6': {
                         'N_BD': {
@@ -619,7 +479,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-1hop/epg-epg7': {
                         'N_BD': {
@@ -665,7 +525,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-1hop/epg-epg8': {
                         'N_BD': {
@@ -711,7 +571,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-1hop/epg-epg9': {
                         'N_BD': {
@@ -757,7 +617,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-multi_hop/epg-epg54': {
                         'N_BD': {
@@ -803,7 +663,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-multi_hop/epg-epg55': {
                         'N_BD': {
@@ -849,7 +709,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-multi_hop/epg-epg56': {
                         'N_BD': {
@@ -895,7 +755,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-multi_hop/epg-epg57': {
                         'N_BD': {
@@ -941,7 +801,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-multi_hop/epg-epg58': {
                         'N_BD': {
@@ -987,7 +847,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-internal/ap-multi_hop/epg-epg59': {
                         'N_BD': {
@@ -1033,7 +893,7 @@ export default {
                                 'uni/tn-internal/ctx-internal'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-secured/ap-1hop/epg-epg10': {
                         'N_BD': {
@@ -1079,7 +939,7 @@ export default {
                                 'uni/tn-secured/ctx-secured'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-secured/ap-1hop/epg-epg11': {
                         'N_BD': {
@@ -1125,7 +985,7 @@ export default {
                                 'uni/tn-secured/ctx-secured'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-secured/ap-1hop/epg-epg12': {
                         'N_BD': {
@@ -1171,7 +1031,7 @@ export default {
                                 'uni/tn-secured/ctx-secured'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-secured/ap-multi_hop/epg-epg60': {
                         'N_BD': {
@@ -1217,7 +1077,7 @@ export default {
                                 'uni/tn-secured/ctx-secured'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-secured/ap-multi_hop/epg-epg61': {
                         'N_BD': {
@@ -1263,7 +1123,7 @@ export default {
                                 'uni/tn-secured/ctx-secured'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     },
                     'uni/tn-secured/ap-multi_hop/epg-epg62': {
                         'N_BD': {
@@ -1309,15 +1169,324 @@ export default {
                                 'uni/tn-secured/ctx-secured'
                             ]
                         },
-                        'tile_type': 1
+                        'tile_type': 'N_EPG'
                     }
                 }
             }
         },
-        'start_time': '2018-04-10 12:43:19.009825',
+        'start_time': '2018-04-17 10:52:43.021424',
         'status': 'QS_OK',
         'tile_type': 'N_EPG',
-        'total_time': '0:00:00.012201',
+        'total_time': '0:00:00.012203',
+        'type': 'QT_WHAT'
+    },
+    MOCK_DATA_VRF: {
+        'associated_to_str': '',
+        'eps': [
+            '173.36.1.102/32',
+            '173.36.3.102/32',
+            '173.36.2.101/32',
+            '173.36.8.102/32',
+            '173.36.55.102/32',
+            '173.36.5.101/32',
+            '173.36.9.102/32',
+            '173.36.58.101/32',
+            '173.36.62.101/32',
+            '173.36.53.102/32',
+            'Unknownep54/32',
+            '173.36.8.101/32',
+            '173.36.60.101/32',
+            '173.36.51.102/32',
+            '173.36.1.101/32',
+            '173.36.5.102/32',
+            '173.36.57.101/32',
+            '173.36.4.101/32',
+            '173.36.57.102/32',
+            'Unknownep51/32',
+            '173.36.53.101/32',
+            '173.36.51.101/32',
+            'Unknownep2/32',
+            '173.36.52.102/32',
+            '173.36.56.101/32',
+            '173.36.61.102/32',
+            'Unknownep53/32',
+            '173.36.7.102/32',
+            '173.36.61.101/32',
+            '173.36.3.101/32',
+            '173.36.54.102/32',
+            '173.36.56.102/32',
+            '173.36.58.102/32',
+            '173.36.54.101/32',
+            '173.36.52.101/32',
+            '173.36.10.101/32',
+            'Unknownep3/32',
+            'Unknownep1/32',
+            '173.36.11.102/32',
+            'Unknownep4/32',
+            '173.36.55.101/32',
+            '173.36.11.101/32',
+            '173.36.10.102/32',
+            '173.36.12.102/32',
+            '173.36.60.102/32',
+            '173.36.59.102/32',
+            '173.36.6.102/32',
+            'Unknownep52/32',
+            '173.36.7.101/32',
+            '173.36.4.102/32',
+            '173.36.12.101/32',
+            '173.36.2.102/32',
+            '173.36.6.101/32',
+            '173.36.9.101/32',
+            '173.36.59.101/32',
+            '173.36.62.102/32'
+        ],
+        'eps_cnt': 56,
+        'model': 'demo',
+        'response': {
+            'tiles': {
+                'count': 3,
+                'data': {
+                    'uni/tn-dmz/ctx-dmz': {
+                        'N_BD': {
+                            'count': 2,
+                            'data': [
+                                'uni/tn-dmz/BD-Unknowndmz',
+                                'uni/tn-dmz/BD-dmz'
+                            ]
+                        },
+                        'N_ENCAP': {
+                            'count': 0,
+                            'data': []
+                        },
+                        'N_EP': {
+                            'count': 14,
+                            'data': [
+                                '173.36.1.102/32',
+                                '173.36.3.102/32',
+                                '173.36.53.101/32',
+                                '173.36.2.101/32',
+                                '173.36.51.101/32',
+                                '173.36.52.102/32',
+                                'Unknownep1/32',
+                                '173.36.53.102/32',
+                                '173.36.51.102/32',
+                                '173.36.1.101/32',
+                                '173.36.52.101/32',
+                                '173.36.2.102/32',
+                                '173.36.3.101/32',
+                                'Unknownep51/32'
+                            ]
+                        },
+                        'N_EPG': {
+                            'count': 6,
+                            'data': [
+                                'uni/tn-dmz/ap-1hop/epg-epg3',
+                                'uni/tn-dmz/ap-1hop/epg-epg2',
+                                'uni/tn-dmz/ap-1hop/epg-epg1',
+                                'uni/tn-dmz/ap-multi_hop/epg-epg53',
+                                'uni/tn-dmz/ap-multi_hop/epg-epg52',
+                                'uni/tn-dmz/ap-multi_hop/epg-epg51'
+                            ]
+                        },
+                        'N_INF': {
+                            'count': 0,
+                            'data': []
+                        },
+                        'N_INSTP': {
+                            'count': 2,
+                            'data': [
+                                'uni/tn-dmz/out-1hop_l3out/instP-1hop_out-extNet',
+                                'uni/tn-dmz/out-multi_hop_l3out/instP-multi_hop_out-extNet'
+                            ]
+                        },
+                        'N_LEAF': {
+                            'count': 4,
+                            'data': [
+                                'node-dmz-1hop',
+                                'node151',
+                                'node101',
+                                'node-dmz-multihop'
+                            ]
+                        },
+                        'N_VRF': {
+                            'count': 1,
+                            'data': [
+                                'uni/tn-dmz/ctx-dmz'
+                            ]
+                        },
+                        'tile_type': 'N_VRF'
+                    },
+                    'uni/tn-internal/ctx-internal': {
+                        'N_BD': {
+                            'count': 2,
+                            'data': [
+                                'uni/tn-internal/BD-Unknowninternal',
+                                'uni/tn-internal/BD-internal'
+                            ]
+                        },
+                        'N_ENCAP': {
+                            'count': 0,
+                            'data': []
+                        },
+                        'N_EP': {
+                            'count': 28,
+                            'data': [
+                                '173.36.8.102/32',
+                                '173.36.55.102/32',
+                                '173.36.5.101/32',
+                                '173.36.9.102/32',
+                                '173.36.8.101/32',
+                                '173.36.5.102/32',
+                                '173.36.57.101/32',
+                                '173.36.4.101/32',
+                                '173.36.57.102/32',
+                                'Unknownep2/32',
+                                '173.36.56.101/32',
+                                'Unknownep53/32',
+                                '173.36.7.102/32',
+                                '173.36.55.101/32',
+                                '173.36.54.102/32',
+                                '173.36.56.102/32',
+                                '173.36.58.102/32',
+                                '173.36.54.101/32',
+                                'Unknownep3/32',
+                                '173.36.58.101/32',
+                                'Unknownep52/32',
+                                '173.36.59.102/32',
+                                '173.36.6.102/32',
+                                '173.36.7.101/32',
+                                '173.36.4.102/32',
+                                '173.36.6.101/32',
+                                '173.36.9.101/32',
+                                '173.36.59.101/32'
+                            ]
+                        },
+                        'N_EPG': {
+                            'count': 12,
+                            'data': [
+                                'uni/tn-internal/ap-multi_hop/epg-epg58',
+                                'uni/tn-internal/ap-multi_hop/epg-epg59',
+                                'uni/tn-internal/ap-multi_hop/epg-epg56',
+                                'uni/tn-internal/ap-multi_hop/epg-epg57',
+                                'uni/tn-internal/ap-multi_hop/epg-epg54',
+                                'uni/tn-internal/ap-multi_hop/epg-epg55',
+                                'uni/tn-internal/ap-1hop/epg-epg6',
+                                'uni/tn-internal/ap-1hop/epg-epg7',
+                                'uni/tn-internal/ap-1hop/epg-epg4',
+                                'uni/tn-internal/ap-1hop/epg-epg5',
+                                'uni/tn-internal/ap-1hop/epg-epg8',
+                                'uni/tn-internal/ap-1hop/epg-epg9'
+                            ]
+                        },
+                        'N_INF': {
+                            'count': 0,
+                            'data': []
+                        },
+                        'N_INSTP': {
+                            'count': 4,
+                            'data': [
+                                'uni/tn-internal/out-1hop_l3out/instP-1hop_out-extNet',
+                                'uni/tn-internal/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                                'uni/tn-internal/out-1hop_l3out/instP-1hop_in-extNet',
+                                'uni/tn-internal/out-multi_hop_l3out/instP-multi_hop_out-extNet'
+                            ]
+                        },
+                        'N_LEAF': {
+                            'count': 6,
+                            'data': [
+                                'node102',
+                                'node103',
+                                'node153',
+                                'node-internal-1hop',
+                                'node-internal-multihop',
+                                'node152'
+                            ]
+                        },
+                        'N_VRF': {
+                            'count': 1,
+                            'data': [
+                                'uni/tn-internal/ctx-internal'
+                            ]
+                        },
+                        'tile_type': 'N_VRF'
+                    },
+                    'uni/tn-secured/ctx-secured': {
+                        'N_BD': {
+                            'count': 2,
+                            'data': [
+                                'uni/tn-secured/BD-Unknownsecured',
+                                'uni/tn-secured/BD-secured'
+                            ]
+                        },
+                        'N_ENCAP': {
+                            'count': 0,
+                            'data': []
+                        },
+                        'N_EP': {
+                            'count': 14,
+                            'data': [
+                                '173.36.11.101/32',
+                                '173.36.10.102/32',
+                                '173.36.12.102/32',
+                                '173.36.62.101/32',
+                                '173.36.10.101/32',
+                                '173.36.60.101/32',
+                                '173.36.11.102/32',
+                                '173.36.61.102/32',
+                                '173.36.12.101/32',
+                                'Unknownep54/32',
+                                '173.36.62.102/32',
+                                '173.36.61.101/32',
+                                '173.36.60.102/32',
+                                'Unknownep4/32'
+                            ]
+                        },
+                        'N_EPG': {
+                            'count': 6,
+                            'data': [
+                                'uni/tn-secured/ap-1hop/epg-epg12',
+                                'uni/tn-secured/ap-1hop/epg-epg11',
+                                'uni/tn-secured/ap-1hop/epg-epg10',
+                                'uni/tn-secured/ap-multi_hop/epg-epg62',
+                                'uni/tn-secured/ap-multi_hop/epg-epg60',
+                                'uni/tn-secured/ap-multi_hop/epg-epg61'
+                            ]
+                        },
+                        'N_INF': {
+                            'count': 0,
+                            'data': []
+                        },
+                        'N_INSTP': {
+                            'count': 2,
+                            'data': [
+                                'uni/tn-secured/out-multi_hop_l3out/instP-multi_hop_in-extNet',
+                                'uni/tn-secured/out-1hop_l3out/instP-1hop_in-extNet'
+                            ]
+                        },
+                        'N_LEAF': {
+                            'count': 4,
+                            'data': [
+                                'node-secured-1hop',
+                                'node104',
+                                'node154',
+                                'node-secured-multihop'
+                            ]
+                        },
+                        'N_VRF': {
+                            'count': 1,
+                            'data': [
+                                'uni/tn-secured/ctx-secured'
+                            ]
+                        },
+                        'tile_type': 'N_VRF'
+                    }
+                }
+            }
+        },
+        'start_time': '2018-04-17 10:41:35.410313',
+        'status': 'QS_OK',
+        'tile_type': 'N_VRF',
+        'total_time': '0:00:00.012276',
         'type': 'QT_WHAT'
     },
     MOCK_HOW_THEY_TALK: {

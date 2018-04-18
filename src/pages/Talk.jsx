@@ -23,16 +23,18 @@ class Talk extends React.Component {
             tableData: [],
             points: [],
             lineData: {},
+            selectedChords: [],
             selectedLine: -2
         };
         this.onClickHowDoTheyTalk = this.onClickHowDoTheyTalk.bind(this);
         this.onCloseHowTheyTalk = this.onCloseHowTheyTalk.bind(this);
         this.onTableRowClicked = this.onTableRowClicked.bind(this);
+        this.chordOnSelected = this.chordOnSelected.bind(this);
         this.lineOnClicked = this.lineOnClicked.bind(this);
     }
 
     onClickHowDoTheyTalk () {
-        this.props.howTheyTalk();
+        this.props.howTheyTalk(this.state.selectedChords);
     }
 
     onCloseHowTheyTalk () {
@@ -56,14 +58,20 @@ class Talk extends React.Component {
             <div className="gauge-value-container">
                 <div className="gauge-value-major">{majorValue}</div>
                 <div className="gauge-value-major-unit">{majorValueUnit}</div>
-                <div className="gauge-value-minor">{minorValue}</div>
-                <div className="gauge-value-minor-unit">{minorValueUnit}</div>
+                {/*<div className="gauge-value-minor">{minorValue}</div>*/}
+                {/*<div className="gauge-value-minor-unit">{minorValueUnit}</div>*/}
             </div>
         );
     }
 
     onTableRowClicked () {
 
+    }
+
+    chordOnSelected (chord1, chord2) {
+        this.setState({
+            selectedChords: [chord1.dn, chord2.dn]
+        });
     }
 
     componentWillReceiveProps (nextProps) {
@@ -91,32 +99,34 @@ class Talk extends React.Component {
     shouldComponentUpdate (nextProps, nextState) {
         return nextProps.selectedTiles !== this.props.selectedTiles ||
             nextProps.howTheyTalkData !== this.props.howTheyTalkData ||
+            nextProps.gaugesData !== this.props.gaugesData ||
             nextProps.chordData !== this.props.chordData ||
+            nextState.selectedChords !== this.state.selectedChords ||
             nextState.selectedLine !== this.state.selectedLine ||
             nextState.tableData !== this.state.tableData;
     }
 
     render () {
-        let selectedTile1 = this.props.selectedTiles[0];
-        let selectedTile2 = this.props.selectedTiles[1];
-        let selectedTile1Name, selectedTile2Name;
-        if (selectedTile1) {
-            selectedTile1Name = selectedTile1.name;
+        let gauge1 = this.props.gaugesData.gauge1Data;
+        let gauge2 = this.props.gaugesData.gauge2Data;
+        let gauge1Name, gauge2Name;
+        if (gauge1) {
+            gauge1Name = gauge1.name;
         }
-        if (selectedTile2) {
-            selectedTile2Name = selectedTile2.name;
+        if (gauge2) {
+            gauge2Name = gauge2.name;
         }
 
-        let nonReachableEndpoints1 = '1';
-        let nonReachableEndpoints2 = '1';
+        let totalEPGs1 = gauge1.allEpgs.length;
+        let totalEPGs2 = gauge2.allEpgs.length;
 
-        let totalEndpoints1 = selectedTile1.endPoints;
-        let totalEndpoints2 = selectedTile2.endPoints;
+        let reachableEnpoints1 = gauge1.reachableEpgs.length;
+        let reachableEnpoints2 = gauge2.reachableEpgs.length;
+        let nonReachableEPGs1 = gauge1.nonReachableEpgs.length;
+        let nonReachableEPGs2 = gauge2.nonReachableEpgs.length;
 
-        let reachableEnpoints1 = '1';
-        let reachableEnpoints2 = '1';
-
-        let gaugeValue = this.generateGaugeCenterContent(totalEndpoints1, 'End Points', '1', 'EPGs');
+        let gaugeValue1 = this.generateGaugeCenterContent(totalEPGs1, 'EPGS', reachableEnpoints1, 'EPGs');
+        let gaugeValue2 = this.generateGaugeCenterContent(totalEPGs2, 'EPGS', reachableEnpoints2, 'EPGs');
 
         let chordData = this.props.chordData;
 
@@ -124,7 +134,7 @@ class Talk extends React.Component {
             <div className="talk-page-container">
                 <div className="talk-page-header">
                     <div className="talk-page-header-left">
-                        <h4>{selectedTile1Name + ' and ' + selectedTile2Name} </h4>
+                        <h4>{gauge1Name + ' and ' + gauge2Name} </h4>
                     </div>
                     <IconButton
                         size={IconButton.SIZE.LARGE}
@@ -138,50 +148,51 @@ class Talk extends React.Component {
                             <div className="legends-container flex-align-items-end">
                                 <div className="legend-container">
                                     <span className="circle-dot color-green"/>
-                                    <span className="endpoints-value">{reachableEnpoints1}</span>
-                                    <span className="endpoints-status">{'Reachable Endpoints'}</span>
+                                    <span className="epgs-value">{reachableEnpoints1}</span>
+                                    <span className="epgs-status">{'Reachable EPGs'}</span>
                                 </div>
                                 <div className="legend-container">
                                     <span className="circle-dot color-red"/>
-                                    <span className="endpoints-value">{nonReachableEndpoints1}</span>
-                                    <span className="endpoints-status">{'Non Reachable Endpoints'}</span>
+                                    <span className="epgs-value">{nonReachableEPGs1}</span>
+                                    <span className="epgs-status">{'Non Reachable EPGs'}</span>
                                 </div>
                             </div>
                             <CustomGauge
                                 size={Gauge.SIZE.MEDIUM}
                                 type={Gauge.TYPE.INFO}
-                                title={selectedTile1Name}
-                                center={gaugeValue}
+                                title={gauge1Name}
+                                center={gaugeValue1}
                                 value={reachableEnpoints1}
-                                max={totalEndpoints1}/>
+                                max={totalEPGs1}/>
                         </div>
                         <div className="gauge-container">
                             <CustomGauge
                                 size={Gauge.SIZE.MEDIUM}
                                 type={Gauge.TYPE.INFO}
-                                title={selectedTile2Name}
-                                center={gaugeValue}
+                                title={gauge2Name}
+                                center={gaugeValue2}
                                 value={reachableEnpoints2}
-                                max={totalEndpoints2}/>
+                                max={totalEPGs2}/>
                             <div className="legends-container">
                                 <div className="legend-container">
                                     <span className="circle-dot color-green"/>
-                                    <span className="endpoints-value">{reachableEnpoints2}</span>
-                                    <span className="endpoints-status">{'Reachable Endpoints'}</span>
+                                    <span className="epgs-value">{reachableEnpoints2}</span>
+                                    <span className="epgs-status">{'Reachable EPGs'}</span>
                                 </div>
                                 <div className="legend-container">
                                     <span className="circle-dot color-red"/>
-                                    <span className="endpoints-value">{nonReachableEndpoints2}</span>
-                                    <span className="endpoints-status">{'Non Reachable Endpoints'}</span>
+                                    <span className="epgs-value">{nonReachableEPGs2}</span>
+                                    <span className="epgs-status">{'Non Reachable EPGs'}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="chord-container" style={CHORD_CONATINER_STYLE}>
-                        <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE}/>
+                        <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE} chordOnSelected={this.chordOnSelected}/>
                     </div>
                     <div className="how-they-talk-button flex-row">
                         <Button
+                            disabled={this.state.selectedChords.length !== 2}
                             type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
                             onClick={this.onClickHowDoTheyTalk}>
                             How do they talk?
@@ -227,14 +238,17 @@ class Talk extends React.Component {
 Talk.propTypes = {
     closeTalkPage: PropTypes.func,
     closeHowTheyTalkPage: PropTypes.func,
+    chordOnSelected: PropTypes.func,
     howTheyTalk: PropTypes.func,
     howTheyTalkData: PropTypes.object,
+    gaugesData: PropTypes.object,
     chordData: PropTypes.array,
     selectedTiles: PropTypes.array
 };
 
 Talk.defaultProps = {
     howTheyTalkData: undefined,
+    gaugesData: {},
     chordData: [],
     selectedTiles: []
 };

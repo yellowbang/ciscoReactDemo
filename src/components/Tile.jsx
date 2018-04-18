@@ -7,10 +7,10 @@ import {Icon} from 'cisco-ui-components';
 import util from '../common/util';
 
 class Tile extends React.Component {
-    constructor () {
-        super();
+    constructor (...args) {
+        super(...args);
         this.state = {
-            isChecked: false
+            isChecked: this.props.selectedTiles && this.props.selectedTiles.indexOf(this.props.data) !== -1
         };
 
         this.onClickCheckBox = this.onClickCheckBox.bind(this);
@@ -25,6 +25,10 @@ class Tile extends React.Component {
     }
 
     onClickColumn (data) {
+        this.props.onTileNumberClicked(data);
+    }
+
+    onClickEndPoint (data) {
         this.props.onTileNumberClicked(data);
     }
 
@@ -51,7 +55,7 @@ class Tile extends React.Component {
         let columns = [];
         let keys = Object.keys(this.props.data.allData);
         keys.forEach(function(key) {
-            if (key.indexOf('N_') === 0 && key !== 'N_EP') {
+            if (key.indexOf('N_') === 0 && key !== 'N_EP' && key !== me.props.data.allData.tile_type) {
                 let count = me.props.data.allData[key].count;
                 let clickFn = util.emptyFn;
                 let numberClassName = 'text-bold';
@@ -81,7 +85,11 @@ class Tile extends React.Component {
                     </div>
                     {columns}
                     <div className="tile-info-column-container">
-                        <div className="tile-end-point-number">{endPoints}</div>
+                        <div
+                            className="tile-end-point-number  cursor-pointer"
+                            onClick={me.onClickEndPoint.bind(me, me.props.data.allData.N_EP.data)}>
+                            {endPoints}
+                        </div>
                         <div className="tile-end-points-text gery-text ">{'End Points'}</div>
                     </div>
                     <div className="tile-info-column-container flex-half cursor-pointer" onClick={this.onClickCheckBox}>
@@ -102,12 +110,14 @@ class Tile extends React.Component {
 Tile.propTypes = {
     isChecked: PropTypes.bool,
     data: PropTypes.object,
-    onNumberClicked: PropTypes.func,
+    selectedTiles: PropTypes.array,
+    onTileNumberClicked: PropTypes.func,
     onTileClicked: PropTypes.func
 };
 
 Tile.defaultProps = {
     isChecked: false,
+    selectedTiles: [],
     data: {}
 };
 

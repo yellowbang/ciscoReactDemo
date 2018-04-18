@@ -40,8 +40,10 @@ class App extends React.Component {
                         selectedTiles={this.props.selectedTiles}
                         closeTalkPage={this.props.closeTalkPage}
                         closeHowTheyTalkPage={this.props.closeHowTheyTalkPage}
+                        chordOnSelected={this.props.chordOnSelected}
                         howTheyTalk={this.props.howTheyTalk}
                         howTheyTalkData={this.props.howTheyTalkData}
+                        gaugesData={this.props.gaugesData}
                         chordData={this.props.chordData}
                     />
                     :
@@ -92,10 +94,12 @@ App.propTypes = {
     openTalkPage: PropTypes.func,
     closeTalkPage: PropTypes.func,
     closeHowTheyTalkPage: PropTypes.func,
+    chordOnSelected: PropTypes.func,
     howTheyTalk: PropTypes.func,
     tiles: PropTypes.array,
     popupTableData: PropTypes.array,
     selectedTiles: PropTypes.array,
+    gaugesData: PropTypes.object,
     chordData: PropTypes.array,
     canTalkStatus: PropTypes.string,
     howTheyTalkData: PropTypes.object,
@@ -109,6 +113,7 @@ const mapStateToProps = (state, ownProps) => ({
     selectedTiles: state.app.selectedTiles,
     canTalkStatus: state.app.canTalkStatus,
     howTheyTalkData: state.app.howTheyTalkData,
+    gaugesData: state.app.gaugesData,
     chordData: state.app.chordData,
     showSidebar: state.app.showSidebar
 });

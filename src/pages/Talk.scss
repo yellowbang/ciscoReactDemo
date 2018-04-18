@@ -69,12 +69,12 @@ $query-result-container-min-height: 300px;
                         flex-direction: row;
                         align-items: center;
 
-                        > .endpoints-value {
+                        > .epgs-value {
                             font-size: 15px;
                             padding: $padding-small;
                         }
 
-                        > .endpoints-status {
+                        > .epgs-status {
                             font-size: 12px;
                             font-weight: bold;
                         }

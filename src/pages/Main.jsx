@@ -30,7 +30,12 @@ class Main extends React.Component {
 
         this.props.tiles.forEach(function(data, i) {
             tiles.push(<ListViewItem height={90} key={i}>
-                <Tile data={data} onTileClicked={me.props.onTileClicked} onTileNumberClicked={me.props.onTileNumberClicked}/>
+                <Tile
+                    data={data}
+                    selectedTiles={me.props.selectedTiles}
+                    onTileClicked={me.props.onTileClicked}
+                    onTileNumberClicked={me.props.onTileNumberClicked}
+                />
             </ListViewItem>);
         });
 
@@ -95,9 +100,9 @@ class Main extends React.Component {
         if (this.props.selectedTiles.length === 2 && this.props.canTalkStatus !== 'hidden') {
             canTalkStatus = (<div className={'talk-container'}>
                 <div className={'talk-status-diagram'}>
-                    <span className="text-bold">{selectedTile1Name}</span>
+                    <div className="text-bold flex-2">{selectedTile1Name}</div>
                     {canTalkStatusImage}
-                    <span className="text-bold">{selectedTile2Name}</span>
+                    <div className="text-bold flex-2">{selectedTile2Name}</div>
                 </div>
             </div>);
         }
@@ -114,36 +119,40 @@ class Main extends React.Component {
                     <div className="search-function-container">
                         <img className="time-image" src={require('../assets/images/timeImage.png')}/>
                     </div>
-                    <div className="query-result-container">
-                        <div className="list-container">
-                            <ListView
-                                runwayItems={7}
-                                runwayItemsOpposite={5}
-                                aveCellHeight={90}>
-                                {tiles}
-                            </ListView>
+                    {this.props.tiles.length > 0 ?
+                        <div className="query-result-container">
+                            <div className="list-container">
+                                <ListView
+                                    runwayItems={7}
+                                    runwayItemsOpposite={5}
+                                    aveCellHeight={90}>
+                                    {tiles}
+                                </ListView>
+                            </div>
+                            <div className="communication-container">
+                                {tileSelectedStatus}
+                                <Button
+                                    disabled={this.props.selectedTiles.length !== 2}
+                                    type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                                    onClick={this.canWeTalk}>
+                                    Can we talk?
+                                </Button>
+                                {canTalkStatus}
+                                {
+                                    this.props.canTalkStatus === 'yes' ?
+                                        <Button
+                                            type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                                            onClick={this.props.openTalkPage}>
+                                            Who can talk?
+                                        </Button>
+                                        :
+                                        null
+                                }
+                            </div>
                         </div>
-                        <div className="communication-container">
-                            {tileSelectedStatus}
-                            <Button
-                                disabled={this.props.selectedTiles.length !== 2}
-                                type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
-                                onClick={this.canWeTalk}>
-                                Can we talk?
-                            </Button>
-                            {canTalkStatus}
-                            {
-                                this.props.canTalkStatus === 'yes' ?
-                                    <Button
-                                        type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
-                                        onClick={this.props.openTalkPage}>
-                                        Who can talk?
-                                    </Button>
-                                    :
-                                    null
-                            }
-                        </div>
-                    </div>
+                        :
+                        null
+                    }
                 </div>
             </div>
         );

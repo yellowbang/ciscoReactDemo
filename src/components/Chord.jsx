@@ -39,6 +39,10 @@ class Chord extends React.Component {
         return this.state.indexMapping[index].color;
     }
 
+    shouldComponentUpdate (nextProps) {
+        return nextProps.data !== this.props.data;
+    }
+
     render() {
         const styles = {
             width: `${this.props.width}px`,
@@ -71,7 +75,7 @@ class Chord extends React.Component {
         }
 
         return (
-            <div key={this.state.indexMapping[d.index].label} className={classNames.join(' ')} style={{transform}} onClick={this.highlight.bind(this, d, d.index)}>
+            <div key={this.state.indexMapping[d.index].label + this.state.indexMapping[d.index].from} className={classNames.join(' ')} style={{transform}} onClick={this.highlight.bind(this, d, d.index)}>
                 {this.state.indexMapping[d.index].label}
             </div>
         );
@@ -154,10 +158,15 @@ class Chord extends React.Component {
                 return !isSelected && !isInversed;
             });
         });
+
+        if (newSelections.length === 2) {
+            this.props.chordOnSelected(this.state.indexMapping[newSelections[0]], this.state.indexMapping[newSelections[1]]);
+        }
     }
 }
 
 Chord.propTypes = {
+    chordOnSelected: PropTypes.func,
     data: PropTypes.array,
     width: PropTypes.number,
     height: PropTypes.number
