@@ -35,6 +35,7 @@ class Main extends React.Component {
                     selectedTiles={me.props.selectedTiles}
                     onTileClicked={me.props.onTileClicked}
                     onTileNumberClicked={me.props.onTileNumberClicked}
+                    onShowEps={me.props.onShowEps}
                 />
             </ListViewItem>);
         });
@@ -117,7 +118,7 @@ class Main extends React.Component {
                 <div className="main-page-content-container">
 
                     <div className="search-function-container">
-                        <img className="time-image" src={require('../assets/images/timeImage.png')}/>
+                        <img className="time-image cursor-pointer" src={require('../assets/images/timeImage.png')} onClick={this.props.getTileData}/>
                     </div>
                     {this.props.tiles.length > 0 ?
                         <div className="query-result-container">
@@ -160,7 +161,9 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
+    getTileData: PropTypes.func,
     onTileNumberClicked: PropTypes.func,
+    onShowEps: PropTypes.func,
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
     openTalkPage: PropTypes.func,

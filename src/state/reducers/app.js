@@ -6,6 +6,7 @@ import {
     CAN_WE_TALK,
     ON_TILE_CLICKED,
     ON_TILE_NUMBER_CLICKED,
+    ON_SHOW_EPS,
     OPEN_TALK_PAGE,
     CLOSE_TALK_PAGE,
     OPEN_HOW_THEY_TALK_PAGE,
@@ -17,7 +18,9 @@ const initialState = {
     howTheyTalkData: undefined,
     canTalkStatus: 'hidden',
     showSidebar: true,
+    model: 'demo',
     popupTableData: [],
+    epTableData: [],
     selectedTiles: [],
     gaugesData: {},
     chordData: [],
@@ -46,6 +49,10 @@ export default function(state = initialState, action = {}) {
         case ON_TILE_NUMBER_CLICKED:
             return Object.assign({}, state, {
                 popupTableData: action.payload.data
+            });
+        case ON_SHOW_EPS:
+            return Object.assign({}, state, {
+                epTableData: action.payload.data
             });
         case ON_TILE_CLICKED:
             selectedTiles = state.selectedTiles.slice(0);

@@ -5,6 +5,7 @@ import $ from 'jquery';
 const TOGGLE_SIDEBAR = 'toggleSidebar';
 const ON_TILE_CLICKED = 'onTileClicked';
 const ON_TILE_NUMBER_CLICKED = 'onTileNumberClicked';
+const ON_SHOW_EPS = 'onShowEps';
 const CAN_WE_TALK = 'canWeTalk';
 const OPEN_TALK_PAGE = 'openTalkPage';
 const CLOSE_TALK_PAGE = 'closeTalkPage';
@@ -96,6 +97,26 @@ let appActions = function(dispatch) {
         return tilesData;
     }
 
+    function processEps (data) {
+        data = processData(data);
+        let dataEps = [];
+
+        data.forEach(function(item) {
+            let keys = Object.keys(item.allData);
+            let tempObj = {};
+            keys.forEach(function(key) {
+                if (key.indexOf('N_') === 0 && key !== item.allData.tile_type) {
+                    tempObj[key] = util.getNameByDn(item.allData[key].data && item.allData[key].data[0]);
+                }
+            });
+            dataEps.push(
+                {...item, ...tempObj}
+            );
+        });
+
+        return dataEps;
+    }
+
     return {
         toggleSidebar: () => {
             dispatch({type: TOGGLE_SIDEBAR});
@@ -114,6 +135,38 @@ let appActions = function(dispatch) {
             dispatch({
                 type: ON_TILE_NUMBER_CLICKED,
                 payload: {data: dns}
+            });
+        },
+        onShowEps: (dns, model) => {
+            if (dns.length === 0) {
+                dispatch({
+                    type: ON_SHOW_EPS,
+                    payload: {data: []}
+                });
+                return;
+            }
+
+            let url = 'http://172.31.219.91:5000/';
+            url = url + 'what?model=' + model + '&&tile_type=N_EP&associated_to=';
+            dns.forEach(function(dn, index) {
+                if (index) {
+                    url = url + '%20or%20';
+                }
+                url = url + dn;
+            });
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                cache: false,
+                success: function(response) {
+                    dispatch({
+                        type: ON_SHOW_EPS,
+                        payload: {data: processEps(response.response.tiles.data)}
+                    });
+                },
+                error: function(xhr, status, err) {
+                    console.log(err);
+                }
             });
         },
         canWeTalk: (selectedTiles) => {
@@ -200,7 +253,7 @@ let appActions = function(dispatch) {
         },
         getTileData: () => {
             $.ajax({
-                url: 'http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_LEAF',
+                url: 'http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_VRF',
                 dataType: 'json',
                 cache: false,
                 success: function(response) {
@@ -245,6 +298,7 @@ export {
     POPULATE_TILES,
     ON_TILE_CLICKED,
     ON_TILE_NUMBER_CLICKED,
+    ON_SHOW_EPS,
     CAN_WE_TALK,
     OPEN_TALK_PAGE,
     CLOSE_TALK_PAGE,

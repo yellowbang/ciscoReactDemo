@@ -10,11 +10,12 @@ import TableResult from '../components/TableResult';
 
 import './Talk.scss';
 import util from '../common/util';
+
 const CHORD_SIZE = 400;
 const CHORD_CONATINER_STYLE = {
     width: CHORD_SIZE + 50,
     minHeight: CHORD_SIZE + 50
-}
+};
 
 class Talk extends React.Component {
     constructor (props, context) {
@@ -55,7 +56,7 @@ class Talk extends React.Component {
 
     generateGaugeCenterContent (majorValue, majorValueUnit, minorValue, minorValueUnit) {
         return (
-            <div className="gauge-value-container">
+            <div className="gauge-value-container cursor-pointer">
                 <div className="gauge-value-major">{majorValue}</div>
                 <div className="gauge-value-major-unit">{majorValueUnit}</div>
                 {/*<div className="gauge-value-minor">{minorValue}</div>*/}
@@ -146,12 +147,12 @@ class Talk extends React.Component {
                     <div className="gauges-container">
                         <div className="gauge-container">
                             <div className="legends-container flex-align-items-end">
-                                <div className="legend-container">
+                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.reachableEpgs)}>
                                     <span className="circle-dot color-green"/>
                                     <span className="epgs-value">{reachableEnpoints1}</span>
                                     <span className="epgs-status">{'Reachable EPGs'}</span>
                                 </div>
-                                <div className="legend-container">
+                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.nonReachableEpgs)}>
                                     <span className="circle-dot color-red"/>
                                     <span className="epgs-value">{nonReachableEPGs1}</span>
                                     <span className="epgs-status">{'Non Reachable EPGs'}</span>
@@ -162,6 +163,7 @@ class Talk extends React.Component {
                                 type={Gauge.TYPE.INFO}
                                 title={gauge1Name}
                                 center={gaugeValue1}
+                                onClick={this.props.onShowEps.bind(this, gauge1.allEpgs)}
                                 value={reachableEnpoints1}
                                 max={totalEPGs1}/>
                         </div>
@@ -171,15 +173,16 @@ class Talk extends React.Component {
                                 type={Gauge.TYPE.INFO}
                                 title={gauge2Name}
                                 center={gaugeValue2}
+                                onClick={this.props.onShowEps.bind(this, gauge2.allEpgs)}
                                 value={reachableEnpoints2}
                                 max={totalEPGs2}/>
                             <div className="legends-container">
-                                <div className="legend-container">
+                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge2.reachableEpgs)}>
                                     <span className="circle-dot color-green"/>
                                     <span className="epgs-value">{reachableEnpoints2}</span>
                                     <span className="epgs-status">{'Reachable EPGs'}</span>
                                 </div>
-                                <div className="legend-container">
+                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge2.nonReachableEpgs)}>
                                     <span className="circle-dot color-red"/>
                                     <span className="epgs-value">{nonReachableEPGs2}</span>
                                     <span className="epgs-status">{'Non Reachable EPGs'}</span>
@@ -239,6 +242,7 @@ Talk.propTypes = {
     closeTalkPage: PropTypes.func,
     closeHowTheyTalkPage: PropTypes.func,
     chordOnSelected: PropTypes.func,
+    onShowEps: PropTypes.func,
     howTheyTalk: PropTypes.func,
     howTheyTalkData: PropTypes.object,
     gaugesData: PropTypes.object,

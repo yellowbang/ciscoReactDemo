@@ -5,38 +5,36 @@ import {
     AbstractTableController,
     TableEvent
 } from 'cisco-ui-components';
-import util from '../common/util';
-
 
 const COLUMNS = [
     {
-        id: 'action',
-        Header: 'Action',
-        accessor: 'action'
+        id: 'dn',
+        Header: 'Dn',
+        accessor: 'dn'
     }, {
-        id: 's_ctx',
-        Header: 'Source Vrf',
-        accessor: (record) => util.getNameByDn(record.s_ctx)
+        id: 'N_BD',
+        Header: 'BD',
+        accessor: 'N_BD'
     }, {
-        id: 'd_ctx',
-        Header: 'Destination Vrf',
-        accessor: (record) => util.getNameByDn(record.d_ctx)
+        id: 'N_ENCAP',
+        Header: 'ENCAP',
+        accessor: 'N_ENCAP'
     }, {
-        id: 'sp',
-        Header: 'Source Port',
-        accessor: 'sp'
+        id: 'N_EPG',
+        Header: 'EPG',
+        accessor: 'N_EPG'
     }, {
-        id: 'dp',
-        Header: 'Destination Port',
-        accessor: 'dp'
+        id: 'N_INSTP',
+        Header: 'INSTP',
+        accessor: 'N_INSTP'
     }, {
-        id: 'fw',
-        Header: 'Firewall',
-        accessor: 'fw'
+        id: 'N_LEAF',
+        Header: 'LEAF',
+        accessor: 'N_LEAF'
     }, {
-        id: 'prot',
-        Header: 'Protocol',
-        accessor: 'prot'
+        id: 'N_VRF',
+        Header: 'VRF',
+        accessor: 'N_VRF'
     }
 ];
 
@@ -162,14 +160,14 @@ class TableController extends AbstractTableController {
     }
 }
 
-class TableResult extends React.Component {
+class TableEps extends React.Component {
     constructor (props) {
         super(props);
 
         this.state = {
-            allData: [],
+            allData: props.allData || [],
             data: [],
-            orderBy: 'action',
+            orderBy: COLUMNS[0].id,
             direction: 'asc',
             total: 0,
             page: 0,
@@ -187,6 +185,7 @@ class TableResult extends React.Component {
         if (this.props.initialPageSize) {
             this.tableController.onPageSizeChange(this.props.initialPageSize);
         }
+        this.tableController.loadData(this.props.allData);
     }
 
     componentWillReceiveProps (nextProps) {
@@ -214,17 +213,17 @@ class TableResult extends React.Component {
         return (
             <div>
                 <BasicTable
-                    pageSizeOptions={[5, 10, 15, 25, 50]}
+                    pageSizeOptions={[5, 10, 15]}
                     controller={this.tableController}/>
             </div>
         );
     }
 }
 
-TableResult.propTypes = {
+TableEps.propTypes = {
     initialPageSize: PropTypes.number,
     allData: PropTypes.array,
     onRowClick: PropTypes.func
 };
 
-export default TableResult;
+export default TableEps;

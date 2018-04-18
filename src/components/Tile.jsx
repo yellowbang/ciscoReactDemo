@@ -29,7 +29,7 @@ class Tile extends React.Component {
     }
 
     onClickEndPoint (data) {
-        this.props.onTileNumberClicked(data);
+        this.props.onShowEps(data);
     }
 
     componentWillReceiveProps (nextProps) {
@@ -87,7 +87,7 @@ class Tile extends React.Component {
                     <div className="tile-info-column-container">
                         <div
                             className="tile-end-point-number  cursor-pointer"
-                            onClick={me.onClickEndPoint.bind(me, me.props.data.allData.N_EP.data)}>
+                            onClick={me.onClickEndPoint.bind(me, [me.props.data.dn])}>
                             {endPoints}
                         </div>
                         <div className="tile-end-points-text gery-text ">{'End Points'}</div>
@@ -112,6 +112,7 @@ Tile.propTypes = {
     data: PropTypes.object,
     selectedTiles: PropTypes.array,
     onTileNumberClicked: PropTypes.func,
+    onShowEps: PropTypes.func,
     onTileClicked: PropTypes.func
 };
 

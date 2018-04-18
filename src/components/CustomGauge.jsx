@@ -52,7 +52,7 @@ class CustomGauge extends Gauge {
                     </div>
                 </div>
                 <div className={_CLASSES.GAUGE__INSET}>
-                    <div className={_CLASSES.GAUGE__PERCENTAGE}>{this.props.center}</div>
+                    <div onClick={this.props.onClick} className={_CLASSES.GAUGE__PERCENTAGE}>{this.props.center}</div>
                 </div>
             </div>
             {label}
@@ -61,12 +61,11 @@ class CustomGauge extends Gauge {
 }
 
 CustomGauge.propTypes = {
-    isChecked: PropTypes.bool,
+    onClick: PropTypes.func,
     data: PropTypes.object
 };
 
 CustomGauge.defaultProps = {
-    isChecked: false,
     data: {}
 };
 
