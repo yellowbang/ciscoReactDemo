@@ -101,9 +101,9 @@ class Main extends React.Component {
         if (this.props.selectedTiles.length === 2 && this.props.canTalkStatus !== 'hidden') {
             canTalkStatus = (<div className={'talk-container'}>
                 <div className={'talk-status-diagram'}>
-                    <div className="text-bold flex-2">{selectedTile1Name}</div>
+                    <div className="text-bold flex-2 talk-status-diagram-selected-tile-name">{selectedTile1Name}</div>
                     {canTalkStatusImage}
-                    <div className="text-bold flex-2">{selectedTile2Name}</div>
+                    <div className="text-bold flex-2 talk-status-diagram-selected-tile-name">{selectedTile2Name}</div>
                 </div>
             </div>);
         }

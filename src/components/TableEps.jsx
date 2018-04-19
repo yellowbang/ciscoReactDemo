@@ -9,7 +9,7 @@ import {
 const COLUMNS = [
     {
         id: 'dn',
-        Header: 'Dn',
+        Header: 'IP',
         accessor: 'dn'
     }, {
         id: 'N_BD',

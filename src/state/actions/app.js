@@ -12,6 +12,7 @@ const CLOSE_TALK_PAGE = 'closeTalkPage';
 const OPEN_HOW_THEY_TALK_PAGE = 'openHowTheyTalkPage';
 const CLOSE_HOW_THEY_TALK_PAGE = 'closeHowTheyTalkPage';
 const POPULATE_TILES = 'polulateTiles';
+const CAN_TWO_QUERIES_TALK = 'canTwoQueriesTalk';
 import constants from '../../constants';
 
 let appActions = function(dispatch) {
@@ -88,7 +89,10 @@ let appActions = function(dispatch) {
         let arr, allData, name, tenant, endPoints;
         let dns = Object.keys(data);
         dns.forEach(function(dn) {
-            name = util.getNameByDn(dn);
+            name = dn;
+            if (dn.indexOf(' and ') === -1 && dn.indexOf(' or ') === -1) {
+                name = util.getNameByDn(dn);
+            }
             tenant = util.getNameByDn(dn, 2);
             endPoints = data[dn].N_EP.count;
             allData = data[dn];
@@ -251,7 +255,7 @@ let appActions = function(dispatch) {
         closeTalkPage: () => {
             dispatch({type: CLOSE_TALK_PAGE});
         },
-        getTileData: () => {
+        getTileData0: () => {
             $.ajax({
                 url: 'http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_VRF',
                 dataType: 'json',
@@ -260,6 +264,53 @@ let appActions = function(dispatch) {
                     dispatch({
                         type: POPULATE_TILES,
                         payload: {tiles: processData(response.response.tiles.data)}
+                    });
+                },
+                error: function(xhr, status, err) {
+                    console.log(err);
+                }
+            });
+        },
+        getTileData: () => {
+            let url1 = 'http://172.31.219.91:5000/what?model=demo&associated_to=epg51%20and%20uni/tn-dmz/ctx-dmz&tile_type=N_INVENTORY';
+            let url2 = 'http://172.31.219.91:5000/what?model=demo&associated_to=epg61&tile_type=N_INVENTORY';
+            $.ajax({
+                url: url1,
+                dataType: 'json',
+                cache: false,
+                success: function(response1) {
+                    $.ajax({
+                        url: url2,
+                        dataType: 'json',
+                        cache: false,
+                        success: function(response2) {
+                            let url3 = 'http://172.31.219.91:5000/which?model=demo&from=epg51%20and%20uni/tn-dmz/ctx-dmz&to=epg61&filter=&pivot=&through=';
+                            $.ajax({
+                                url: url3,
+                                dataType: 'json',
+                                cache: false,
+                                success: function(response3) {
+                                    let tile1 = processData(response1.response.tiles.data)[0];
+                                    let tile2 = processData(response2.response.tiles.data)[0];
+                                    let canWeTalkData = processCanWeTalk(response3);
+                                    dispatch({
+                                        type: CAN_TWO_QUERIES_TALK,
+                                        payload: {
+                                            tiles: [tile1, tile2],
+                                            gaugesData: canWeTalkData.gaugesData,
+                                            chordData: canWeTalkData.chordData,
+                                            canTalkStatus: canWeTalkData.canTalkStatus
+                                        }
+                                    });
+                                },
+                                error: function(xhr, status, err) {
+                                    console.log(err);
+                                }
+                            });
+                        },
+                        error: function(xhr, status, err) {
+                            console.log(err);
+                        }
                     });
                 },
                 error: function(xhr, status, err) {
@@ -299,6 +350,7 @@ export {
     ON_TILE_CLICKED,
     ON_TILE_NUMBER_CLICKED,
     ON_SHOW_EPS,
+    CAN_TWO_QUERIES_TALK,
     CAN_WE_TALK,
     OPEN_TALK_PAGE,
     CLOSE_TALK_PAGE,

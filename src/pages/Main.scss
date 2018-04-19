@@ -48,13 +48,14 @@ $query-result-container-min-height: 300px;
             flex-direction: row;
 
             > .list-container {
-                flex: 1;
+                flex: 2;
                 position: relative;
                 margin-left: $padding-large;
                 margin-right: $padding-large;
             }
 
             > .communication-container {
+                flex: 1;
                 min-width: 270px;
                 display: flex;
                 flex-direction: column;
@@ -79,6 +80,10 @@ $query-result-container-min-height: 300px;
 
                         > .talk-image {
                             width: 150px;
+                        }
+
+                        > .talk-status-diagram-selected-tile-name {
+                            text-align: center;
                         }
                     }
                 }

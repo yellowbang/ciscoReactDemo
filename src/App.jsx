@@ -93,7 +93,9 @@ class App extends React.Component {
                     <div className="popup-table-page">
                         <div className="popup-table">
                             <div className="popup-table-header-container">
-                                <div className="talk-page-header-left"/>
+                                <div className="talk-page-header-left">
+                                    <h5>End Points</h5>
+                                </div>
                                 <IconButton
                                     size={IconButton.SIZE.LARGE}
                                     icon={IconButton.ICON.CLOSE}

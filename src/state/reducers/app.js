@@ -3,6 +3,7 @@ import constants from '../../constants';
 import {
     TOGGLE_SIDEBAR,
     POPULATE_TILES,
+    CAN_TWO_QUERIES_TALK,
     CAN_WE_TALK,
     ON_TILE_CLICKED,
     ON_TILE_NUMBER_CLICKED,
@@ -65,6 +66,14 @@ export default function(state = initialState, action = {}) {
             return Object.assign({}, state, {
                 canTalkStatus: 'hidden',
                 selectedTiles: selectedTiles
+            });
+        case CAN_TWO_QUERIES_TALK:
+            return Object.assign({}, state, {
+                tiles: action.payload.tiles,
+                selectedTiles: action.payload.tiles,
+                gaugesData: action.payload.gaugesData,
+                chordData: action.payload.chordData,
+                canTalkStatus: action.payload.canTalkStatus
             });
         case CAN_WE_TALK:
             return Object.assign({}, state, {
