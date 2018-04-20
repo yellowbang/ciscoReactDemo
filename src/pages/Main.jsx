@@ -7,6 +7,7 @@ import {ListView, ListViewItem} from 'react-scrollable-list-view';
 import CustomTypeahead from '../components/CustomTypeahead';
 
 import constants from '../constants';
+import util from '../common/util';
 
 import './Main.scss';
 
@@ -25,22 +26,26 @@ class Main extends React.Component {
         let queryType;
         let tokens = searchText.split(' ');
         let method = tokens[0];
-        switch (method.toLowerCase()) {
-            case 'what':
-                queryType = 'N_' + tokens[1].slice(0, -1);
-                url = url + 'what?model=' + this.props.model + '&&tile_type=' + queryType + '&associated_to=';
-                this.props.getTileDataWhat(url);
-                break;
-            case 'can':
-                if (searchText === 'Can EPG:epg51 talk to EPG:epg61') {
-                    this.props.getTileDataCan('epg51', 'epg61');
-                } else {
-                    this.props.getTileDataCan('epg51', 'epg52');
-                }
-                break;
-            default:
-                break;
-        }
+
+        //TODO:remove
+        this.props.getTileDataWhat(util.getDemoUrl(searchText));
+
+        // switch (method.toLowerCase()) {
+        //     case 'what':
+        //         queryType = 'N_' + tokens[1].slice(0, -1);
+        //         url = url + 'what?model=' + this.props.model + '&&tile_type=' + queryType + '&associated_to=';
+        //         this.props.getTileDataWhat(url);
+        //         break;
+        //     case 'can':
+        //         if (searchText === 'Can EPG:epg51 talk to EPG:epg61') {
+        //             this.props.getTileDataCan('epg51', 'epg61');
+        //         } else {
+        //             this.props.getTileDataCan('epg51', 'epg52');
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 
     canWeTalk () {

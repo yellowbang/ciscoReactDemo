@@ -1,6 +1,16 @@
 const appId = 'p42Id';
 export default {
     APP_ID: appId,
+    //TODO:remove
+    DEMO_TYPE_AHEAD_OPTIONS: [
+        {key: 'What Inventory is associated with VRF:dmz', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_INVENTORY&associated_to=ctx-dmz'},
+        {key: 'What Inventory is associated with VRF:dmz and type:epg', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_EPG&associated_to=ctx-dmz'},
+        {key: 'What Inventory is associated with VRF:internal and type:epg', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_EPG&associated_to=ctx-internal'},
+        {key: 'What Inventory is associated with VRF:context and type:epg', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_EPG&associated_to=ctx-context'},
+        {key: 'Can EPGs in VRF:dmz talk to EPGs in VRF:secured', url: 'http://172.31.219.91:5000/which?model=demo&from=ctx-dmz&to=ctx-secured&filter=&pivot=&through='},
+        {key: 'Can EPGs in VRF:dmz talk to EPGs in VRF:secured through DPORT:161', url: 'http://172.31.219.91:5000/which?model=demo&from=ctx-dmz&to=ctx-secured&filter=&pivot=&through=dp_161'},
+        {key: 'Can LEAF:node151 talk to EPGs in VRF:secured', url: 'http://172.31.219.91:5000/which?model=demo&from=node-151&to=ctx-secured&filter=&pivot=&through='}
+    ],
     INIT_TYPE_AHEAD_OPTIONS: [
         {key: 'What EPGs are associated with'},
         {key: 'What EPs are associated with'},
