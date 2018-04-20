@@ -49,6 +49,14 @@
             justify-content: space-around;
             align-items: center;
 
+
+            > .text-one-row {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 74px;
+            }
+
             > .tile-end-point-number {
                 color: $dark-blue-text;
                 font-size: 28px;

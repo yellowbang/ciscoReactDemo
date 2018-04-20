@@ -95,7 +95,7 @@ class Tile extends React.Component {
                         <img className="tile-image" src={epgSvg}/>
                     </div>
                     <div className="tile-info-column-container">
-                        <div>{name}</div>
+                        <div className="text-one-row">{name}</div>
                     </div>
                     {columns}
                     <div className="tile-info-column-container">
