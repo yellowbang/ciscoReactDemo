@@ -39,8 +39,9 @@ class Chord extends React.Component {
         return this.state.indexMapping[index].color;
     }
 
-    shouldComponentUpdate (nextProps) {
-        return nextProps.data !== this.props.data;
+    shouldComponentUpdate (nextProps, nextState) {
+        return nextProps.data !== this.props.data ||
+            nextState.selections !== this.state.selections;
     }
 
     render() {

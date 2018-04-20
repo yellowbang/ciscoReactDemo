@@ -212,11 +212,6 @@
         stroke-opacity: 0.01;
     }
 
-    .highlight {
-        background-color: #333;
-        color: #fff;
-    }
-
     .arc {
         cursor: pointer;
     }
@@ -235,5 +230,10 @@
         white-space: nowrap;
         background-color: transparent;
         color: #333;
+    }
+
+    .label.highlight {
+        background-color: #333;
+        color: #fff;
     }
 }
