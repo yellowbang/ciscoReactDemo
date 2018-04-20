@@ -36,7 +36,11 @@ class CustomGauge extends Gauge {
         }
 
         if (this.props.title) {
-            title = (<div className={_CLASSES.GUAGE_TITLE}>{this.props.title}</div>);
+            let titleClassName = _CLASSES.GUAGE_TITLE;
+            if (this.props.titleClassName) {
+                titleClassName = titleClassName + ' ' + this.props.titleClassName;
+            }
+            title = (<div className={titleClassName}>{this.props.title}</div>);
         }
 
         return (<div className={_CLASSES.GUAGE_CONTAINER}>
@@ -61,11 +65,13 @@ class CustomGauge extends Gauge {
 }
 
 CustomGauge.propTypes = {
+    titleClassName: PropTypes.string,
     onClick: PropTypes.func,
     data: PropTypes.object
 };
 
 CustomGauge.defaultProps = {
+    titleClassName: undefined,
     data: {}
 };
 

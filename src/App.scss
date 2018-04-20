@@ -103,8 +103,15 @@ $query-result-container-min-height: 300px;
     font-weight: bold;
 }
 
-.gery-text {
+.text-color-gery {
     color: $grey-text;
+}
+
+.text-color-orange {
+    color: $orange;
+}
+.text-color-blue {
+    color: $blue;
 }
 
 .blue-background {

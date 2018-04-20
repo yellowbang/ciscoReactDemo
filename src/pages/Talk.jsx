@@ -162,6 +162,7 @@ class Talk extends React.Component {
                                 size={Gauge.SIZE.MEDIUM}
                                 type={Gauge.TYPE.INFO}
                                 title={gauge1Name}
+                                titleClassName="text-color-orange"
                                 center={gaugeValue1}
                                 onClick={this.props.onShowEps.bind(this, gauge1.allEpgs)}
                                 value={reachableEnpoints1}
@@ -172,6 +173,7 @@ class Talk extends React.Component {
                                 size={Gauge.SIZE.MEDIUM}
                                 type={Gauge.TYPE.INFO}
                                 title={gauge2Name}
+                                titleClassName="text-color-blue"
                                 center={gaugeValue2}
                                 onClick={this.props.onShowEps.bind(this, gauge2.allEpgs)}
                                 value={reachableEnpoints2}

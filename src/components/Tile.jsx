@@ -9,11 +9,16 @@ import util from '../common/util';
 class Tile extends React.Component {
     constructor (...args) {
         super(...args);
-        this.state = {
-            isChecked: this.props.selectedTiles && this.props.selectedTiles.indexOf(this.props.data) !== -1
-        };
-
+        this.tileIsSelected = this.tileIsSelected.bind(this);
         this.onClickCheckBox = this.onClickCheckBox.bind(this);
+
+        this.state = {
+            isChecked: this.tileIsSelected(this.props)
+        };
+    }
+
+    tileIsSelected (props) {
+        return props.selectedTiles && props.selectedTiles.indexOf(props.data) !== -1;
     }
 
     onClickCheckBox () {
@@ -33,11 +38,15 @@ class Tile extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
+        let isChecked;
+
         if (nextProps.data !== this.props.data) {
-            this.setState({
-                isChecked: false
-            });
+            isChecked = false;
         }
+        isChecked = this.tileIsSelected(nextProps);
+        this.setState({
+            isChecked
+        });
     }
 
     shouldComponentUpdate (nextProps, nextState) {
@@ -95,7 +104,7 @@ class Tile extends React.Component {
                             onClick={me.onClickEndPoint.bind(me, [me.props.data.dn])}>
                             {endPoints}
                         </div>
-                        <div className="tile-end-points-text gery-text ">{'End Points'}</div>
+                        <div className="tile-end-points-text text-color-gery ">{'End Points'}</div>
                     </div>
                     <div className="tile-info-column-container flex-half cursor-pointer" onClick={this.onClickCheckBox}>
                         <div className="tile-toggle-icon-container">
