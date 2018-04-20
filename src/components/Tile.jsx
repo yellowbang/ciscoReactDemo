@@ -33,11 +33,16 @@ class Tile extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-
+        if (nextProps.data !== this.props.data) {
+            this.setState({
+                isChecked: false
+            });
+        }
     }
 
     shouldComponentUpdate (nextProps, nextState) {
-        return nextState.isChecked !== this.state.isChecked;
+        return nextProps.data !== this.props.data ||
+            nextState.isChecked !== this.state.isChecked;
     }
 
     render () {
@@ -55,7 +60,7 @@ class Tile extends React.Component {
         let columns = [];
         let keys = Object.keys(this.props.data.allData);
         keys.forEach(function(key) {
-            if (key.indexOf('N_') === 0 && key !== 'N_EP' && key !== me.props.data.allData.tile_type) {
+            if (key.indexOf('N_') === 0 && key !== 'N_EP' && key !== 'N_INVENTORY' && key !== me.props.data.allData.tile_type) {
                 let count = me.props.data.allData[key].count;
                 let clickFn = util.emptyFn;
                 let numberClassName = 'text-bold';

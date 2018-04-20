@@ -22,7 +22,7 @@ class App extends React.Component {
     }
 
     componentDidMount () {
-        // this.props.getTileData();
+        // this.props.getTileDataWhat();
     }
 
     onShowEps (dns) {
@@ -55,7 +55,9 @@ class App extends React.Component {
                     />
                     :
                     <Main
-                        getTileData={this.props.getTileData}
+                        model={this.props.model}
+                        getTileDataWhat={this.props.getTileDataWhat}
+                        getTileDataCan={this.props.getTileDataCan}
                         onTileClicked={this.props.onTileClicked}
                         onTileNumberClicked={this.props.onTileNumberClicked}
                         onShowEps={this.onShowEps}
@@ -121,7 +123,8 @@ class App extends React.Component {
 
 App.propTypes = {
     toggleSidebar: PropTypes.func,
-    getTileData: PropTypes.func,
+    getTileDataWhat: PropTypes.func,
+    getTileDataCan: PropTypes.func,
     showTalkPage: PropTypes.bool,
     onTileNumberClicked: PropTypes.func,
     onShowEps: PropTypes.func,

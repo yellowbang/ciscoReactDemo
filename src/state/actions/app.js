@@ -255,9 +255,9 @@ let appActions = function(dispatch) {
         closeTalkPage: () => {
             dispatch({type: CLOSE_TALK_PAGE});
         },
-        getTileData0: () => {
+        getTileDataWhat: (url) => {
             $.ajax({
-                url: 'http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_VRF',
+                url: url,
                 dataType: 'json',
                 cache: false,
                 success: function(response) {
@@ -271,9 +271,9 @@ let appActions = function(dispatch) {
                 }
             });
         },
-        getTileData: () => {
-            let url1 = 'http://172.31.219.91:5000/what?model=demo&associated_to=epg51%20and%20uni/tn-dmz/ctx-dmz&tile_type=N_INVENTORY';
-            let url2 = 'http://172.31.219.91:5000/what?model=demo&associated_to=epg61&tile_type=N_INVENTORY';
+        getTileDataCan: (query1, query2) => {
+            let url1 = 'http://172.31.219.91:5000/what?model=demo&associated_to=' + query1 + '&tile_type=N_INVENTORY';
+            let url2 = 'http://172.31.219.91:5000/what?model=demo&associated_to=' + query2 + '&tile_type=N_INVENTORY';
             $.ajax({
                 url: url1,
                 dataType: 'json',
@@ -284,7 +284,7 @@ let appActions = function(dispatch) {
                         dataType: 'json',
                         cache: false,
                         success: function(response2) {
-                            let url3 = 'http://172.31.219.91:5000/which?model=demo&from=epg51%20and%20uni/tn-dmz/ctx-dmz&to=epg61&filter=&pivot=&through=';
+                            let url3 = 'http://172.31.219.91:5000/which?model=demo&from=' + query1 + '&to=' + query2 + '&filter=&pivot=&through=';
                             $.ajax({
                                 url: url3,
                                 dataType: 'json',
@@ -318,7 +318,7 @@ let appActions = function(dispatch) {
                 }
             });
         },
-        getTileData2: () => {
+        getTileDataWhat2: () => {
             return fetch('http://172.31.219.91:5000/what?model=demo&associated_to=&tile_type=N_VRF', {
                 method: 'GET',
                 cache: 'no-cache',

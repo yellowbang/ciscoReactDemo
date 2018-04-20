@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {Button} from 'cisco-ui-components';
 import Tile from '../components/Tile.jsx';
 import {ListView, ListViewItem} from 'react-scrollable-list-view';
+import CustomTypeahead from '../components/CustomTypeahead';
+
 import constants from '../constants';
 
 import './Main.scss';
@@ -13,7 +15,32 @@ class Main extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = {};
+        this.onClickRunButton = this.onClickRunButton.bind(this);
         this.canWeTalk = this.canWeTalk.bind(this);
+    }
+
+    onClickRunButton () {
+        let url = constants.MOCK_SERVER_URL;
+        let searchText = this.typeahead.getValue();
+        let queryType;
+        let tokens = searchText.split(' ');
+        let method = tokens[0];
+        switch (method.toLowerCase()) {
+            case 'what':
+                queryType = 'N_' + tokens[1].slice(0, -1);
+                url = url + 'what?model=' + this.props.model + '&&tile_type=' + queryType + '&associated_to=';
+                this.props.getTileDataWhat(url);
+                break;
+            case 'can':
+                if (searchText === 'Can EPG:epg51 talk to EPG:epg61') {
+                    this.props.getTileDataCan('epg51', 'epg61');
+                } else {
+                    this.props.getTileDataCan('epg51', 'epg52');
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     canWeTalk () {
@@ -118,7 +145,20 @@ class Main extends React.Component {
                 <div className="main-page-content-container">
 
                     <div className="search-function-container">
-                        <img className="time-image cursor-pointer" src={require('../assets/images/timeImage.png')} onClick={this.props.getTileData}/>
+                        <img className="time-image cursor-pointer" src={require('../assets/images/timeImage.png')}/>
+                        <div className="search-bar-container">
+                            <CustomTypeahead
+                                model={this.props.model}
+                                ref={function(typeahead) {
+                                    me.typeahead = typeahead;
+                                }}/>
+                            <Button
+                                type={Button.TYPE.PRIMARY}
+                                size={Button.SIZE.SMALL}
+                                onClick={this.onClickRunButton}>
+                                Run
+                            </Button>
+                        </div>
                     </div>
                     {this.props.tiles.length > 0 ?
                         <div className="query-result-container">
@@ -134,7 +174,8 @@ class Main extends React.Component {
                                 {tileSelectedStatus}
                                 <Button
                                     disabled={this.props.selectedTiles.length !== 2}
-                                    type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                                    type={Button.TYPE.PRIMARY}
+                                    size={Button.SIZE.SMALL}
                                     onClick={this.canWeTalk}>
                                     Can we talk?
                                 </Button>
@@ -142,7 +183,8 @@ class Main extends React.Component {
                                 {
                                     this.props.canTalkStatus === 'yes' ?
                                         <Button
-                                            type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                                            type={Button.TYPE.PRIMARY}
+                                            size={Button.SIZE.SMALL}
                                             onClick={this.props.openTalkPage}>
                                             Who can talk?
                                         </Button>
@@ -161,7 +203,9 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-    getTileData: PropTypes.func,
+    model: PropTypes.string,
+    getTileDataWhat: PropTypes.func,
+    getTileDataCan: PropTypes.func,
     onTileNumberClicked: PropTypes.func,
     onShowEps: PropTypes.func,
     onTileClicked: PropTypes.func,
@@ -174,6 +218,7 @@ Main.propTypes = {
 };
 
 Main.defaultProps = {
+    model: 'demo',
     tiles: [],
     selectedTiles: [],
     canTalkStatus: 'hidden'

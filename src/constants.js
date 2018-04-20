@@ -1,6 +1,19 @@
 const appId = 'p42Id';
 export default {
     APP_ID: appId,
+    INIT_TYPE_AHEAD_OPTIONS: [
+        {key: 'What EPGs are associated with'},
+        {key: 'What EPs are associated with'},
+        {key: 'What VRFs are associated with'},
+        {key: 'What BDs are associated with'},
+        {key: 'What ENCAPs are associated with'},
+        {key: 'What INFs are associated with'},
+        {key: 'What INSTPs are associated with'},
+        {key: 'What LEAFs are associated with'},
+        {key: 'Can EPG:epg51 talk to EPG:epg61'},
+        {key: 'Can EPG:epg51 talk to EPG:epg52'}
+    ],
+    MOCK_SERVER_URL: 'http://172.31.219.91:5000/',
     MOCK_DATA_EPG: {
         'associated_to_str': '',
         'eps': [

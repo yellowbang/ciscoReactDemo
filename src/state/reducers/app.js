@@ -45,7 +45,11 @@ export default function(state = initialState, action = {}) {
             });
         case POPULATE_TILES:
             return Object.assign({}, state, {
-                tiles: action.payload.tiles
+                tiles: action.payload.tiles,
+                selectedTiles: [],
+                gaugesData: {},
+                chordData: [],
+                canTalkStatus: 'hidden'
             });
         case ON_TILE_NUMBER_CLICKED:
             return Object.assign({}, state, {
