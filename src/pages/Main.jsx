@@ -28,7 +28,16 @@ class Main extends React.Component {
         let method = tokens[0];
 
         //TODO:remove
-        this.props.getTileDataWhat(util.getDemoUrl(searchText));
+        switch (method.toLowerCase()) {
+            case 'what':
+                this.props.getTileDataWhat(util.getDemoUrl(searchText));
+                break;
+            case 'can':
+                this.props.getTileDataCan(util.getDemoUrl(searchText));
+                break;
+            default:
+                break;
+        }
 
         // switch (method.toLowerCase()) {
         //     case 'what':
@@ -199,7 +208,11 @@ class Main extends React.Component {
                             </div>
                         </div>
                         :
-                        null
+                        <div className="query-result-container">
+                            <div className="no-result-container">
+                                No Result Found
+                            </div>
+                        </div>
                     }
                 </div>
             </div>

@@ -17,6 +17,13 @@ import constants from '../../constants';
 
 let appActions = function(dispatch) {
 
+    function resetTiles () {
+        dispatch({
+            type: POPULATE_TILES,
+            payload: {tiles: []}
+        });
+    }
+
     function processCanWeTalk (fullResponse) {
 
         let response = fullResponse.response;
@@ -268,53 +275,69 @@ let appActions = function(dispatch) {
                 },
                 error: function(xhr, status, err) {
                     console.log(err);
+                    resetTiles();
                 }
             });
         },
-        getTileDataCan: (query1, query2) => {
+        getTileDataCan: (url) => {
+            let query1 = url.split('&from=')[1].split('&to=')[0];
+            let query2 = url.split('&from=')[1].split('&to=')[1].split('&')[0];
             let url1 = 'http://172.31.219.91:5000/what?model=demo&associated_to=' + query1 + '&tile_type=N_INVENTORY';
             let url2 = 'http://172.31.219.91:5000/what?model=demo&associated_to=' + query2 + '&tile_type=N_INVENTORY';
+
             $.ajax({
                 url: url1,
                 dataType: 'json',
                 cache: false,
                 success: function(response1) {
-                    $.ajax({
-                        url: url2,
-                        dataType: 'json',
-                        cache: false,
-                        success: function(response2) {
-                            let url3 = 'http://172.31.219.91:5000/which?model=demo&from=' + query1 + '&to=' + query2 + '&filter=&pivot=&through=';
-                            $.ajax({
-                                url: url3,
-                                dataType: 'json',
-                                cache: false,
-                                success: function(response3) {
-                                    let tile1 = processData(response1.response.tiles.data)[0];
-                                    let tile2 = processData(response2.response.tiles.data)[0];
-                                    let canWeTalkData = processCanWeTalk(response3);
-                                    dispatch({
-                                        type: CAN_TWO_QUERIES_TALK,
-                                        payload: {
-                                            tiles: [tile1, tile2],
-                                            gaugesData: canWeTalkData.gaugesData,
-                                            chordData: canWeTalkData.chordData,
-                                            canTalkStatus: canWeTalkData.canTalkStatus
+                    if (response1.response && response1.response.tiles && response1.response.tiles.count) {
+                        $.ajax({
+                            url: url2,
+                            dataType: 'json',
+                            cache: false,
+                            success: function(response2) {
+                                if (response2.response && response2.response.tiles && response2.response.tiles.count) {
+                                    // let url3 = 'http://172.31.219.91:5000/which?model=demo&from=' + query1 + '&to=' + query2 + '&filter=&pivot=&through=';
+                                    let url3 = url;
+                                    $.ajax({
+                                        url: url3,
+                                        dataType: 'json',
+                                        cache: false,
+                                        success: function(response3) {
+                                            let tile1 = processData(response1.response.tiles.data)[0];
+                                            let tile2 = processData(response2.response.tiles.data)[0];
+                                            let canWeTalkData = processCanWeTalk(response3);
+                                            dispatch({
+                                                type: CAN_TWO_QUERIES_TALK,
+                                                payload: {
+                                                    tiles: [tile1, tile2],
+                                                    gaugesData: canWeTalkData.gaugesData,
+                                                    chordData: canWeTalkData.chordData,
+                                                    canTalkStatus: canWeTalkData.canTalkStatus
+                                                }
+                                            });
+                                        },
+                                        error: function(xhr, status, err) {
+                                            console.log(err);
+                                            resetTiles();
                                         }
                                     });
-                                },
-                                error: function(xhr, status, err) {
-                                    console.log(err);
+                                } else {
+                                    resetTiles();
                                 }
-                            });
-                        },
-                        error: function(xhr, status, err) {
-                            console.log(err);
-                        }
-                    });
+                            },
+                            error: function(xhr, status, err) {
+                                console.log(err);
+                                resetTiles();
+                            }
+                        });
+                    } else {
+                        resetTiles();
+                    }
                 },
                 error: function(xhr, status, err) {
                     console.log(err);
+                    resetTiles();
                 }
             });
         },

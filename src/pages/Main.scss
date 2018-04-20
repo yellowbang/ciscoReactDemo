@@ -147,6 +147,11 @@ $clear-buttons-size: 19px;
                 }
             }
 
+            > .no-result-container {
+                width: 100%;
+                text-align: center;
+                color: $grey-text;
+            }
         }
     }
 }
