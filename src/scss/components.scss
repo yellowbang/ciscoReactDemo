@@ -58,7 +58,7 @@
             }
 
             > .tile-end-point-number {
-                color: $dark-blue-text;
+                color: $color-dark-blue-text;
                 font-size: 28px;
             }
 
@@ -233,5 +233,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        background-color: transparent;
+        color: #333;
     }
 }

@@ -13,6 +13,9 @@ import util from '../common/util';
 
 const CHORD_SIZE = 400;
 const CHORD_CONATINER_STYLE = {
+    minHeight: CHORD_SIZE + 50
+};
+const CHORD_DIAGRAM_STYLE = {
     width: CHORD_SIZE + 50,
     minHeight: CHORD_SIZE + 50
 };
@@ -146,7 +149,7 @@ class Talk extends React.Component {
                 <div className="talk-page-content-container">
                     <div className="gauges-container">
                         <div className="gauge-container">
-                            <div className="legends-container flex-align-items-end">
+                            <div className="legends-container">
                                 <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.reachableEpgs)}>
                                     <span className="circle-dot color-green"/>
                                     <span className="epgs-value">{reachableEnpoints1}</span>
@@ -162,7 +165,7 @@ class Talk extends React.Component {
                                 size={Gauge.SIZE.MEDIUM}
                                 type={Gauge.TYPE.INFO}
                                 title={gauge1Name}
-                                titleClassName="text-color-orange"
+                                titleClassName="gauge-title"
                                 center={gaugeValue1}
                                 onClick={this.props.onShowEps.bind(this, gauge1.allEpgs)}
                                 value={reachableEnpoints1}
@@ -173,7 +176,7 @@ class Talk extends React.Component {
                                 size={Gauge.SIZE.MEDIUM}
                                 type={Gauge.TYPE.INFO}
                                 title={gauge2Name}
-                                titleClassName="text-color-blue"
+                                titleClassName="gauge-title"
                                 center={gaugeValue2}
                                 onClick={this.props.onShowEps.bind(this, gauge2.allEpgs)}
                                 value={reachableEnpoints2}
@@ -193,7 +196,29 @@ class Talk extends React.Component {
                         </div>
                     </div>
                     <div className="chord-container" style={CHORD_CONATINER_STYLE}>
-                        <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE} chordOnSelected={this.chordOnSelected}/>
+                        <div className="chord-labels-container">
+                            <div className="label-container">
+                                <span className="circle-dot color-light-blue"/>
+                                <span className="label">{gauge1Name}</span>
+                            </div>
+                            <div className="label-container">
+                                <span className="circle-dot color-dark-blue"/>
+                                <span className="label">{gauge2Name}</span>
+                            </div>
+                        </div>
+                        <div className="chord-diagram" style={CHORD_DIAGRAM_STYLE}>
+                            <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE} chordOnSelected={this.chordOnSelected}/>
+                        </div>
+                        <div className="chord-labels-container opacity-zero">
+                            <div className="label-container">
+                                <span className="circle-dot color-light-blue"/>
+                                <span className="label">{gauge1Name}</span>
+                            </div>
+                            <div className="label-container">
+                                <span className="circle-dot color-dark-blue"/>
+                                <span className="label">{gauge2Name}</span>
+                            </div>
+                        </div>
                     </div>
                     <div className="how-they-talk-button flex-row">
                         <Button

@@ -64,7 +64,7 @@ let appActions = function(dispatch) {
             let index = toEpgIndexes[dn].toString();
             let label = util.getNameByDn(dn);
             chordData.push({
-                color: 'rgba(0, 122, 204, 1)',
+                color: constants.STYLES.color.darkBlue,
                 dn: dn,
                 label: label,
                 from: index,
@@ -76,7 +76,7 @@ let appActions = function(dispatch) {
             let index = fromEpgIndexes[dn].toString();
             let label = util.getNameByDn(dn);
             chordData.push({
-                color: 'rgba(255, 139, 27, 1)',
+                color: constants.STYLES.color.lightBlue,
                 dn: dn,
                 label: label,
                 from: index,

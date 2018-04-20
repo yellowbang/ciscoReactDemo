@@ -69,6 +69,10 @@ $query-result-container-min-height: 300px;
     display: none !important;
 }
 
+.opacity-zero {
+    opacity: 0 !important;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -107,11 +111,12 @@ $query-result-container-min-height: 300px;
     color: $grey-text;
 }
 
-.text-color-orange {
-    color: $orange;
+.text-color-light-blue {
+    color: $color-light-blue;
 }
-.text-color-blue {
-    color: $blue;
+
+.text-color-dark-blue {
+    color: $color-dark-blue;
 }
 
 .blue-background {
@@ -130,6 +135,14 @@ $query-result-container-min-height: 300px;
 
 .color-red {
     background-color: $color-red;
+}
+
+.color-light-blue {
+    background-color: $color-light-blue;
+}
+
+.color-dark-blue {
+    background-color: $color-dark-blue;
 }
 
 // override cui css

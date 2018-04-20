@@ -1,6 +1,12 @@
 const appId = 'p42Id';
 export default {
     APP_ID: appId,
+    STYLES: {
+        color: {
+            lightBlue: 'rgba(0, 188, 235, 1)',
+            darkBlue: 'rgba(0, 80, 115, 1)'
+        }
+    },
     //TODO:remove
     DEMO_TYPE_AHEAD_OPTIONS: [
         {key: 'What Inventory is associated with VRF:dmz', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_INVENTORY&associated_to=ctx-dmz'},

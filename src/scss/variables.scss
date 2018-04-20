@@ -29,6 +29,8 @@ $label-separation:              1em;
 // colors
 $color-green:                       rgba(107,192,73,1);
 $color-red:                         rgba(207,32,48,1);
+$color-light-blue:                  rgba(0, 188, 235, 1);
+$color-dark-blue:                   rgba(0, 80, 115, 1);
 
 // Shadows
 $shadow:                            rgba(0,0,0,.2);
@@ -51,9 +53,7 @@ $link-container-highlight:          rgba(33, 183, 239, 1);
 $light-grey:          rgba(242, 242, 242, 1);
 $grey-text:          rgba(158, 158, 162, 1);
 $darker-grey-text:          rgba(127, 127, 133, 1);
-$dark-blue-text:          rgba(0, 80, 114, 1);
-$orange:          rgba(255, 139, 27, 1);
-$blue:          rgba(0, 122, 204, 1);
+$color-dark-blue-text:          rgba(0, 80, 115, 1);
 $transparent-background: rgba(146, 146, 146, .5);
 
 /// APIC App
