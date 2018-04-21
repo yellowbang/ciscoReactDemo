@@ -15,6 +15,7 @@ export default {
         {key: 'What Inventory is associated with VRF:internal and type:epg', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_INVENTORY&associated_to=ctx-internal and type:N_EPG'},
         {key: 'What Inventory is associated with VRF:secured and type:epg', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_INVENTORY&associated_to=ctx-secured and type:N_EPG'},
         {key: 'Can EPGs in complete fabric talk to EPGs in complete fabric', url: 'http://172.31.219.91:5000/which?model=demo&from=type:N_EPG&to=type:N_EPG&filter=&pivot=&through='},
+        {key: 'Can EPGs in VRF:dmz talk to EPGs in VRF:internal', url: 'http://172.31.219.91:5000/which?model=demo&from=ctx-dmz and type:N_EPG&to=ctx-internal and type:N_EPG&filter=&pivot=&through='},
         {key: 'Can EPGs in VRF:dmz talk to EPGs in VRF:secured', url: 'http://172.31.219.91:5000/which?model=demo&from=ctx-dmz and type:N_EPG&to=ctx-secured and type:N_EPG&filter=&pivot=&through='},
         {key: 'Can EPGs in VRF:dmz talk to EPGs in VRF:secured through DPORT:161', url: 'http://172.31.219.91:5000/which?model=demo&from=ctx-dmz and type:N_EPG&to=ctx-secured and type:N_EPG&filter=&pivot=&through=dp_from:161 dp_to:161'},
         {key: 'Can LEAF:node154 talk to EPGs in VRF:secured', url: 'http://172.31.219.91:5000/which?model=demo&from=node154&to=ctx-secured&filter=&pivot=&through='}
