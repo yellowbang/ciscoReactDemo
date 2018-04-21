@@ -73,9 +73,11 @@ class Talk extends React.Component {
     }
 
     chordOnSelected (chord1, chord2) {
-        this.setState({
-            selectedChords: [chord1.dn, chord2.dn]
-        });
+        let selectedChords = [];
+        if (chord1 && chord1.dn && chord2 && chord2.dn) {
+            selectedChords = [chord1.dn, chord2.dn];
+        }
+        this.setState({selectedChords});
     }
 
     componentWillReceiveProps (nextProps) {

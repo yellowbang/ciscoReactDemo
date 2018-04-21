@@ -72,7 +72,7 @@ class Chord extends React.Component {
     `;
         let classNames = ['label'];
         if (this.state.selections.includes(d.index)) {
-            classNames.push('highlight');
+            // classNames.push('highlight');
         }
 
         return (
@@ -162,6 +162,8 @@ class Chord extends React.Component {
 
         if (newSelections.length === 2) {
             this.props.chordOnSelected(this.state.indexMapping[newSelections[0]], this.state.indexMapping[newSelections[1]]);
+        } else {
+            this.props.chordOnSelected({}, {});
         }
     }
 }
