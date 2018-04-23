@@ -1,12 +1,50 @@
 @import "variables.scss";
 @import "mixins.scss";
 
+$header-icon-size: 30px;
+
 .empty-results-text {
     font-size: $empty-results-font-size;
     font-weight: $empty-results-font-weight;
     color: $empty-results-color;
 
     @include text-stamped;
+}
+
+.header-container {
+    min-height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: $white;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    > .header-left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        > .header-bar__logo {
+            margin-left: $padding-xxlarge;
+        }
+    }
+
+    .header-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+        min-width: $header-icon-size;
+        width: $header-icon-size;
+        height: $header-icon-size;
+        z-index: 2;
+        background-color: $darker-grey-text;
+    }
 }
 
 .tile-container {
@@ -48,7 +86,6 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-
 
             > .text-one-row {
                 white-space: nowrap;

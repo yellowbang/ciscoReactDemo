@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Button} from 'cisco-ui-components';
+import {Button, Icon, IconButton} from 'cisco-ui-components';
 import Tile from '../components/Tile.jsx';
 import {ListView, ListViewItem} from 'react-scrollable-list-view';
 import CustomTypeahead from '../components/CustomTypeahead';
+import Header from '../components/Header';
 
 import constants from '../constants';
 import util from '../common/util';
@@ -151,11 +152,7 @@ class Main extends React.Component {
 
         return (
             <div className="main-page-container">
-                <div className="main-page-header">
-                    <div className="main-page-header-left">
-                        <h4>Project 42</h4>
-                    </div>
-                </div>
+                <Header/>
                 <div className="main-page-content-container">
 
                     <div className="search-function-container">
