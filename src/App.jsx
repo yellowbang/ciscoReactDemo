@@ -6,6 +6,7 @@ import {appActions} from './state/actions/app';
 
 import Main from './pages/Main.jsx';
 import Talk from './pages/Talk.jsx';
+import RiskTemplates from './pages/RiskTemplates.jsx';
 import TablePopup from './components/TablePopup';
 import TableEps from './components/TableEps';
 
@@ -60,6 +61,7 @@ class App extends React.Component {
                         getTileDataCan={this.props.getTileDataCan}
                         onTileClicked={this.props.onTileClicked}
                         onTileNumberClicked={this.props.onTileNumberClicked}
+                        onShowRiskTemplates={this.props.onShowRiskTemplates}
                         onShowEps={this.onShowEps}
                         canWeTalk={this.props.canWeTalk}
                         openTalkPage={this.props.openTalkPage}
@@ -68,53 +70,64 @@ class App extends React.Component {
                         canTalkStatus={this.props.canTalkStatus}
                     />
                 }
-                {this.props.popupTableData.length ?
-                    <div className="popup-table-page">
-                        <div className="popup-table">
-                            <div className="popup-table-header-container">
-                                <div className="talk-page-header-left"/>
-                                <IconButton
-                                    size={IconButton.SIZE.LARGE}
-                                    icon={IconButton.ICON.CLOSE}
-                                    type={'close-button'}
-                                    onClick={this.props.onTileNumberClicked.bind(this, [])}/>
-                            </div>
-                            <div className="popup-table-page-content">
-                                <div className="popup-table-container">
-                                    <TablePopup
-                                        initialPageSize={5}
-                                        allData={this.props.popupTableData}/>
+                {
+                    this.props.popupTableData.length ?
+                        <div className="app-page-popup">
+                            <div className="popup-table">
+                                <div className="popup-table-header-container">
+                                    <div className="popup-page-header-left"/>
+                                    <IconButton
+                                        size={IconButton.SIZE.LARGE}
+                                        icon={IconButton.ICON.CLOSE}
+                                        type={'close-button'}
+                                        onClick={this.props.onTileNumberClicked.bind(this, [])}/>
+                                </div>
+                                <div className="app-page-popup-content">
+                                    <div className="popup-table-container">
+                                        <TablePopup
+                                            initialPageSize={5}
+                                            allData={this.props.popupTableData}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    :
-                    null
+                        :
+                        null
                 }
-                {this.props.epTableData.length ?
-                    <div className="popup-table-page">
-                        <div className="popup-table">
-                            <div className="popup-table-header-container">
-                                <div className="talk-page-header-left">
-                                    <h5>End Points</h5>
+                {
+                    this.props.epTableData.length ?
+                        <div className="app-page-popup">
+                            <div className="popup-table">
+                                <div className="popup-table-header-container">
+                                    <div className="popup-page-header-left">
+                                        <h5>End Points</h5>
+                                    </div>
+                                    <IconButton
+                                        size={IconButton.SIZE.LARGE}
+                                        icon={IconButton.ICON.CLOSE}
+                                        type={'close-button'}
+                                        onClick={this.onShowEps.bind(this, [])}/>
                                 </div>
-                                <IconButton
-                                    size={IconButton.SIZE.LARGE}
-                                    icon={IconButton.ICON.CLOSE}
-                                    type={'close-button'}
-                                    onClick={this.onShowEps.bind(this, [])}/>
-                            </div>
-                            <div className="popup-table-page-content">
-                                <div className="popup-table-container">
-                                    <TableEps
-                                        initialPageSize={5}
-                                        allData={this.props.epTableData}/>
+                                <div className="app-page-popup-content">
+                                    <div className="popup-table-container">
+                                        <TableEps
+                                            initialPageSize={5}
+                                            allData={this.props.epTableData}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    :
-                    null
+                        :
+                        null
+                }
+                {
+                    this.props.showRiskTemplates ?
+                        <div className="app-page-popup">
+                            <RiskTemplates
+                                onShowRiskTemplates={this.props.onShowRiskTemplates}/>
+                        </div>
+                        :
+                        null
                 }
             </div>
         );
@@ -126,8 +139,10 @@ App.propTypes = {
     getTileDataWhat: PropTypes.func,
     getTileDataCan: PropTypes.func,
     showTalkPage: PropTypes.bool,
+    showRiskTemplates: PropTypes.bool,
     onTileNumberClicked: PropTypes.func,
     onShowEps: PropTypes.func,
+    onShowRiskTemplates: PropTypes.func,
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
     openTalkPage: PropTypes.func,
@@ -149,6 +164,7 @@ App.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
     showTalkPage: state.app.showTalkPage,
+    showRiskTemplates: state.app.showRiskTemplates,
     model: state.app.model,
     tiles: state.app.tiles,
     popupTableData: state.app.popupTableData,

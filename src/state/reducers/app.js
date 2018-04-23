@@ -8,6 +8,7 @@ import {
     ON_TILE_CLICKED,
     ON_TILE_NUMBER_CLICKED,
     ON_SHOW_EPS,
+    ON_SHOW_RISK_TEMPLATES,
     OPEN_TALK_PAGE,
     CLOSE_TALK_PAGE,
     OPEN_HOW_THEY_TALK_PAGE,
@@ -16,6 +17,7 @@ import {
 
 const initialState = {
     showTalkPage: false,
+    showRiskTemplates: false,
     howTheyTalkData: undefined,
     canTalkStatus: 'hidden',
     showSidebar: true,
@@ -58,6 +60,10 @@ export default function(state = initialState, action = {}) {
         case ON_SHOW_EPS:
             return Object.assign({}, state, {
                 epTableData: action.payload.data
+            });
+        case ON_SHOW_RISK_TEMPLATES:
+            return Object.assign({}, state, {
+                showRiskTemplates: action.payload.showRiskTemplates
             });
         case ON_TILE_CLICKED:
             selectedTiles = state.selectedTiles.slice(0);

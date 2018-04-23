@@ -152,7 +152,7 @@ class Main extends React.Component {
 
         return (
             <div className="main-page-container">
-                <Header/>
+                <Header onShowRiskTemplates={this.props.onShowRiskTemplates}/>
                 <div className="main-page-content-container">
 
                     <div className="search-function-container">
@@ -223,6 +223,7 @@ Main.propTypes = {
     getTileDataCan: PropTypes.func,
     onTileNumberClicked: PropTypes.func,
     onShowEps: PropTypes.func,
+    onShowRiskTemplates: PropTypes.func,
     onTileClicked: PropTypes.func,
     canWeTalk: PropTypes.func,
     openTalkPage: PropTypes.func,

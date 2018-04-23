@@ -1,0 +1,14 @@
+@import "../scss/app.scss";
+
+$query-result-container-min-height: 300px;
+
+.risk-templates-page-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: $light-gray-5;
+
+
+}

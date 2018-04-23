@@ -8,6 +8,7 @@ import Chord from '../components/Chord';
 import TableResult from '../components/TableResult';
 // import constants from '../constants';
 
+import '../App.scss';
 import './Talk.scss';
 import util from '../common/util';
 
@@ -138,8 +139,8 @@ class Talk extends React.Component {
 
         return (
             <div className="talk-page-container">
-                <div className="talk-page-header">
-                    <div className="talk-page-header-left">
+                <div className="popup-page-header">
+                    <div className="popup-page-header-left">
                         <h4>{gauge1Name + ' and ' + gauge2Name} </h4>
                     </div>
                     <IconButton

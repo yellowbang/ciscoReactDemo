@@ -6,6 +6,7 @@ const TOGGLE_SIDEBAR = 'toggleSidebar';
 const ON_TILE_CLICKED = 'onTileClicked';
 const ON_TILE_NUMBER_CLICKED = 'onTileNumberClicked';
 const ON_SHOW_EPS = 'onShowEps';
+const ON_SHOW_RISK_TEMPLATES = 'onShowRiskTemplates';
 const CAN_WE_TALK = 'canWeTalk';
 const OPEN_TALK_PAGE = 'openTalkPage';
 const CLOSE_TALK_PAGE = 'closeTalkPage';
@@ -178,6 +179,12 @@ let appActions = function(dispatch) {
                 error: function(xhr, status, err) {
                     console.log(err);
                 }
+            });
+        },
+        onShowRiskTemplates: (toShow) => {
+            dispatch({
+                type: ON_SHOW_RISK_TEMPLATES,
+                payload: {showRiskTemplates: toShow}
             });
         },
         canWeTalk: (selectedTiles) => {
@@ -373,6 +380,7 @@ export {
     ON_TILE_CLICKED,
     ON_TILE_NUMBER_CLICKED,
     ON_SHOW_EPS,
+    ON_SHOW_RISK_TEMPLATES,
     CAN_TWO_QUERIES_TALK,
     CAN_WE_TALK,
     OPEN_TALK_PAGE,
