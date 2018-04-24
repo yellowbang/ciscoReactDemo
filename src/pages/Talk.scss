@@ -118,35 +118,6 @@
             border-radius: 5px;
             background-color: $white;
 
-            > .how-they-talk-page-header {
-                width: 100%;
-                height: 60px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                background-color: $light-grey;
-                padding-left: $padding-xlarge;
-                padding-right: $padding-xlarge;
-
-                > .how-they-talk-page-header-left {
-
-                }
-
-                > .close-button {
-                    display: flex;
-                    flex-direction: row-reverse;
-                    font-size: 30px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    width: 65px;
-                    min-width: 65px;
-                    height: 65px;
-                    color: $darker-grey-text;
-                    background-color: transparent;
-                }
-            }
-
             > .how-they-talk-page-content {
                 padding: $padding-xxxlarge;
 
@@ -160,7 +131,6 @@
             }
         }
     }
-
 }
 
 .gauge-value-container {

@@ -6,6 +6,7 @@ import CustomGauge from '../components/CustomGauge';
 import PointToPoint from '../components/PointToPoint';
 import Chord from '../components/Chord';
 import TableResult from '../components/TableResult';
+import Wizard from '../components/Wizard';
 // import constants from '../constants';
 
 import '../App.scss';
@@ -233,33 +234,24 @@ class Talk extends React.Component {
                     </div>
                 </div>
                 {this.props.howTheyTalkData ?
-                    <div className="how-they-talk-page">
-                        <div className="how-they-talk-page-container">
-                            <div className="how-they-talk-page-header">
-                                <div className="how-they-talk-page-header-left">
-                                    <h4>How they talk</h4>
-                                </div>
-                                <IconButton
-                                    size={IconButton.SIZE.LARGE}
-                                    icon={IconButton.ICON.CLOSE}
-                                    type={'close-button'}
-                                    onClick={this.onCloseHowTheyTalk}/>
-                            </div>
-                            <div className="how-they-talk-page-content">
-                                <PointToPoint
-                                    onLineClicked={this.lineOnClicked}
-                                    points={this.state.points}
-                                />
-                                <div className="table-container">
-                                    <h5 className="table-title">Filters and rules between </h5>
-                                    <TableResult
-                                        initialPageSize={5}
-                                        onRowClick={this.onTableRowClicked}
-                                        allData={this.state.tableData.data}/>
-                                </div>
-                            </div>
+                    <Wizard
+                        wizardClassName={'how-they-talk-page'}
+                        wizardContainerClassName={'how-they-talk-page-container'}
+                        wizardContentContainerClassName={'how-they-talk-page-content'}
+                        title={'How they talk'}
+                        onClickClose={this.onCloseHowTheyTalk}>
+                        <PointToPoint
+                            onLineClicked={this.lineOnClicked}
+                            points={this.state.points}
+                        />
+                        <div className="table-container">
+                            <h5 className="table-title">Filters and rules between </h5>
+                            <TableResult
+                                initialPageSize={5}
+                                onRowClick={this.onTableRowClicked}
+                                allData={this.state.tableData.data}/>
                         </div>
-                    </div>
+                    </Wizard>
                     :
                     null
                 }

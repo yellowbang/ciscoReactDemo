@@ -66,6 +66,14 @@ $empty-results-color:           rgba(31, 31, 32, .7);
 $empty-results-font-size:       12px;
 $empty-results-font-weight:     $font-weight-extra-solid;
 
+// p42 -------------------------------------------
+
+$query-result-container-min-height: 300px;
+
+// Header
+$header-height: 60px;
+$header-icon-size: 30px;
+
 // Component styling
 // Tile
 $tile-height: 80px;
@@ -77,6 +85,5 @@ $big-point-radius: 24px;
 $small-point-size: 24px;
 $small-point-radius: 12px;
 
-// p42
-$header-height: 60px;
-$query-result-container-min-height: 300px;
+// Typeahead
+$typeahead-clear-buttons-size: 19px;

@@ -9,6 +9,7 @@ import Talk from './pages/Talk.jsx';
 import RiskTemplates from './pages/RiskTemplates.jsx';
 import TablePopup from './components/TablePopup';
 import TableEps from './components/TableEps';
+import Wizard from './components/Wizard';
 
 import './App.scss';
 import {IconButton} from 'cisco-ui-components';
@@ -39,6 +40,7 @@ class App extends React.Component {
     }
 
     render () {
+        const me = this;
 
         return (
             <div className="app-container">
@@ -72,57 +74,36 @@ class App extends React.Component {
                 }
                 {
                     this.props.popupTableData.length ?
-                        <div className="app-page-popup">
-                            <div className="popup-table">
-                                <div className="popup-table-header-container">
-                                    <div className="popup-page-header-left"/>
-                                    <IconButton
-                                        size={IconButton.SIZE.LARGE}
-                                        icon={IconButton.ICON.CLOSE}
-                                        type={'close-button'}
-                                        onClick={this.props.onTileNumberClicked.bind(this, [])}/>
-                                </div>
-                                <div className="app-page-popup-content">
-                                    <div className="popup-table-container">
-                                        <TablePopup
-                                            initialPageSize={5}
-                                            allData={this.props.popupTableData}/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Wizard
+                            wizardClassName={'app-page-popup'}
+                            wizardContainerClassName={'popup-table'}
+                            wizardContentContainerClassName={'app-page-popup-content'}
+                            onClickClose={this.props.onTileNumberClicked.bind(this, [])}>
+                            <TablePopup
+                                initialPageSize={5}
+                                allData={this.props.popupTableData}/>
+                        </Wizard>
                         :
                         null
                 }
                 {
                     this.props.epTableData.length ?
-                        <div className="app-page-popup">
-                            <div className="popup-table">
-                                <div className="popup-table-header-container">
-                                    <div className="popup-page-header-left">
-                                        <h5>End Points</h5>
-                                    </div>
-                                    <IconButton
-                                        size={IconButton.SIZE.LARGE}
-                                        icon={IconButton.ICON.CLOSE}
-                                        type={'close-button'}
-                                        onClick={this.onShowEps.bind(this, [])}/>
-                                </div>
-                                <div className="app-page-popup-content">
-                                    <div className="popup-table-container">
-                                        <TableEps
-                                            initialPageSize={5}
-                                            allData={this.props.epTableData}/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Wizard
+                            wizardClassName={'app-page-popup'}
+                            wizardContainerClassName={'popup-table'}
+                            wizardContentContainerClassName={'app-page-popup-content'}
+                            title={'End Points'}
+                            onClickClose={this.onShowEps.bind(me, [])}>
+                            <TableEps
+                                initialPageSize={5}
+                                allData={this.props.epTableData}/>
+                        </Wizard>
                         :
                         null
                 }
                 {
                     this.props.showRiskTemplates ?
-                        <div className="app-page-popup">
+                        <div className="risk-templates-page">
                             <RiskTemplates
                                 onShowRiskTemplates={this.props.onShowRiskTemplates}/>
                         </div>
