@@ -9,7 +9,7 @@ class CustomTypeahead extends React.Component {
         super(...args);
         this.state = {
             searchText: '',
-            typeaheadOptions: constants.DEMO_TYPE_AHEAD_OPTIONS
+            typeaheadOptions: this.props.typeaheadOptions || []
         };
         this.onClickClearButton = this.onClickClearButton.bind(this);
     }
@@ -35,7 +35,9 @@ class CustomTypeahead extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        this.setState({});
+        if (nextProps.typeaheadOptions) {
+            this.setState({typeaheadOptions: nextProps.typeaheadOptions});
+        }
     }
 
     shouldComponentUpdate (nextProps, nextState) {
@@ -44,6 +46,10 @@ class CustomTypeahead extends React.Component {
 
     render () {
         const me = this;
+        let typeaheadBarClassName = 'typeahead-bar';
+        if (this.props.typeaheadBarClassName) {
+            typeaheadBarClassName = typeaheadBarClassName + ' ' + this.props.typeaheadBarClassName;
+        }
 
         return (
             <div className="typeahead-container">
@@ -51,30 +57,39 @@ class CustomTypeahead extends React.Component {
                     labelKey="key"
                     options={this.state.typeaheadOptions}
                     minLength={1}
-                    className="typeahead-bar"
+                    className={typeaheadBarClassName}
                     onChange={this.updateTypeaheadOptions.bind(this)}
                     onInputChange={this.updateTypeaheadOptions.bind(this)}
                     ref={function(typeahead) {
                         me.typeahead = typeahead;
                     }}
                 />
-                <div className="clear-button-container">
-                    <IconButton
-                        size={IconButton.SIZE.SMALL}
-                        icon={IconButton.ICON.CLOSE}
-                        type={'close-button'}
-                        onClick={this.onClickClearButton}/>
-                </div>
+                {this.props.showClearButton ?
+                    <div className="clear-button-container">
+                        <IconButton
+                            size={IconButton.SIZE.SMALL}
+                            icon={IconButton.ICON.CLOSE}
+                            type={'close-button'}
+                            onClick={this.onClickClearButton}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
         );
     }
 }
 
 CustomTypeahead.propTypes = {
+    typeaheadBarClassName: PropTypes.string,
+    typeaheadOptions: PropTypes.array,
+    showClearButton: PropTypes.bool
 };
 
 CustomTypeahead.defaultProps = {
-    model: 'demo'
+    typeaheadBarClassName: '',
+    showClearButton: true,
+    typeaheadOptions: []
 };
 
 export default CustomTypeahead;

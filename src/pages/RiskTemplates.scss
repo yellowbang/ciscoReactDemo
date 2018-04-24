@@ -1,6 +1,8 @@
 @import "../scss/app.scss";
 
 $query-result-container-min-height: 300px;
+$button-container-height: 60px;
+$add-rule-button-size: 21px;
 
 .risk-templates-page-container {
     position: absolute;
@@ -8,7 +10,160 @@ $query-result-container-min-height: 300px;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    align-items: center;
     background-color: $light-gray-5;
 
+    > .risk-templates-page-container-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 80%;
 
+        > .add-risk-template-button {
+            display: flex;
+            flex-direction: row-reverse;
+            height: $button-container-height;
+            align-items: center;
+
+        }
+
+        > .risk-templates-table {
+            flex: 1;
+            width: 100%;
+
+            .basic-table {
+                width: 100%;
+                background-color: $white;
+
+                .function-column {
+                    width: 50px;
+                }
+            }
+        }
+
+    }
+
+    > .risk-templates-page-footer-container {
+        width: 100%;
+        height: $button-container-height;
+        background-color: $white;
+        border-top: 1px solid $light-gray-3;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        padding-right: $padding-xxlarge;
+    }
+
+    > .create-risk-template-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        background-color: $transparent-background;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+
+        > .create-risk-template-container {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            background-color: $white;
+
+            > .header-container {
+                width: 100%;
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                background-color: $light-grey;
+                padding-left: $padding-xlarge;
+                padding-right: $padding-xlarge;
+
+                > .close-button {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    font-size: 30px;
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: 65px;
+                    min-width: 65px;
+                    height: 65px;
+                    color: $darker-grey-text;
+                    background-color: transparent;
+                }
+            }
+
+            > .create-risk-template-content-container {
+                flex: 1;
+                width: 100%;
+                height: 100%;
+                padding: $padding-xxxlarge;
+                padding-top: $padding-xlarge;
+
+                .template-rules-group {
+                    height: 100%;
+                    min-height: 200px;
+
+                    .close-button {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        margin-top: 16px;
+                        padding-left: 0;
+                        padding-right: 0;
+                        min-width: $add-rule-button-size;
+                        width: $add-rule-button-size;
+                        height: $add-rule-button-size;
+                        background-color: $darker-grey-text;
+                    }
+                }
+
+                .rule-container {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: $padding-base;
+
+                    .form-group{
+                        padding-top: $padding-base;
+                        margin-right: 0;
+                        margin-bottom: 0;
+                    }
+                }
+
+                .text-field {
+                    width: 300px;
+                }
+            }
+
+            .create-risk-template-footer-container {
+                width: 100%;
+                height: $button-container-height;
+                background-color: $white;
+                border-top: 1px solid $light-gray-3;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                padding-right: $padding-xxlarge;
+
+                > .empty-space{
+                    width: $padding-xlarge;
+                    height: $padding-xlarge;
+                }
+            }
+        }
+    }
 }

@@ -159,7 +159,7 @@ class Main extends React.Component {
                         <img className="time-image cursor-pointer" src={require('../assets/images/timeImage.png')}/>
                         <div className="search-bar-container">
                             <CustomTypeahead
-                                model={this.props.model}
+                                typeaheadOptions={constants.DEMO_TYPE_AHEAD_OPTIONS}
                                 ref={function(typeahead) {
                                     me.typeahead = typeahead;
                                 }}/>

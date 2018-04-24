@@ -76,6 +76,7 @@ $query-result-container-min-height: 300px;
     background: $content-header-bg;
     padding-left: 40px;
     padding-right: 40px;
+    box-shadow: $base-box-shadow;
 
     > .close-button {
         display: flex;

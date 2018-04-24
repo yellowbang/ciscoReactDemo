@@ -1,7 +1,6 @@
 @import "../scss/app.scss";
 
 $query-result-container-min-height: 300px;
-$clear-buttons-size: 19px;
 
 .main-page-container {
     overflow: auto;
@@ -34,54 +33,6 @@ $clear-buttons-size: 19px;
                 width: 740px;
                 align-items: center;
                 justify-content: center;
-
-                > .typeahead-container {
-                    position: relative;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-
-                    > .typeahead-bar {
-                        width: 650px;
-                        margin-right: $padding-base;
-                        box-shadow: 0 2px 4px $shadow;
-
-                        .form-control {
-                            border-radius: 2px;
-                        }
-                    }
-
-                    > .clear-button-container {
-                        position: absolute;
-                        right: $padding-xlarge;
-                        width: $clear-buttons-size;
-
-                        > .close-button {
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            justify-content: center;
-                            padding-left: 0;
-                            padding-right: 0;
-                            min-width: $clear-buttons-size;
-                            width: $clear-buttons-size;
-                            height: $clear-buttons-size;
-                            z-index: 2;
-                            background-color: $darker-grey-text;
-
-                            > span {
-                                display: flex;
-                                flex-direction: row;
-                                align-items: center;
-                                justify-content: center;
-                                text-align: center;
-                                font-size: 9px;
-                                line-height: 9px;
-                                font-weight: bolder;
-                            }
-                        }
-                    }
-                }
             }
         }
 

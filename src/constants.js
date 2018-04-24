@@ -7,6 +7,14 @@ export default {
             darkBlue: 'rgba(0, 80, 115, 1)'
         }
     },
+    NETWORK_ZONES: [
+        {key: 'Zone EPG...'},
+        {key: 'Zone VRF...'},
+        {key: 'Zone Bridge Domain (BD)...'},
+        {key: 'Zone Encap...'},
+        {key: 'Zone Tenant...'},
+        {key: 'Zone Query...'}
+    ],
     //TODO:remove
     DEMO_TYPE_AHEAD_OPTIONS: [
         {key: 'What EPGS', url: 'http://172.31.219.91:5000/what?model=demo&tile_type=N_EPG&associated_to='},
