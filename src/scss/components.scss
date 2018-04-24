@@ -390,6 +390,18 @@
                 color: $darker-grey-text;
                 background-color: transparent;
             }
+            > .close-button:hover {
+                background-color: transparent;
+            }
+            > .close-button:active {
+                outline: none;
+                background-color: transparent;
+            }
+            > .close-button:focus {
+                outline: none;
+                box-shadow: none;
+                border: none;
+            }
         }
 
         > .wizard-content-container {

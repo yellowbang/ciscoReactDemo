@@ -11,8 +11,13 @@
 
         > .popup-table {
             background-color: white;
-            border-radius: 2px;
+            border-radius: 3px;
             overflow: auto;
+
+            > .app-page-popup-header {
+                height: 40px;
+                min-height: 40px;
+            }
 
             > .app-page-popup-content {
                 padding: 0;
@@ -23,46 +28,6 @@
                 }
             }
         }
-    }
-}
-
-.popup-page-header {
-    min-height: 60px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    color: $content-header-color;
-    background: $content-header-bg;
-    padding-left: 40px;
-    padding-right: 40px;
-    box-shadow: $base-box-shadow;
-
-    > .close-button {
-        display: flex;
-        flex-direction: row-reverse;
-        font-size: 30px;
-        padding-left: 0;
-        padding-right: 0;
-        width: 65px;
-        min-width: 65px;
-        height: 65px;
-        color: white;
-        background-color: transparent;
-    }
-
-    > .close-button:hover {
-        background-color: transparent;
-    }
-    > .close-button:active {
-        outline: none;
-        background-color: transparent;
-    }
-    > .close-button:focus {
-        outline: none;
-        box-shadow: none;
-        border: none;
     }
 }
 

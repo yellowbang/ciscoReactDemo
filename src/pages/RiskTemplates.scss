@@ -64,12 +64,13 @@ $add-rule-button-size: 21px;
 
                     }
 
-                    .close-button {
+                    .add-button {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
                         justify-content: center;
                         margin-top: 16px;
+                        font-size: 12px;
                         padding-left: 0;
                         padding-right: 0;
                         min-width: $add-rule-button-size;

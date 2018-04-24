@@ -79,6 +79,7 @@ class App extends React.Component {
                         <Wizard
                             wizardClassName={'app-page-popup'}
                             wizardContainerClassName={'popup-table'}
+                            wizardHeaderContainerClassName={'app-page-popup-header'}
                             wizardContentContainerClassName={'app-page-popup-content'}
                             onClickClose={this.props.onTileNumberClicked.bind(this, [])}>
                             <TablePopup
@@ -93,6 +94,7 @@ class App extends React.Component {
                         <Wizard
                             wizardClassName={'app-page-popup'}
                             wizardContainerClassName={'popup-table'}
+                            wizardHeaderContainerClassName={'app-page-popup-header'}
                             wizardContentContainerClassName={'app-page-popup-content'}
                             title={'End Points'}
                             onClickClose={this.onShowEps.bind(me, [])}>

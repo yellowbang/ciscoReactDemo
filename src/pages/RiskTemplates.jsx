@@ -30,7 +30,7 @@ class Rule extends React.Component {
                 <IconButton
                     size={IconButton.SIZE.LARGE}
                     icon={IconButton.ICON.PLUS}
-                    type={'close-button'}
+                    type={'add-button'}
                     onClick={this.props.onClickIcon}/>
             </div>
         );

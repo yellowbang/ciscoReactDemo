@@ -64,12 +64,11 @@ class Tile extends React.Component {
         }
 
         let name = this.props.data.name;
-        let endPoints = this.props.data.endPoints;
 
         let columns = [];
         let keys = Object.keys(this.props.data.allData);
         keys.forEach(function(key) {
-            if (key.indexOf('N_') === 0 && key !== 'N_EP' && key !== 'N_INVENTORY' && key !== me.props.data.allData.tile_type) {
+            if (key.indexOf('N_') === 0 && key !== 'N_EPG' && key !== 'N_EP' && key !== 'N_INVENTORY' && key !== me.props.data.allData.tile_type) {
                 let count = me.props.data.allData[key].count;
                 let clickFn = util.emptyFn;
                 let numberClassName = 'text-bold';
@@ -88,6 +87,15 @@ class Tile extends React.Component {
             }
         });
 
+        columns.push(
+            <div key={'N_EP'} className="tile-info-column-container">
+                <div className={'text-bold cursor-pointer'} onClick={me.onClickEndPoint.bind(me, [me.props.data.dn])}>
+                    {me.props.data.allData.N_EP.count}
+                </div>
+                <div>EP</div>
+            </div>
+        )
+
         return (
             <div className={tileClass}>
                 <div className={tileContentClass}>
@@ -101,10 +109,10 @@ class Tile extends React.Component {
                     <div className="tile-info-column-container">
                         <div
                             className="tile-end-point-number  cursor-pointer"
-                            onClick={me.onClickEndPoint.bind(me, [me.props.data.dn])}>
-                            {endPoints}
+                            onClick={me.onClickColumn.bind(me, me.props.data.allData.N_EPG.data)}>
+                            {this.props.data.allData.N_EPG.count}
                         </div>
-                        <div className="tile-end-points-text text-color-gery ">{'End Points'}</div>
+                        <div className="tile-end-points-text text-color-gery ">{'EPGs'}</div>
                     </div>
                     <div className="tile-info-column-container flex-half cursor-pointer" onClick={this.onClickCheckBox}>
                         <div className="tile-toggle-icon-container">

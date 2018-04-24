@@ -17,7 +17,7 @@ import {
 
 const initialState = {
     showTalkPage: false,
-    showRiskTemplates: true,
+    showRiskTemplates: false,
     howTheyTalkData: undefined,
     canTalkStatus: 'hidden',
     showSidebar: true,
