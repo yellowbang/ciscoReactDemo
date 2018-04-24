@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {Button, Dropdown, IconButton} from 'cisco-ui-components';
+import {ListView, ListViewItem} from 'react-scrollable-list-view';
 import TableRiskTemplates from '../components/TableRiskTemplates';
 import GroupInfo from '../components/GroupInfo';
 
@@ -17,7 +18,7 @@ class Rule extends React.Component {
         const canTalkTo = [{name: 'Can talk to', value: 'canTalkTo'}];
 
         return (
-            <div key={this.props.ruleKey} className="rule-container">
+            <div className="rule-container">
                 <TextField
                     textBarClassName="text-field"
                     title={'Zone A'}/>
@@ -36,7 +37,6 @@ class Rule extends React.Component {
 }
 
 Rule.propTypes = {
-    ruleKey: PropTypes.string,
     onClickIcon: PropTypes.func
 };
 
@@ -51,7 +51,7 @@ class RiskTemplates extends React.Component {
         this.addRule = this.addRule.bind(this);
         this.state = {
             createRiskTemplateShown: false,
-            rules: [(<Rule ruleKey={'rule0'} onClickIcon={this.addRule}/>)]
+            rules: 1
         };
     }
 
@@ -72,7 +72,7 @@ class RiskTemplates extends React.Component {
     closeCreateRiskTemplatesPage () {
         this.setState({
             createRiskTemplateShown: false,
-            rules: [(<Rule ruleKey={'rule0'} onClickIcon={this.addRule}/>)]
+            rules: 1
         });
     }
 
@@ -81,9 +81,7 @@ class RiskTemplates extends React.Component {
     }
 
     addRule () {
-        let rules = this.state.rules.slice(0);
-        let key = 'rule' + rules.length;
-        rules.push(<Rule ruleKey={key} onClickIcon={this.addRule}/>);
+        let rules = this.state.rules + 1;
         this.setState({rules});
     }
 
@@ -93,6 +91,13 @@ class RiskTemplates extends React.Component {
 
     render () {
         let me = this;
+        let rules = [];
+        let ruleIndex = 0;
+        for (ruleIndex; ruleIndex < this.state.rules; ruleIndex++) {
+            rules.push(<ListViewItem height={90} key={'rule' + ruleIndex}>
+                <Rule onClickIcon={me.addRule}/>
+            </ListViewItem>);
+        }
 
         return (
             <div className="risk-templates-page-container">
@@ -151,9 +156,15 @@ class RiskTemplates extends React.Component {
                                             }}/>
                                     </GroupInfo>
                                     <GroupInfo
-                                        groupInfoContentContainerClassName={'template-rules-group'}
+                                        groupInfoContainerClassName={'template-rules-container'}
+                                        groupInfoContentContainerClassName={'template-rules'}
                                         title={'Template Rules'}>
-                                        {this.state.rules}
+                                        <ListView
+                                            runwayItems={7}
+                                            runwayItemsOpposite={5}
+                                            aveCellHeight={90}>
+                                            {rules}
+                                        </ListView>
                                     </GroupInfo>
                                 </div>
                                 <div className="create-risk-template-footer-container">
