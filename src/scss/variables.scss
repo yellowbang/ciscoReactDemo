@@ -56,8 +56,6 @@ $darker-grey-text:          rgba(127, 127, 133, 1);
 $color-dark-blue-text:          rgba(0, 80, 115, 1);
 $transparent-background: rgba(146, 146, 146, .5);
 
-/// APIC App
-
 // Top level content styling
 $content-header-bg:             $indigo;
 $content-header-color:          $white;
@@ -78,3 +76,7 @@ $big-point-size: 48px;
 $big-point-radius: 24px;
 $small-point-size: 24px;
 $small-point-radius: 12px;
+
+// p42
+$header-height: 60px;
+$query-result-container-min-height: 300px;

@@ -5,6 +5,7 @@ import {Button, Dropdown, IconButton} from 'cisco-ui-components';
 import {ListView, ListViewItem} from 'react-scrollable-list-view';
 import TableRiskTemplates from '../components/TableRiskTemplates';
 import GroupInfo from '../components/GroupInfo';
+import Wizard from '../components/Wizard';
 
 import constants from '../constants';
 import util from '../common/util';
@@ -133,55 +134,43 @@ class RiskTemplates extends React.Component {
 
                 {
                     this.state.createRiskTemplateShown ?
-                        <div className="create-risk-template-background">
-                            <div className="create-risk-template-container">
-                                <div className="header-container">
-                                    <div className="popup-page-header-left">
-                                        <h5>Create Custom Risk Template</h5>
-                                    </div>
-                                    <IconButton
-                                        size={IconButton.SIZE.LARGE}
-                                        icon={IconButton.ICON.CLOSE}
-                                        type={'close-button'}
-                                        onClick={this.closeCreateRiskTemplatesPage}/>
-                                </div>
-                                <div className="create-risk-template-content-container">
-                                    <GroupInfo
-                                        title={'General'}>
-                                        <TextField
-                                            textBarClassName="text-field"
-                                            title={'Name*'}
-                                            ref={function(nameField) {
-                                                me.nameField = nameField;
-                                            }}/>
-                                    </GroupInfo>
-                                    <GroupInfo
-                                        groupInfoContainerClassName={'template-rules-container'}
-                                        groupInfoContentContainerClassName={'template-rules'}
-                                        title={'Template Rules'}>
-                                        <ListView
-                                            runwayItems={7}
-                                            runwayItemsOpposite={5}
-                                            aveCellHeight={90}>
-                                            {rules}
-                                        </ListView>
-                                    </GroupInfo>
-                                </div>
-                                <div className="create-risk-template-footer-container">
-                                    <Button
-                                        type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
-                                        onClick={this.saveCreateRiskTemplatesPage}>
-                                        Save
-                                    </Button>
-                                    <div className="empty-space"/>
-                                    <Button
-                                        type={Button.TYPE.DEFAULT} size={Button.SIZE.SMALL}
-                                        onClick={this.closeCreateRiskTemplatesPage}>
-                                        Cancel
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
+                        <Wizard
+                            wizardClassName={'create-risk-template-wizard'}
+                            title={'Create Custom Risk Template'}
+                            onClickClose={this.closeCreateRiskTemplatesPage}
+                            buttons={[
+                                <Button
+                                    type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                                    onClick={this.saveCreateRiskTemplatesPage}>
+                                    Save
+                                </Button>,
+                                <Button
+                                    type={Button.TYPE.DEFAULT} size={Button.SIZE.SMALL}
+                                    onClick={this.closeCreateRiskTemplatesPage}>
+                                    Cancel
+                                </Button>
+                            ]}>
+                            <GroupInfo
+                                title={'General'}>
+                                <TextField
+                                    textBarClassName="text-field"
+                                    title={'Name*'}
+                                    ref={function(nameField) {
+                                        me.nameField = nameField;
+                                    }}/>
+                            </GroupInfo>
+                            <GroupInfo
+                                groupInfoContainerClassName={'template-rules-container'}
+                                groupInfoContentContainerClassName={'template-rules'}
+                                title={'Template Rules'}>
+                                <ListView
+                                    runwayItems={7}
+                                    runwayItemsOpposite={5}
+                                    aveCellHeight={90}>
+                                    {rules}
+                                </ListView>
+                            </GroupInfo>
+                        </Wizard>
                         :
                         null
                 }
