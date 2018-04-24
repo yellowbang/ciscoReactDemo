@@ -101,41 +101,34 @@ class RiskTemplates extends React.Component {
         }
 
         return (
-            <div className="risk-templates-page-container">
-                <div className="popup-page-header">
-                    <div className="popup-page-header-left">
-                        <h4>{'Risk Templates'} </h4>
-                    </div>
-                    <IconButton
-                        size={IconButton.SIZE.LARGE}
-                        icon={IconButton.ICON.CLOSE}
-                        type={'close-button'}
-                        onClick={this.closeRiskTemplatesPage}/>
-                </div>
-                <div className="risk-templates-page-container-container">
-                    <div className="add-risk-template-button">
-                        <Button
-                            type={Button.TYPE.PRIMARY_GHOST} size={Button.SIZE.SMALL}
-                            onClick={this.showCreateRiskTemplatesPage}>
-                            Add Custom Risk Template
-                        </Button>
-                    </div>
-                    <div className="risk-templates-table">
-                        <TableRiskTemplates/>
-                    </div>
-                </div>
-                <div className="risk-templates-page-footer-container">
+            <Wizard
+                fullScreen={true}
+                wizardContainerClassName={'risk-templates-page-container'}
+                wizardContentContainerClassName={'risk-templates-page-container-container'}
+                title={'Risk Templates'}
+                onClickClose={this.closeRiskTemplatesPage}
+                buttons={[
                     <Button
                         type={Button.TYPE.PRIMARY} size={Button.SIZE.DEFAULT}
                         onClick={this.closeRiskTemplatesPage}>
-                        OK?
+                        OK
+                    </Button>
+                ]}>
+                <div className="add-risk-template-button">
+                    <Button
+                        type={Button.TYPE.PRIMARY_GHOST} size={Button.SIZE.SMALL}
+                        onClick={this.showCreateRiskTemplatesPage}>
+                        Add Custom Risk Template
                     </Button>
                 </div>
-
+                <div className="risk-templates-table">
+                    <TableRiskTemplates/>
+                </div>
                 {
                     this.state.createRiskTemplateShown ?
                         <Wizard
                             wizardClassName={'create-risk-template-wizard'}
+                            wizardContainerClassName={'create-risk-template-wizard-container'}
                             title={'Create Custom Risk Template'}
                             onClickClose={this.closeCreateRiskTemplatesPage}
                             buttons={[
@@ -174,7 +167,7 @@ class RiskTemplates extends React.Component {
                         :
                         null
                 }
-            </div>
+            </Wizard>
         );
     }
 }

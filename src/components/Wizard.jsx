@@ -7,36 +7,41 @@ import {IconButton} from 'cisco-ui-components';
 class Wizard extends React.Component {
     constructor (...args) {
         super(...args);
-        this.state = {};
+        this.state = {
+            wizardClassName: 'wizard',
+            wizardContainerClassName: 'wizard-container',
+            wizardHeaderContainerClassName: 'wizard-header-container',
+            wizardContentContainerClassName: 'wizard-content-container',
+            wizardFooterContainerClassName: 'wizard-footer-container'
+        };
+
+        if (this.props.fullScreen) {
+            this.state.wizardContainerClassName = this.state.wizardContainerClassName + ' full';
+            this.state.wizardHeaderContainerClassName = this.state.wizardHeaderContainerClassName + ' full';
+        }
+
+        if (this.props.wizardClassName) {
+            this.state.wizardClassName = this.state.wizardClassName + ' ' + this.props.wizardClassName;
+        }
+
+        if (this.props.wizardContainerClassName) {
+            this.state.wizardContainerClassName = this.state.wizardContainerClassName + ' ' + this.props.wizardContainerClassName;
+        }
+
+        if (this.props.wizardHeaderContainerClassName) {
+            this.state.wizardHeaderContainerClassName = this.state.wizardHeaderContainerClassName + ' ' + this.props.wizardHeaderContainerClassName;
+        }
+
+        if (this.props.wizardContentContainerClassName) {
+            this.state.wizardContentContainerClassName = this.state.wizardContentContainerClassName + ' ' + this.props.wizardContentContainerClassName;
+        }
+
+        if (this.props.wizardFooterContainerClassName) {
+            this.state.wizardFooterContainerClassName = this.state.wizardFooterContainerClassName + ' ' + this.props.wizardFooterContainerClassName;
+        }
     }
 
     render () {
-        const me = this;
-        let wizardClassName = 'wizard';
-        if (this.props.wizardClassName) {
-            wizardClassName = wizardClassName + ' ' + this.props.wizardClassName;
-        }
-
-        let wizardContainerClassName = 'wizard-container';
-        if (this.props.wizardContainerClassName) {
-            wizardContainerClassName = wizardContainerClassName + ' ' + this.props.wizardContainerClassName;
-        }
-
-        let wizardHeaderContainerClassName = 'wizard-header-container';
-        if (this.props.wizardHeaderContainerClassName) {
-            wizardHeaderContainerClassName = wizardHeaderContainerClassName + ' ' + this.props.wizardHeaderContainerClassName;
-        }
-
-        let wizardContentContainerClassName = 'wizard-content-container';
-        if (this.props.wizardContentContainerClassName) {
-            wizardContentContainerClassName = wizardContentContainerClassName + ' ' + this.props.wizardContentContainerClassName;
-        }
-
-        let wizardFooterContainerClassName = 'wizard-footer-container';
-        if (this.props.wizardFooterContainerClassName) {
-            wizardFooterContainerClassName = wizardFooterContainerClassName + ' ' + this.props.wizardFooterContainerClassName;
-        }
-
         let footerButtons = [];
         let hasFooter = this.props.buttons && this.props.buttons.length > 0;
         if (this.props.buttons && this.props.buttons.length > 0) {
@@ -49,9 +54,9 @@ class Wizard extends React.Component {
         }
         return (
 
-            <div className={wizardClassName}>
-                <div className={wizardContainerClassName}>
-                    <div className={wizardHeaderContainerClassName}>
+            <div className={this.state.wizardClassName}>
+                <div className={this.state.wizardContainerClassName}>
+                    <div className={this.state.wizardHeaderContainerClassName}>
                         <div className="popup-page-header-left">
                             <h5>{this.props.title}</h5>
                         </div>
@@ -61,12 +66,12 @@ class Wizard extends React.Component {
                             type={'close-button'}
                             onClick={this.props.onClickClose}/>
                     </div>
-                    <div className={wizardContentContainerClassName}>
+                    <div className={this.state.wizardContentContainerClassName}>
                         {this.props.children}
                     </div>
                     {
                         hasFooter ?
-                            <div className={wizardFooterContainerClassName}>
+                            <div className={this.state.wizardFooterContainerClassName}>
                                 {footerButtons}
                             </div>
                             :
@@ -79,6 +84,7 @@ class Wizard extends React.Component {
 }
 
 Wizard.propTypes = {
+    fullScreen: PropTypes.bool,
     wizardClassName: PropTypes.string,
     wizardContainerClassName: PropTypes.string,
     wizardHeaderContainerClassName: PropTypes.string,
@@ -92,6 +98,7 @@ Wizard.propTypes = {
 };
 
 Wizard.defaultProps = {
+    fullScreen: false,
     wizardClassName: '',
     wizardContainerClassName: '',
     wizardHeaderContainerClassName: '',

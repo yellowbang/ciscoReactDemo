@@ -337,16 +337,35 @@
     height: 100%;
     overflow: auto;
 
+    > .wizard-container.full {
+        width: 100%;
+        height: 100%;
+    }
+
     > .wizard-container {
-        width: 90%;
+        width: auto;
         height: auto;
         display: flex;
         flex-direction: column;
         background-color: $white;
 
-        > .wizard-header-container{
+        > .wizard-header-container.full {
+            color: $content-header-color;
+            background: $content-header-bg;
+            padding-left: $padding-xxxlarge;
+            padding-right: $padding-xxxlarge;
+            box-shadow: $base-box-shadow;
+
+            > .close-button {
+                color: white;
+            }
+        }
+
+        > .wizard-header-container {
+
             width: 100%;
             height: $header-height;
+            min-height: $header-height;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -355,28 +374,27 @@
             padding-left: $padding-xlarge;
             padding-right: $padding-xlarge;
 
-            > .wizard-header-left{
+            > .wizard-header-left {
 
             }
 
-            > .close-button{
+            > .close-button {
                 display: flex;
                 flex-direction: row-reverse;
                 font-size: 30px;
                 padding-left: 0;
                 padding-right: 0;
-                width: 65px;
-                min-width: 65px;
-                height: 65px;
+                width: $header-height;
+                min-width: $header-height;
+                height: $header-height;
                 color: $darker-grey-text;
                 background-color: transparent;
             }
         }
 
-        > .wizard-content-container{
+        > .wizard-content-container {
             flex: 1;
             width: 100%;
-            height: 100%;
             overflow: auto;
             padding: $padding-xxxlarge;
             padding-top: $padding-xlarge;
@@ -384,7 +402,7 @@
             flex-direction: column;
         }
 
-        > .wizard-footer-container{
+        > .wizard-footer-container {
             width: 100%;
             height: $header-height;
             background-color: $white;
@@ -394,7 +412,7 @@
             align-items: center;
             padding-right: $padding-xxlarge;
 
-            > .empty-space{
+            > .empty-space {
                 width: $padding-xlarge;
                 height: $padding-xlarge;
             }

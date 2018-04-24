@@ -44,33 +44,35 @@ class App extends React.Component {
 
         return (
             <div className="app-container">
-                {this.props.showTalkPage ?
-                    <Talk
-                        selectedTiles={this.props.selectedTiles}
-                        closeTalkPage={this.props.closeTalkPage}
-                        closeHowTheyTalkPage={this.props.closeHowTheyTalkPage}
-                        chordOnSelected={this.props.chordOnSelected}
-                        onShowEps={this.onShowEps}
-                        howTheyTalk={this.props.howTheyTalk}
-                        howTheyTalkData={this.props.howTheyTalkData}
-                        gaugesData={this.props.gaugesData}
-                        chordData={this.props.chordData}
-                    />
-                    :
-                    <Main
-                        model={this.props.model}
-                        getTileDataWhat={this.props.getTileDataWhat}
-                        getTileDataCan={this.props.getTileDataCan}
-                        onTileClicked={this.props.onTileClicked}
-                        onTileNumberClicked={this.props.onTileNumberClicked}
-                        onShowRiskTemplates={this.props.onShowRiskTemplates}
-                        onShowEps={this.onShowEps}
-                        canWeTalk={this.props.canWeTalk}
-                        openTalkPage={this.props.openTalkPage}
-                        tiles={this.props.tiles}
-                        selectedTiles={this.props.selectedTiles}
-                        canTalkStatus={this.props.canTalkStatus}
-                    />
+                <Main
+                    model={this.props.model}
+                    getTileDataWhat={this.props.getTileDataWhat}
+                    getTileDataCan={this.props.getTileDataCan}
+                    onTileClicked={this.props.onTileClicked}
+                    onTileNumberClicked={this.props.onTileNumberClicked}
+                    onShowRiskTemplates={this.props.onShowRiskTemplates}
+                    onShowEps={this.onShowEps}
+                    canWeTalk={this.props.canWeTalk}
+                    openTalkPage={this.props.openTalkPage}
+                    tiles={this.props.tiles}
+                    selectedTiles={this.props.selectedTiles}
+                    canTalkStatus={this.props.canTalkStatus}
+                />
+                {
+                    this.props.showTalkPage ?
+                        <Talk
+                            selectedTiles={this.props.selectedTiles}
+                            closeTalkPage={this.props.closeTalkPage}
+                            closeHowTheyTalkPage={this.props.closeHowTheyTalkPage}
+                            chordOnSelected={this.props.chordOnSelected}
+                            onShowEps={this.onShowEps}
+                            howTheyTalk={this.props.howTheyTalk}
+                            howTheyTalkData={this.props.howTheyTalkData}
+                            gaugesData={this.props.gaugesData}
+                            chordData={this.props.chordData}
+                        />
+                        :
+                        null
                 }
                 {
                     this.props.popupTableData.length ?
@@ -103,10 +105,8 @@ class App extends React.Component {
                 }
                 {
                     this.props.showRiskTemplates ?
-                        <div className="risk-templates-page">
-                            <RiskTemplates
-                                onShowRiskTemplates={this.props.onShowRiskTemplates}/>
-                        </div>
+                        <RiskTemplates
+                            onShowRiskTemplates={this.props.onShowRiskTemplates}/>
                         :
                         null
                 }

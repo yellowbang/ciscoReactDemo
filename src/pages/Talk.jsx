@@ -139,123 +139,117 @@ class Talk extends React.Component {
         let chordData = this.props.chordData;
 
         return (
-            <div className="talk-page-container">
-                <div className="popup-page-header">
-                    <div className="popup-page-header-left">
-                        <h4>{gauge1Name + ' and ' + gauge2Name} </h4>
+            <Wizard
+                fullScreen={true}
+                wizardContainerClassName={'talk-page-container'}
+                wizardContentContainerClassName={'talk-page-content-container'}
+                title={gauge1Name + ' and ' + gauge2Name}
+                onClickClose={this.props.closeTalkPage}>
+                <div className="gauges-container">
+                    <div className="gauge-container">
+                        <div className="legends-container">
+                            <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.reachableEpgs)}>
+                                <span className="circle-dot color-green"/>
+                                <span className="epgs-value">{reachableEnpoints1}</span>
+                                <span className="epgs-status">{'Reachable EPGs'}</span>
+                            </div>
+                            <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.nonReachableEpgs)}>
+                                <span className="circle-dot color-red"/>
+                                <span className="epgs-value">{nonReachableEPGs1}</span>
+                                <span className="epgs-status">{'Non Reachable EPGs'}</span>
+                            </div>
+                        </div>
+                        <CustomGauge
+                            size={Gauge.SIZE.MEDIUM}
+                            type={Gauge.TYPE.INFO}
+                            title={gauge1Name}
+                            titleClassName="gauge-title"
+                            center={gaugeValue1}
+                            onClick={this.props.onShowEps.bind(this, gauge1.allEpgs)}
+                            value={reachableEnpoints1}
+                            max={totalEPGs1}/>
                     </div>
-                    <IconButton
-                        size={IconButton.SIZE.LARGE}
-                        icon={IconButton.ICON.CLOSE}
-                        type={'close-button'}
-                        onClick={this.props.closeTalkPage}/>
-                </div>
-                <div className="talk-page-content-container">
-                    <div className="gauges-container">
-                        <div className="gauge-container">
-                            <div className="legends-container">
-                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.reachableEpgs)}>
-                                    <span className="circle-dot color-green"/>
-                                    <span className="epgs-value">{reachableEnpoints1}</span>
-                                    <span className="epgs-status">{'Reachable EPGs'}</span>
-                                </div>
-                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge1.nonReachableEpgs)}>
-                                    <span className="circle-dot color-red"/>
-                                    <span className="epgs-value">{nonReachableEPGs1}</span>
-                                    <span className="epgs-status">{'Non Reachable EPGs'}</span>
-                                </div>
+                    <div className="gauge-container">
+                        <CustomGauge
+                            size={Gauge.SIZE.MEDIUM}
+                            type={Gauge.TYPE.INFO}
+                            title={gauge2Name}
+                            titleClassName="gauge-title"
+                            center={gaugeValue2}
+                            onClick={this.props.onShowEps.bind(this, gauge2.allEpgs)}
+                            value={reachableEnpoints2}
+                            max={totalEPGs2}/>
+                        <div className="legends-container">
+                            <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge2.reachableEpgs)}>
+                                <span className="circle-dot color-green"/>
+                                <span className="epgs-value">{reachableEnpoints2}</span>
+                                <span className="epgs-status">{'Reachable EPGs'}</span>
                             </div>
-                            <CustomGauge
-                                size={Gauge.SIZE.MEDIUM}
-                                type={Gauge.TYPE.INFO}
-                                title={gauge1Name}
-                                titleClassName="gauge-title"
-                                center={gaugeValue1}
-                                onClick={this.props.onShowEps.bind(this, gauge1.allEpgs)}
-                                value={reachableEnpoints1}
-                                max={totalEPGs1}/>
-                        </div>
-                        <div className="gauge-container">
-                            <CustomGauge
-                                size={Gauge.SIZE.MEDIUM}
-                                type={Gauge.TYPE.INFO}
-                                title={gauge2Name}
-                                titleClassName="gauge-title"
-                                center={gaugeValue2}
-                                onClick={this.props.onShowEps.bind(this, gauge2.allEpgs)}
-                                value={reachableEnpoints2}
-                                max={totalEPGs2}/>
-                            <div className="legends-container">
-                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge2.reachableEpgs)}>
-                                    <span className="circle-dot color-green"/>
-                                    <span className="epgs-value">{reachableEnpoints2}</span>
-                                    <span className="epgs-status">{'Reachable EPGs'}</span>
-                                </div>
-                                <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge2.nonReachableEpgs)}>
-                                    <span className="circle-dot color-red"/>
-                                    <span className="epgs-value">{nonReachableEPGs2}</span>
-                                    <span className="epgs-status">{'Non Reachable EPGs'}</span>
-                                </div>
+                            <div className="legend-container cursor-pointer" onClick={this.props.onShowEps.bind(this, gauge2.nonReachableEpgs)}>
+                                <span className="circle-dot color-red"/>
+                                <span className="epgs-value">{nonReachableEPGs2}</span>
+                                <span className="epgs-status">{'Non Reachable EPGs'}</span>
                             </div>
                         </div>
-                    </div>
-                    <div className="chord-container" style={CHORD_CONATINER_STYLE}>
-                        <div className="chord-labels-container">
-                            <div className="label-container">
-                                <span className="circle-dot color-light-blue"/>
-                                <span className="label">{gauge1Name}</span>
-                            </div>
-                            <div className="label-container">
-                                <span className="circle-dot color-dark-blue"/>
-                                <span className="label">{gauge2Name}</span>
-                            </div>
-                        </div>
-                        <div className="chord-diagram" style={CHORD_DIAGRAM_STYLE}>
-                            <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE} chordOnSelected={this.chordOnSelected}/>
-                        </div>
-                        <div className="chord-labels-container opacity-zero">
-                            <div className="label-container">
-                                <span className="circle-dot color-light-blue"/>
-                                <span className="label">{gauge1Name}</span>
-                            </div>
-                            <div className="label-container">
-                                <span className="circle-dot color-dark-blue"/>
-                                <span className="label">{gauge2Name}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="how-they-talk-button flex-row">
-                        <Button
-                            disabled={this.state.selectedChords.length !== 2}
-                            type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
-                            onClick={this.onClickHowDoTheyTalk}>
-                            How do they talk?
-                        </Button>
                     </div>
                 </div>
-                {this.props.howTheyTalkData ?
-                    <Wizard
-                        wizardClassName={'how-they-talk-page'}
-                        wizardContainerClassName={'how-they-talk-page-container'}
-                        wizardContentContainerClassName={'how-they-talk-page-content'}
-                        title={'How they talk'}
-                        onClickClose={this.onCloseHowTheyTalk}>
-                        <PointToPoint
-                            onLineClicked={this.lineOnClicked}
-                            points={this.state.points}
-                        />
-                        <div className="table-container">
-                            <h5 className="table-title">Filters and rules between </h5>
-                            <TableResult
-                                initialPageSize={5}
-                                onRowClick={this.onTableRowClicked}
-                                allData={this.state.tableData.data}/>
+                <div className="chord-container" style={CHORD_CONATINER_STYLE}>
+                    <div className="chord-labels-container">
+                        <div className="label-container">
+                            <span className="circle-dot color-light-blue"/>
+                            <span className="label">{gauge1Name}</span>
                         </div>
-                    </Wizard>
-                    :
-                    null
+                        <div className="label-container">
+                            <span className="circle-dot color-dark-blue"/>
+                            <span className="label">{gauge2Name}</span>
+                        </div>
+                    </div>
+                    <div className="chord-diagram" style={CHORD_DIAGRAM_STYLE}>
+                        <Chord data={chordData} width={CHORD_SIZE} height={CHORD_SIZE} chordOnSelected={this.chordOnSelected}/>
+                    </div>
+                    <div className="chord-labels-container opacity-zero">
+                        <div className="label-container">
+                            <span className="circle-dot color-light-blue"/>
+                            <span className="label">{gauge1Name}</span>
+                        </div>
+                        <div className="label-container">
+                            <span className="circle-dot color-dark-blue"/>
+                            <span className="label">{gauge2Name}</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="how-they-talk-button flex-row">
+                    <Button
+                        disabled={this.state.selectedChords.length !== 2}
+                        type={Button.TYPE.PRIMARY} size={Button.SIZE.SMALL}
+                        onClick={this.onClickHowDoTheyTalk}>
+                        How do they talk?
+                    </Button>
+                </div>
+                {
+                    this.props.howTheyTalkData ?
+                        <Wizard
+                            wizardClassName={'how-they-talk-page'}
+                            wizardContainerClassName={'how-they-talk-page-container'}
+                            wizardContentContainerClassName={'how-they-talk-page-content'}
+                            title={'How they talk'}
+                            onClickClose={this.onCloseHowTheyTalk}>
+                            <PointToPoint
+                                onLineClicked={this.lineOnClicked}
+                                points={this.state.points}
+                            />
+                            <div className="table-container">
+                                <h5 className="table-title">Filters and rules between </h5>
+                                <TableResult
+                                    initialPageSize={5}
+                                    onRowClick={this.onTableRowClicked}
+                                    allData={this.state.tableData.data}/>
+                            </div>
+                        </Wizard>
+                        :
+                        null
                 }
-            </div>
+            </Wizard>
         );
     }
 }

@@ -11,7 +11,7 @@
 
         > .popup-table {
             background-color: white;
-            border-radius: 5px;
+            border-radius: 2px;
             overflow: auto;
 
             > .app-page-popup-content {
@@ -23,23 +23,6 @@
                 }
             }
         }
-    }
-
-    > .risk-templates-page{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 2;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        background-color: $transparent-background;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
     }
 }
 

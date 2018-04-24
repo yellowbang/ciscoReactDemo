@@ -97,8 +97,6 @@ export default function(state = initialState, action = {}) {
             });
         case CLOSE_TALK_PAGE:
             return Object.assign({}, state, {
-                selectedTiles: [],
-                canTalkStatus: 'hidden',
                 showTalkPage: false
             });
         case OPEN_HOW_THEY_TALK_PAGE:
